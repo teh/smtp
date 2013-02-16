@@ -18,13 +18,6 @@ type Verb struct {
 	Data []byte
 }
 
-func emit(action int, data Verb) {
-	log.Printf("[%d] S: %#v",
-		action,
-		string(data.Data),
-	)
-}
-
 type Parser struct {
 	cs        int
 	current   Verb
