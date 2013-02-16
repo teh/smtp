@@ -43,7 +43,8 @@ do = ("HELO " host) %{emit(ActionHELO, current)}
 	| "MAIL " MAIL
 	| "RCPT " RCPT
 	| "DATA"
-	| "QUIT";
+	| "QUIT"
+	| "VRFY " [^\n\r]+;
 
 line = do . newline;
 main := line;

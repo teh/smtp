@@ -64,3 +64,18 @@ func TestInvalidMail(t *testing.T) {
 		}
 	}
 }
+
+func TestVerbs(t *testing.T) {
+	entries := []string{
+		"QUIT\r\n",
+		"VRFY root\r\n",
+		"VRFY <sue@example.com>\r\n",
+		"RCPT TO:<sue@example.com>\r\n",
+	}
+	for _, entry := range entries {
+		err := ParseEntry([]byte(entry))
+		if err != nil {
+			t.Errorf("Valid line doesn't parse %s: %s", entry, err)
+		}
+	}
+}
