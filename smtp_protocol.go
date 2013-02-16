@@ -1,5 +1,9 @@
 package smtp
 
+import (
+	"bytes"
+)
+
 const (
 	VerbHELO = 10
 	VerbEHLO = 11
@@ -19,6 +23,5 @@ type Verb struct {
 type Parser struct {
 	cs        int
 	current   Verb
-	buffer    [][]byte
-	recording bool
+	buffer    *bytes.Buffer
 }

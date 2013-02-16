@@ -8,7 +8,7 @@ import (
 %%{
 machine smtp_message;
 
-newline = "\r\n";
+newline = '\r'? '\n';
 
 message_line = ".." any* newline | [^\r\n.] any* newline;
 message = message_line* '.' newline;
