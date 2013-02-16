@@ -1,8 +1,8 @@
 package smtp
 
 import (
-	"testing"
 	"bytes"
+	"testing"
 )
 
 func TestValidHelo(t *testing.T) {
@@ -21,7 +21,7 @@ func TestValidHelo(t *testing.T) {
 		if err != nil {
 			t.Errorf("Valid HELO/EHLO doesn't parse: %s: %s", entry, err)
 		}
-		if len(remaining) != 0  {
+		if len(remaining) != 0 {
 			t.Errorf("Parse not clean for %#v: remaining `%#v`", entry, string(remaining))
 		}
 	}
@@ -98,7 +98,7 @@ func TestSplitParsing(t *testing.T) {
 	entry := "EHLO [192.167.1.1]\r\nQUIT\r\n"
 
 	for i := range entry[:19] {
-		remaining, err := parser.Feed([]byte(entry[i:i+1]))
+		remaining, err := parser.Feed([]byte(entry[i : i+1]))
 		if err != Dangling {
 			t.Errorf("Expected Dangling return code, got: %s (remaining: %#v)", err, remaining)
 		}
@@ -122,7 +122,6 @@ func TestSplitParsing(t *testing.T) {
 		t.Errorf("Expected QUIT verb (%d), got: %d", VerbQUIT, parser.current.Verb)
 	}
 }
-
 
 func TestMessage(t *testing.T) {
 	messages := []string{

@@ -14,8 +14,8 @@ const (
 )
 
 type Verb struct {
-	Verb     int
-	Data       []byte
+	Verb int
+	Data []byte
 }
 
 func emit(action int, data Verb) {
@@ -26,8 +26,8 @@ func emit(action int, data Verb) {
 }
 
 type Parser struct {
-	cs int
-	current Verb
-	buffer [][]byte
+	cs        int
+	current   Verb
+	buffer    [][]byte
 	recording bool
 }
