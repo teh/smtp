@@ -36,12 +36,12 @@ func TestInvalidHelo(t *testing.T) {
 func TestValidMail(t *testing.T) {
 	entries := []string{
 		"MAIL FROM:<me@example.com>\r\n",
-		"MAIL FROM:<root>\r\n",
-		"MAIL FROM:<\"ro\"o\\\"t@some>\r\n",
-		"MAIL FROM:<\\m\\o\\d@some>\r\n",
-		"MAIL FROM:<a+b+c@some>\r\n",
-		"MAIL FROM:<@q@@10.com>\r\n",
-		"MAIL FROM:<@route.1.com,@route2.com:peter@example.net>\r\n",
+		"MAIL fROM:<root>\r\n",
+		"MAIL FrOM:<\"ro\"o\\\"t@some>\r\n",
+		"MAIL FRoM:<\\m\\o\\d@some>\r\n",
+		"MAIL FROm:<a+b+c@some>\r\n",
+		"MAIL FroM:<@q@@10.com>\r\n",
+		"MAIL fROm:<@route.1.com,@route2.com:peter@example.net>\r\n",
 	}
 	for _, entry := range entries {
 		err := ParseEntry([]byte(entry))
