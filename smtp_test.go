@@ -161,3 +161,27 @@ func TestRemainderMessage(t *testing.T) {
 		}
 	}
 }
+
+func TestChunkedMessage(t *testing.T) {
+	parser := NewMessageParser()
+	remaining, err := parser.Feed([]byte("..some message\n"))
+	if err != Dangling {
+		t.Errorf("Expected Dangling return code, got: %s (remaining: %#v)", err, remaining)
+	}
+	remaining, err = parser.Feed([]byte("more\r\n"))
+	if err != Dangling {
+		t.Errorf("Expected Dangling return code, got: %s (remaining: %#v)", err, remaining)
+	}
+	remaining, err = parser.Feed([]byte(".\r\nxxx"))
+	if err != nil {
+		t.Errorf("Expected nil return code, got: %s (remaining: %#v)", err, remaining)
+	}
+	if bytes.Compare(remaining, []byte("xxx")) != 0 {
+		t.Errorf("Missing remaining for %#v: actual remaining `%#v`", "xxx", string(remaining))
+	}
+
+	expected := "..some message\nmore\r\n"
+	if parser.buffer.String() != expected {
+		t.Errorf("Wrong parse. Expected: %#v, got %#v", expected, parser.buffer.String())
+	}
+}
