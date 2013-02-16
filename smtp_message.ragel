@@ -28,7 +28,12 @@ func NewMessageParser() *MessageParser {
 	}
 }
 
-// Return remaining etc.
+// Feed new bytes while keepting track of state in parser.current. If
+// error is `Dangling` then more data is needed for a successfull
+// parse. When error is nil then parser.buffer contains the full
+// message without the terminating .\r\n
+//
+// See Parser.Feed for gotchas.
 func (parser *MessageParser) Feed(data []byte) ([]byte, error) {
 	var p int
 	cs := parser.cs

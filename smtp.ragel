@@ -70,13 +70,16 @@ func NewParser() *Parser {
 	return &Parser{cs: smtp_en_main}
 }
 
-// Receive data, keep track of state in parser.current. If error is
-// Dangling then more data is needed for a successfull parse. If error
-// is nil then parser.current contains the new action item.
+// Feed new bytes while keepting track of state in parser.current. If
+// error is `Dangling` then more data is needed for a successfull
+// parse. If error is nil then parser.current contains the new action
+// item. Bytes from `data` are copied, enabling the called to recycle
+// data slice.
 //
-// Gotchas: current is not transactional and can contain intermediate
-// values.
-// Content from data is _not_ copied ATM.
+// Gotchas: * current is not transactional and can contain
+// intermediate values. * Parsing is not bounded: the internal
+// parser.buffer grows as much as the input, restrictions need to be
+// imposed from the outside (using e.g. a LimitReader).
 func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 	var p, pb int
 	cs := parser.cs
