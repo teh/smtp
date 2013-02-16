@@ -1,0 +1,38 @@
+package smtp
+
+import (
+	"fmt"
+)
+
+// Good introduction: http://cr.yp.to/smtp/request.html
+%%{
+machine smtp_message;
+
+newline = "\r\n";
+
+message_line = ".." any* newline | [^\r\n.] any* newline;
+message = message_line* '.' newline;
+
+empty_message = '.' newline ;
+
+main := (message | empty_message) @{fbreak;};
+}%%
+
+%%write data;
+
+// Return remaining etc.
+func ParseMessage(data []byte) ([]byte, []byte, error) {
+	var cs, p int
+	pe := len(data)
+
+	%%write init;
+	%%write exec;
+
+	if cs == smtp_message_error {
+		return []byte(""), []byte(""), fmt.Errorf("Invalid character in pos %d: `%c`.", p, data[p-1])
+	}
+	if cs < smtp_message_first_final {
+		return []byte(""),  []byte(""), fmt.Errorf("Message doesn't terminate properly.")
+	}
+	return data[:p], data[p:], nil
+}

@@ -2,65 +2,100 @@ package smtp
 
 import (
 	"fmt"
+	"errors"
+	"bytes"
 )
 
 // Good introduction: http://cr.yp.to/smtp/request.html
 %%{
 machine smtp;
 
-newline = '\r'? . '\n';
+newline = '\r'? '\n';
 
-domain = ([a-zA-Z0-9]+ ('.' [a-zA-Z0-9]+)*)
-    %{current.Domain = data[pdomain:p]}
-    >{pdomain = p};
+domain = ([a-zA-Z0-9]+ ('.' [a-zA-Z0-9]+)*);
 
 ipv4_part = digit{1,3} | '0x'[0-9a-fA-F]{1,2} | '0' digit{1,3};
 ipv4 = ipv4_part '.' ipv4_part ('.' ipv4_part ('.' ipv4_part)?)?;
 
+action storeData {
+	parser.buffer = append(parser.buffer, data[pb:p])
+	parser.current.Data = bytes.Join(parser.buffer, nil)
+	parser.buffer = nil
+	parser.recording = false
+}
+
+action startRecording {
+	pb = p
+	parser.recording = true
+}
+
 host = domain
-	%{current.ClientHost = data[pb:p]}
-    >{pb = p}
+	%storeData
+    >startRecording
 	| ('[' ipv4 ']')
-    %{current.ClientHost = data[pb:p]}
-    >{pb = p};
+    %storeData
+    >startRecording;
 
 ignore_routes = ('@' [^:]+ ':')?;
 
 quoted_chars = [a-zA-Z0-9@.+] | '\\' [a-zA-Z0-9@.\"+ ];
 real_address = (('"' quoted_chars+  '"' | quoted_chars+)+ ('@' domain)?)
-    %{current.Address = data[pb:p]}
-    >{pb = p};
+    %storeData
+    >startRecording;
 
 address = '<' ignore_routes real_address '>';
 
+MAIL = [Ff][Rr][Oo][Mm] ':' address;
+RCPT = [Tt][Oo] ':' address;
 
-MAIL = [Ff][Rr][Oo][Mm] ':' address %{emit(ActionMAIL, current)};
-RCPT = [Tt][Oo] ':' address %{emit(ActionRCPT, current)};
+do = ("HELO " host) %{parser.current.Verb = VerbHELO}
+    | ("EHLO " host) %{parser.current.Verb = VerbEHLO}
+	| "RSET" %{parser.current.Verb = VerbRSET}
+	| "MAIL " MAIL %{parser.current.Verb = VerbMAIL}
+	| "RCPT " RCPT %{parser.current.Verb = VerbRCPT}
+	| "DATA" %{parser.current.Verb = VerbDATA}
+	| "QUIT" %{parser.current.Verb = VerbQUIT}
+	| "VRFY " [^\n\r]+ %{parser.current.Verb = VerbVRFY}
+	;
 
-do = ("HELO " host) %{emit(ActionHELO, current)}
-    | ("EHLO " host) %{emit(ActionEHLO, current)}
-	| "RSET"
-	| "MAIL " MAIL
-	| "RCPT " RCPT
-	| "DATA"
-	| "QUIT"
-	| "VRFY " [^\n\r]+;
-
-line = do . newline;
-main := line;
+line = do newline;
+# break after we have a valid line.
+main := line @{fbreak;};
 }%%
 
 %%write data;
 
-func ParseEntry(data []byte) error {
-	var cs, p, pb, pdomain int
-	var current Action
+var Dangling = errors.New("DANGLING")
+
+func NewParser() *Parser {
+	return &Parser{cs: smtp_en_main}
+}
+
+// Receive data, keep track of state in parser.current. If error is
+// Dangling more data is needed for a successfull parse. If error is
+// nil then parser.current contains the new action item.
+func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
+	var p, pb int
+	cs := parser.cs
 	pe := len(data)
-	%%write init;
+
 	%%write exec;
 
 	if cs == smtp_error {
-		return fmt.Errorf("Invalid character in pos %d: `%c`.", p, data[p])
+		return data[p:], fmt.Errorf("Invalid character in pos %d: `%c`.", p, data[p])
 	}
-	return nil
+
+	// Not yet a full parse, remeber everything from pb to p if we are
+	// recording.
+	if cs < smtp_first_final {
+		if parser.recording {
+			parser.buffer = append(parser.buffer, data[pb:p])
+		}
+		parser.cs = cs
+		return data[p:], Dangling
+	}
+
+	// Full parse:
+	parser.cs = smtp_en_main
+	return data[p:], nil
 }

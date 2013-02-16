@@ -3,25 +3,31 @@ package smtp
 import "log"
 
 const (
-	ActionHELO = iota
-	ActionEHLO
-	ActionRSET
-	ActionRCPT
-	ActionMAIL
+	VerbHELO = 10
+	VerbEHLO = 11
+	VerbRSET = 12
+	VerbRCPT = 13
+	VerbMAIL = 14
+	VerbQUIT = 15
+	VerbDATA = 16
+	VerbVRFY = 17
 )
 
-type Action struct {
-	Action     int
-	Address    []byte
-	ClientHost []byte
-	Domain     []byte
+type Verb struct {
+	Verb     int
+	Data       []byte
 }
 
-func emit(action int, data Action) {
-	log.Printf("[%d] host: `%s`, address: `%s`, domain: `%s`",
+func emit(action int, data Verb) {
+	log.Printf("[%d] S: %#v",
 		action,
-		string(data.ClientHost),
-		string(data.Address),
-		string(data.Domain),
+		string(data.Data),
 	)
+}
+
+type Parser struct {
+	cs int
+	current Verb
+	buffer [][]byte
+	recording bool
 }
