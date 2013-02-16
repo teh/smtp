@@ -41,6 +41,7 @@ func TestValidMail(t *testing.T) {
 		"MAIL FROM:<\\m\\o\\d@some>\r\n",
 		"MAIL FROM:<a+b+c@some>\r\n",
 		"MAIL FROM:<@q@@10.com>\r\n",
+		"MAIL FROM:<@route.1.com,@route2.com:peter@example.net>\r\n",
 	}
 	for _, entry := range entries {
 		err := ParseEntry([]byte(entry))
