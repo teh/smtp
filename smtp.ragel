@@ -39,7 +39,7 @@ RCPT = [Tt][Oo] ':' address %{emit(ActionRCPT, current)};
 
 do = ("HELO " host) %{emit(ActionHELO, current)}
     | ("EHLO " host) %{emit(ActionEHLO, current)}
-	| "RSET" 
+	| "RSET"
 	| "MAIL " MAIL
 	| "RCPT " RCPT
 	| "DATA"

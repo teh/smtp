@@ -9,6 +9,7 @@ func TestValidHelo(t *testing.T) {
 		"EHLO [192.167.1.1]\r\n",
 		"EHLO [0x7f.1]\r\n",
 		"EHLO [0177.0.1]\r\n",
+		"EHLO [0177.0.1]\n", // though not valid just \n should still work
 	}
 	for _, entry := range entries {
 		err := ParseEntry([]byte(entry))
