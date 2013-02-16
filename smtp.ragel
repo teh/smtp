@@ -1,0 +1,65 @@
+package smtp
+
+import (
+	"fmt"
+)
+
+// Good introduction: http://cr.yp.to/smtp/request.html
+%%{
+machine smtp;
+
+newline = '\r'? . '\n';
+
+domain = ([a-zA-Z0-9]+ ('.' [a-zA-Z0-9]+)*)
+    %{current.Domain = data[pdomain:p]}
+    >{pdomain = p};
+
+ipv4_part = digit{1,3} | '0x'[0-9a-fA-F]{1,2} | '0' digit{1,3};
+ipv4 = ipv4_part '.' ipv4_part ('.' ipv4_part ('.' ipv4_part)?)?;
+
+host = domain
+	%{current.ClientHost = data[pb:p]}
+    >{pb = p}
+	| ('[' ipv4 ']')
+    %{current.ClientHost = data[pb:p]}
+    >{pb = p};
+
+ignore_routes = ('@' [^:]+ ':')?;
+
+quoted_chars = [a-zA-Z0-9@.+] | '\\' [a-zA-Z0-9@.\"+ ];
+real_address = (('"' quoted_chars+  '"' | quoted_chars+)+ ('@' domain)?)
+    %{current.Address = data[pb:p]}
+    >{pb = p};
+
+address = '<' ignore_routes real_address '>';
+
+
+MAIL = [Ff][Rr][Oo][Mm] ':' address %{emit(ActionMAIL, current)};
+RCPT = [Tt][Oo] ':' address %{emit(ActionRCPT, current)};
+
+do = ("HELO " host) %{emit(ActionHELO, current)}
+    | ("EHLO " host) %{emit(ActionEHLO, current)}
+	| "RSET" 
+	| "MAIL " MAIL
+	| "RCPT " RCPT
+	| "DATA"
+	| "QUIT";
+
+line = do . newline;
+main := line;
+}%%
+
+%%write data;
+
+func ParseEntry(data []byte) error {
+	var cs, p, pb, pdomain int
+	var current Action
+	pe := len(data)
+	%%write init;
+	%%write exec;
+
+	if cs == smtp_error {
+		return fmt.Errorf("Invalid character in pos %d: `%c`.", p, data[p])
+	}
+	return nil
+}
