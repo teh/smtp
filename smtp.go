@@ -8,9 +8,9 @@ import (
 	"bytes"
 )
 
-// Good introduction: http://cr.yp.to/smtp/request.html
+// Good introduction on smtp: http://cr.yp.to/smtp/request.html
 
-// line 64 "smtp.ragel"
+// line 65 "smtp.ragel"
 
 
 
@@ -22,7 +22,7 @@ const smtp_error = 0;
 const smtp_en_main = 1
 
 
-// line 67 "smtp.ragel"
+// line 68 "smtp.ragel"
 
 var Dangling = errors.New("DANGLING")
 
@@ -31,15 +31,19 @@ func NewParser() *Parser {
 }
 
 // Receive data, keep track of state in parser.current. If error is
-// Dangling more data is needed for a successfull parse. If error is
-// nil then parser.current contains the new action item.
+// Dangling then more data is needed for a successfull parse. If error
+// is nil then parser.current contains the new action item.
+//
+// Gotchas: current is not transactional and can contain intermediate
+// values.
+// Content from data is _not_ copied ATM.
 func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 	var p, pb int
 	cs := parser.cs
 	pe := len(data)
 
 	
-// line 43 "smtp.go"
+// line 47 "smtp.go"
 	{
 	if p == pe {
 		goto _test_eof
@@ -418,16 +422,16 @@ goto ctr12
 
 }
 ctr11:
-// line 56 "smtp.ragel"
+// line 57 "smtp.ragel"
 	{
 parser.current.Verb = VerbDATA}
-// line 63 "smtp.ragel"
+// line 64 "smtp.ragel"
 	{
 { p++; cs = 144; goto _out }
 }
 	goto st144
 ctr13:
-// line 63 "smtp.ragel"
+// line 64 "smtp.ragel"
 	{
 { p++; cs = 144; goto _out }
 }
@@ -441,10 +445,10 @@ ctr20:
 	parser.buffer = nil
 	parser.recording = false
 }
-// line 52 "smtp.ragel"
+// line 53 "smtp.ragel"
 	{
 parser.current.Verb = VerbEHLO}
-// line 63 "smtp.ragel"
+// line 64 "smtp.ragel"
 	{
 { p++; cs = 144; goto _out }
 }
@@ -458,55 +462,55 @@ ctr58:
 	parser.buffer = nil
 	parser.recording = false
 }
-// line 51 "smtp.ragel"
+// line 52 "smtp.ragel"
 	{
 parser.current.Verb = VerbHELO}
-// line 63 "smtp.ragel"
+// line 64 "smtp.ragel"
 	{
 { p++; cs = 144; goto _out }
 }
 	goto st144
 ctr110:
-// line 54 "smtp.ragel"
+// line 55 "smtp.ragel"
 	{
 parser.current.Verb = VerbMAIL}
-// line 63 "smtp.ragel"
+// line 64 "smtp.ragel"
 	{
 { p++; cs = 144; goto _out }
 }
 	goto st144
 ctr126:
-// line 57 "smtp.ragel"
+// line 58 "smtp.ragel"
 	{
 parser.current.Verb = VerbQUIT}
-// line 63 "smtp.ragel"
+// line 64 "smtp.ragel"
 	{
 { p++; cs = 144; goto _out }
 }
 	goto st144
 ctr147:
-// line 55 "smtp.ragel"
+// line 56 "smtp.ragel"
 	{
 parser.current.Verb = VerbRCPT}
-// line 63 "smtp.ragel"
+// line 64 "smtp.ragel"
 	{
 { p++; cs = 144; goto _out }
 }
 	goto st144
 ctr162:
-// line 53 "smtp.ragel"
+// line 54 "smtp.ragel"
 	{
 parser.current.Verb = VerbRSET}
-// line 63 "smtp.ragel"
+// line 64 "smtp.ragel"
 	{
 { p++; cs = 144; goto _out }
 }
 	goto st144
 ctr169:
-// line 58 "smtp.ragel"
+// line 59 "smtp.ragel"
 	{
 parser.current.Verb = VerbVRFY}
-// line 63 "smtp.ragel"
+// line 64 "smtp.ragel"
 	{
 { p++; cs = 144; goto _out }
 }
@@ -516,13 +520,13 @@ st144:
 		goto _test_eof144
 	}
 st_case_144:
-// line 520 "smtp.go"
+// line 524 "smtp.go"
 {
 	goto st0
 
 }
 ctr12:
-// line 56 "smtp.ragel"
+// line 57 "smtp.ragel"
 	{
 parser.current.Verb = VerbDATA}
 	goto st6
@@ -535,7 +539,7 @@ ctr21:
 	parser.buffer = nil
 	parser.recording = false
 }
-// line 52 "smtp.ragel"
+// line 53 "smtp.ragel"
 	{
 parser.current.Verb = VerbEHLO}
 	goto st6
@@ -548,32 +552,32 @@ ctr59:
 	parser.buffer = nil
 	parser.recording = false
 }
-// line 51 "smtp.ragel"
+// line 52 "smtp.ragel"
 	{
 parser.current.Verb = VerbHELO}
 	goto st6
 ctr111:
-// line 54 "smtp.ragel"
+// line 55 "smtp.ragel"
 	{
 parser.current.Verb = VerbMAIL}
 	goto st6
 ctr127:
-// line 57 "smtp.ragel"
+// line 58 "smtp.ragel"
 	{
 parser.current.Verb = VerbQUIT}
 	goto st6
 ctr148:
-// line 55 "smtp.ragel"
+// line 56 "smtp.ragel"
 	{
 parser.current.Verb = VerbRCPT}
 	goto st6
 ctr163:
-// line 53 "smtp.ragel"
+// line 54 "smtp.ragel"
 	{
 parser.current.Verb = VerbRSET}
 	goto st6
 ctr170:
-// line 58 "smtp.ragel"
+// line 59 "smtp.ragel"
 	{
 parser.current.Verb = VerbVRFY}
 	goto st6
@@ -582,7 +586,7 @@ st6:
 		goto _test_eof6
 	}
 st_case_6:
-// line 586 "smtp.go"
+// line 590 "smtp.go"
 	if data[p] == 10 {
 		goto ctr13
 	}
@@ -667,6 +671,7 @@ ctr18:
 	{
 
 	pb = p
+	parser.current = Verb{}
 	parser.recording = true
 }
 	goto st12
@@ -675,7 +680,7 @@ st12:
 		goto _test_eof12
 	}
 st_case_12:
-// line 679 "smtp.go"
+// line 684 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr20
@@ -726,6 +731,7 @@ ctr19:
 	{
 
 	pb = p
+	parser.current = Verb{}
 	parser.recording = true
 }
 	goto st14
@@ -734,7 +740,7 @@ st14:
 		goto _test_eof14
 	}
 st_case_14:
-// line 738 "smtp.go"
+// line 744 "smtp.go"
 	if data[p] == 48 {
 		goto st15
 	}
@@ -1330,6 +1336,7 @@ ctr56:
 	{
 
 	pb = p
+	parser.current = Verb{}
 	parser.recording = true
 }
 	goto st48
@@ -1338,7 +1345,7 @@ st48:
 		goto _test_eof48
 	}
 st_case_48:
-// line 1342 "smtp.go"
+// line 1349 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr58
@@ -1389,6 +1396,7 @@ ctr57:
 	{
 
 	pb = p
+	parser.current = Verb{}
 	parser.recording = true
 }
 	goto st50
@@ -1397,7 +1405,7 @@ st50:
 		goto _test_eof50
 	}
 st_case_50:
-// line 1401 "smtp.go"
+// line 1409 "smtp.go"
 	if data[p] == 48 {
 		goto st51
 	}
@@ -2086,6 +2094,7 @@ ctr100:
 	{
 
 	pb = p
+	parser.current = Verb{}
 	parser.recording = true
 }
 	goto st90
@@ -2094,7 +2103,7 @@ st90:
 		goto _test_eof90
 	}
 st_case_90:
-// line 2098 "smtp.go"
+// line 2107 "smtp.go"
 	switch data[p] {
 	case 43:
 goto st91
@@ -2155,6 +2164,7 @@ ctr101:
 	{
 
 	pb = p
+	parser.current = Verb{}
 	parser.recording = true
 }
 	goto st92
@@ -2163,7 +2173,7 @@ st92:
 		goto _test_eof92
 	}
 st_case_92:
-// line 2167 "smtp.go"
+// line 2177 "smtp.go"
 	switch data[p] {
 	case 34:
 goto st90
@@ -2207,7 +2217,7 @@ st93:
 		goto _test_eof93
 	}
 st_case_93:
-// line 2211 "smtp.go"
+// line 2221 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr110
@@ -2223,6 +2233,7 @@ ctr103:
 	{
 
 	pb = p
+	parser.current = Verb{}
 	parser.recording = true
 }
 	goto st94
@@ -2231,7 +2242,7 @@ st94:
 		goto _test_eof94
 	}
 st_case_94:
-// line 2235 "smtp.go"
+// line 2246 "smtp.go"
 	switch data[p] {
 	case 32:
 goto st92
@@ -2294,6 +2305,7 @@ ctr102:
 	{
 
 	pb = p
+	parser.current = Verb{}
 	parser.recording = true
 }
 	goto st96
@@ -2302,7 +2314,7 @@ st96:
 		goto _test_eof96
 	}
 st_case_96:
-// line 2306 "smtp.go"
+// line 2318 "smtp.go"
 	switch data[p] {
 	case 34:
 goto st99
@@ -2600,7 +2612,7 @@ st102:
 		goto _test_eof102
 	}
 st_case_102:
-// line 2604 "smtp.go"
+// line 2616 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr120
@@ -2626,16 +2638,16 @@ goto st98
 
 }
 ctr122:
-// line 63 "smtp.ragel"
+// line 64 "smtp.ragel"
 	{
 { p++; cs = 145; goto _out }
 }
 	goto st145
 ctr120:
-// line 54 "smtp.ragel"
+// line 55 "smtp.ragel"
 	{
 parser.current.Verb = VerbMAIL}
-// line 63 "smtp.ragel"
+// line 64 "smtp.ragel"
 	{
 { p++; cs = 145; goto _out }
 }
@@ -2645,7 +2657,7 @@ st145:
 		goto _test_eof145
 	}
 st_case_145:
-// line 2649 "smtp.go"
+// line 2661 "smtp.go"
 	if data[p] == 58 {
 		goto st98
 	}
@@ -2657,7 +2669,7 @@ st_case_145:
 
 }
 ctr121:
-// line 54 "smtp.ragel"
+// line 55 "smtp.ragel"
 	{
 parser.current.Verb = VerbMAIL}
 	goto st103
@@ -2666,7 +2678,7 @@ st103:
 		goto _test_eof103
 	}
 st_case_103:
-// line 2670 "smtp.go"
+// line 2682 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr122
@@ -2999,6 +3011,7 @@ ctr137:
 	{
 
 	pb = p
+	parser.current = Verb{}
 	parser.recording = true
 }
 	goto st119
@@ -3007,7 +3020,7 @@ st119:
 		goto _test_eof119
 	}
 st_case_119:
-// line 3011 "smtp.go"
+// line 3024 "smtp.go"
 	switch data[p] {
 	case 43:
 goto st120
@@ -3068,6 +3081,7 @@ ctr138:
 	{
 
 	pb = p
+	parser.current = Verb{}
 	parser.recording = true
 }
 	goto st121
@@ -3076,7 +3090,7 @@ st121:
 		goto _test_eof121
 	}
 st_case_121:
-// line 3080 "smtp.go"
+// line 3094 "smtp.go"
 	switch data[p] {
 	case 34:
 goto st119
@@ -3120,7 +3134,7 @@ st122:
 		goto _test_eof122
 	}
 st_case_122:
-// line 3124 "smtp.go"
+// line 3138 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr147
@@ -3136,6 +3150,7 @@ ctr140:
 	{
 
 	pb = p
+	parser.current = Verb{}
 	parser.recording = true
 }
 	goto st123
@@ -3144,7 +3159,7 @@ st123:
 		goto _test_eof123
 	}
 st_case_123:
-// line 3148 "smtp.go"
+// line 3163 "smtp.go"
 	switch data[p] {
 	case 32:
 goto st121
@@ -3207,6 +3222,7 @@ ctr139:
 	{
 
 	pb = p
+	parser.current = Verb{}
 	parser.recording = true
 }
 	goto st125
@@ -3215,7 +3231,7 @@ st125:
 		goto _test_eof125
 	}
 st_case_125:
-// line 3219 "smtp.go"
+// line 3235 "smtp.go"
 	switch data[p] {
 	case 34:
 goto st128
@@ -3513,7 +3529,7 @@ st131:
 		goto _test_eof131
 	}
 st_case_131:
-// line 3517 "smtp.go"
+// line 3533 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr157
@@ -3539,16 +3555,16 @@ goto st127
 
 }
 ctr159:
-// line 63 "smtp.ragel"
+// line 64 "smtp.ragel"
 	{
 { p++; cs = 146; goto _out }
 }
 	goto st146
 ctr157:
-// line 55 "smtp.ragel"
+// line 56 "smtp.ragel"
 	{
 parser.current.Verb = VerbRCPT}
-// line 63 "smtp.ragel"
+// line 64 "smtp.ragel"
 	{
 { p++; cs = 146; goto _out }
 }
@@ -3558,7 +3574,7 @@ st146:
 		goto _test_eof146
 	}
 st_case_146:
-// line 3562 "smtp.go"
+// line 3578 "smtp.go"
 	if data[p] == 58 {
 		goto st127
 	}
@@ -3570,7 +3586,7 @@ st_case_146:
 
 }
 ctr158:
-// line 55 "smtp.ragel"
+// line 56 "smtp.ragel"
 	{
 parser.current.Verb = VerbRCPT}
 	goto st132
@@ -3579,7 +3595,7 @@ st132:
 		goto _test_eof132
 	}
 st_case_132:
-// line 3583 "smtp.go"
+// line 3599 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr159
@@ -4147,7 +4163,7 @@ st_end:
 	_out: {}
 	}
 
-// line 83 "smtp.ragel"
+// line 88 "smtp.ragel"
 
 	if cs == smtp_error {
 		return data[p:], fmt.Errorf("Invalid character in pos %d: `%c`.", p, data[p])

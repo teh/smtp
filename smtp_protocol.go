@@ -1,7 +1,5 @@
 package smtp
 
-import "log"
-
 const (
 	VerbHELO = 10
 	VerbEHLO = 11

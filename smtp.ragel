@@ -6,7 +6,7 @@ import (
 	"bytes"
 )
 
-// Good introduction: http://cr.yp.to/smtp/request.html
+// Good introduction on smtp: http://cr.yp.to/smtp/request.html
 %%{
 machine smtp;
 
@@ -26,6 +26,7 @@ action storeData {
 
 action startRecording {
 	pb = p
+	parser.current = Verb{}
 	parser.recording = true
 }
 
@@ -51,11 +52,11 @@ RCPT = [Tt][Oo] ':' address;
 do = ("HELO " host) %{parser.current.Verb = VerbHELO}
     | ("EHLO " host) %{parser.current.Verb = VerbEHLO}
 	| "RSET" %{parser.current.Verb = VerbRSET}
-	| "MAIL " MAIL %{parser.current.Verb = VerbMAIL}
-	| "RCPT " RCPT %{parser.current.Verb = VerbRCPT}
+	| ("MAIL " MAIL) %{parser.current.Verb = VerbMAIL}
+	| ("RCPT " RCPT) %{parser.current.Verb = VerbRCPT}
 	| "DATA" %{parser.current.Verb = VerbDATA}
 	| "QUIT" %{parser.current.Verb = VerbQUIT}
-	| "VRFY " [^\n\r]+ %{parser.current.Verb = VerbVRFY}
+	| ("VRFY " [^\n\r]+) %{parser.current.Verb = VerbVRFY}
 	;
 
 line = do newline;
@@ -72,8 +73,12 @@ func NewParser() *Parser {
 }
 
 // Receive data, keep track of state in parser.current. If error is
-// Dangling more data is needed for a successfull parse. If error is
-// nil then parser.current contains the new action item.
+// Dangling then more data is needed for a successfull parse. If error
+// is nil then parser.current contains the new action item.
+//
+// Gotchas: current is not transactional and can contain intermediate
+// values.
+// Content from data is _not_ copied ATM.
 func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 	var p, pb int
 	cs := parser.cs
