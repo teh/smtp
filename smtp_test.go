@@ -139,17 +139,3 @@ func TestMessage(t *testing.T) {
 		}
 	}
 }
-
-// Try to trigger a panic when feeding junk. Could do with more
-// directed fuzzing, e.g. use actual verbs.
-func TestRandom(t *testing.T) {
-	check := func (s []byte) bool {
-		p := NewParser()
-		p.Feed(s[:len(s)/2])
-		p.Feed(s[len(s)/2:])
-		return true
-	}
-	if err := quick.Check(check, nil); err != nil {
-		t.Error(err)
-	}
-}
