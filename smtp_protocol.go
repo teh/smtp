@@ -21,7 +21,12 @@ type Verb struct {
 }
 
 type Parser struct {
-	cs        int
-	current   Verb
-	buffer    *bytes.Buffer
+	cs      int
+	current Verb
+	buffer  *bytes.Buffer
+}
+
+type MessageParser struct {
+	cs     int
+	buffer *bytes.Buffer
 }

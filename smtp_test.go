@@ -3,7 +3,6 @@ package smtp
 import (
 	"bytes"
 	"testing"
-	"testing/quick"
 )
 
 func TestValidHelo(t *testing.T) {
@@ -124,18 +123,41 @@ func TestSplitParsing(t *testing.T) {
 	}
 }
 
-func TestMessage(t *testing.T) {
+func TestCleanMessage(t *testing.T) {
+	parser := NewMessageParser()
 	messages := []string{
 		".\r\n",
-		".\r\n.\r\n",
 		"..\r\n.\r\n",
 		"......\r\n.\r\n",
 		"xx\r\n.\r\n",
+		"\n.\r\n",
 	}
 	for _, m := range messages {
-		_, _, err := ParseMessage([]byte(m))
+		remaining, err := parser.Feed([]byte(m))
 		if err != nil {
 			t.Errorf("Valid message doesn't parse %#v: %s", m, err)
+		}
+		if len(remaining) != 0 {
+			t.Errorf("Parse not clean for %#v: remaining `%#v`", m, string(remaining))
+		}
+	}
+}
+
+func TestRemainderMessage(t *testing.T) {
+	parser := NewMessageParser()
+	messages := []string{
+		".\r\nxxx",
+		"..\r\n.\r\nxxx",
+		"......\r\n.\r\nxxx",
+		"\nx\r\nx\r\n.\r\nxxx",
+	}
+	for _, m := range messages {
+		remaining, err := parser.Feed([]byte(m))
+		if err != nil {
+			t.Errorf("Valid message doesn't parse %#v: %s", m, err)
+		}
+		if bytes.Compare(remaining, []byte("xxx")) != 0 {
+			t.Errorf("Missing remaining for %#v: actual remaining `%#v`", m, string(remaining))
 		}
 	}
 }

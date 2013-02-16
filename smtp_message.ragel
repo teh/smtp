@@ -2,6 +2,7 @@ package smtp
 
 import (
 	"fmt"
+	"bytes"
 )
 
 // Good introduction: http://cr.yp.to/smtp/request.html
@@ -10,7 +11,7 @@ machine smtp_message;
 
 newline = '\r'? '\n';
 
-message_line = ".." any* newline | [^\r\n.] any* newline;
+message_line = ".." any* newline | [^.] any* newline | newline;
 message = message_line* '.' newline;
 
 empty_message = '.' newline ;
@@ -20,19 +21,32 @@ main := (message | empty_message) @{fbreak;};
 
 %%write data;
 
+func NewMessageParser() *MessageParser {
+	return &MessageParser{
+		cs: smtp_message_en_main,
+		buffer: bytes.NewBuffer(nil),
+	}
+}
+
 // Return remaining etc.
-func ParseMessage(data []byte) ([]byte, []byte, error) {
-	var cs, p int
+func (parser *MessageParser) Feed(data []byte) ([]byte, error) {
+	var p int
+	cs := parser.cs
 	pe := len(data)
 
-	%%write init;
 	%%write exec;
 
 	if cs == smtp_message_error {
-		return []byte(""), []byte(""), fmt.Errorf("Invalid character in pos %d: `%c`.", p, data[p-1])
+		return data[p:], fmt.Errorf("Invalid character in pos %d: `%#v`.", p, data[p])
 	}
 	if cs < smtp_message_first_final {
-		return []byte(""),  []byte(""), fmt.Errorf("Message doesn't terminate properly.")
+		_, err := parser.buffer.Write(data[:p])
+		if err != nil {
+			return data[p:], fmt.Errorf("Could not buffer data: %s", err)
+		}
+		parser.cs = cs
+		return data[p:], Dangling
 	}
-	return data[:p], data[p:], nil
+	parser.cs = smtp_message_en_main
+	return data[p:], nil
 }
