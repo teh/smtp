@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"net"
 	"fmt"
+	"log"
+	"io"
 )
 
 const (
@@ -37,45 +39,77 @@ type Connection struct {
 	net.Conn
 	Hostname string
 	remaining []byte
-	p *Parser
+	Parser *Parser
 }
 
 type stateFunc func(c Connection) stateFunc
 
-func greet(c Connection) stateFunc {
-	// Announce ESMTP, otherwise many clients won't EHLO.
-	fmt.Fprintf(c, "220 %s ESMTP\r\n", c.Hostname)
-	var data []byte
-	for  {
-		_, err := c.Read(data)
-		if err != nil {
-			return ioError
+func nextVerb(c Connection) error {
+	var data []byte = make([]byte, 1<<14)
+	var err error
+	var n int
+	for {
+		// remaining always gets parsed first before reading new data.
+		// This is important not just for ordering but also because
+		// remaining is a sub-slice of data (copy handles overlapping
+		// regions correctly).
+		if len(c.remaining) != 0 {
+			n = copy(data, c.remaining)
+		} else {
+			n, err = c.Read(data)
+			if err != nil && err != io.EOF {
+				return err
+			}
 		}
-		c.remaining, err = c.p.Feed(data)
+		c.remaining, err = c.Parser.Feed(data[:n])
 		if err == Dangling {
 			continue
 		}
 		if err == nil {
-			switch {
-			case c.p.current.Verb != VerbHELO:
-				fmt.Fprintf(c, "250 ok\r\n")
-				return normal
-			case c.p.current.Verb != VerbEHLO:
-				return ehlo
-			default:
-				return normal
-				
-			}
+			return nil
 		}
-		fmt.Fprintf(c, "500 could not parse HELO or EHLO.\r\n")	
 	}
+	return nil
+}
+
+func Greet(c Connection) stateFunc {
+	// Announce ESMTP, otherwise many clients won't EHLO.
+	fmt.Fprintf(c, "220 %s ESMTP\r\n", c.Hostname)
+	err := nextVerb(c)
+	if err != nil {
+		log.Printf("Error on read: %s", err)
+		return ioError
+	}
+	switch {
+	case c.Parser.current.Verb == VerbHELO:
+		fmt.Fprintf(c, "250 ok\r\n")
+		return normal
+	case c.Parser.current.Verb == VerbEHLO:
+		return ehlo
+	default:
+		return normal
+	}
+	panic("never reached")
 }
 
 func ioError(c Connection) stateFunc {
-	return ioError
+	return nil
 }
 
 func normal(c Connection) stateFunc {
+	for {
+		err := nextVerb(c)
+		if err != nil {
+			log.Printf("Error on read: %s", err)
+			return ioError
+		}
+		switch c.Parser.current.Verb {
+		case VerbQUIT:
+			c.Close()
+			return nil
+		default:
+		}
+	}
 	return normal
 }
 
