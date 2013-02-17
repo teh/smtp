@@ -172,6 +172,8 @@ func TestChunkedMessage(t *testing.T) {
 	if err != Dangling {
 		t.Errorf("Expected Dangling return code, got: %s (remaining: %#v)", err, remaining)
 	}
+	remaining, err = parser.Feed([]byte(""))
+
 	remaining, err = parser.Feed([]byte(".\r\nxxx"))
 	if err != nil {
 		t.Errorf("Expected nil return code, got: %s (remaining: %#v)", err, remaining)
