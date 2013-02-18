@@ -23,7 +23,7 @@ type Server struct {
 func handle(c net.Conn) {
 	logger := log.New(os.Stdout, fmt.Sprintf("[%s] ", c.RemoteAddr()) , log.Ldate + log.Ltime)
 	logger.Printf("Handler started.")
-	conn := smtp.Connection{
+	conn := &smtp.Connection{
 		Conn: c,
 		Hostname: "testhost",
 		Parser: smtp.NewParser(),

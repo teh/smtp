@@ -47,11 +47,12 @@ type Connection struct {
 	Hostname string
 	remaining []byte
 	Parser *Parser
+	Recipients [][]byte
 }
 
-type stateFunc func(c Connection) stateFunc
+type stateFunc func(c *Connection) stateFunc
 
-func nextVerb(c Connection) error {
+func nextVerb(c *Connection) error {
 	var data []byte = make([]byte, 1<<14)
 	var err error
 	var n int
@@ -64,6 +65,9 @@ func nextVerb(c Connection) error {
 			n = copy(data, c.remaining)
 		} else {
 			n, err = c.Read(data)
+			if err == io.EOF && len(c.remaining) == 0 {
+				return err
+			}
 			if err != nil && err != io.EOF {
 				return err
 			}
@@ -79,7 +83,35 @@ func nextVerb(c Connection) error {
 	return nil
 }
 
-func Greet(c Connection) stateFunc {
+func nextMessage(c *Connection) error {
+	var data []byte = make([]byte, 1<<14)
+	var err error
+	var n int
+	mp := NewMessageParser()
+	for {
+		if len(c.remaining) != 0 {
+			n = copy(data, c.remaining)
+		} else {
+			n, err = c.Read(data)
+			if err == io.EOF && len(c.remaining) == 0 {
+				return err
+			}
+			if err != nil && err != io.EOF {
+				return err
+			}
+		}
+		c.remaining, err = mp.Feed(data[:n])
+		if err == Dangling {
+			continue
+		}
+		if err == nil {
+			return nil
+		}
+	}
+	return nil
+}
+
+func Greet(c *Connection) stateFunc {
 	// Announce ESMTP, otherwise many clients won't EHLO.
 	fmt.Fprintf(c, "220 %s ESMTP\r\n", c.Hostname)
 	err := nextVerb(c)
@@ -90,37 +122,67 @@ func Greet(c Connection) stateFunc {
 	switch {
 	case c.Parser.current.Verb == VerbHELO:
 		fmt.Fprintf(c, "250 ok\r\n")
-		return normal
+		return no_mail_yet
 	case c.Parser.current.Verb == VerbEHLO:
 		return ehlo
 	default:
-		return normal
+		return no_mail_yet
 	}
 	panic("never reached")
 }
 
-func ioError(c Connection) stateFunc {
+func ioError(c *Connection) stateFunc {
+	c.Close()
 	return nil
 }
 
-func normal(c Connection) stateFunc {
-	for {
-		err := nextVerb(c)
-		if err != nil {
-			log.Printf("Error on read: %s", err)
-			return ioError
-		}
-		switch c.Parser.current.Verb {
-		case VerbQUIT:
-			c.Close()
-			return nil
-		default:
-		}
+func no_mail_yet(c *Connection) stateFunc {
+	err := nextVerb(c)
+	if err != nil {
+		log.Printf("Error on read: %s", err)
+		return ioError
 	}
-	return normal
+	switch c.Parser.current.Verb {
+	case VerbQUIT:
+		c.Close()
+		return nil
+	case VerbMAIL:
+		fmt.Fprintf(c, "250 ok\r\n")
+		return envelope_set
+	}
+	log.Printf("503 bad command sequence\r\n")
+	return no_mail_yet
 }
 
-func ehlo(c Connection) stateFunc {
+func envelope_set(c *Connection) stateFunc {
+	err := nextVerb(c)
+	if err != nil {
+		log.Printf("Error on read: %s", err)
+		return ioError
+	}
+	switch c.Parser.current.Verb {
+	case VerbQUIT:
+		c.Close()
+		return nil
+	case VerbMAIL:
+		fmt.Fprintf(c, "250 ok\r\n")
+		c.Recipients = nil // reset recipient list
+		return envelope_set
+	case VerbRCPT:
+		fmt.Fprintf(c, "250 ok\r\n")
+		return envelope_set
+	case VerbDATA:
+		fmt.Fprintf(c, "354 ok\r\n")
+		nextMessage(c)
+		fmt.Fprintf(c, "250 ok\r\n")
+		c.Recipients = nil // reset recipient list
+		return envelope_set
+	}
+	log.Printf("503 bad command sequence\r\n")
+	return envelope_set
+}
+
+func ehlo(c *Connection) stateFunc {
 	// hardcoded, we don't care about configurability.
 	extensions := []string{
 		"250-8BITMIME",
@@ -133,5 +195,5 @@ func ehlo(c Connection) stateFunc {
 	for _, e := range extensions {
 		fmt.Fprintf(c, "%s\r\n", e)
 	}
-	return normal
+	return no_mail_yet
 }
