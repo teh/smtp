@@ -19,9 +19,15 @@ const (
 	VerbVRFY = 17
 )
 
+const (
+	BodyType8BITMIME = 1
+	BodyType7BIT = 2
+)
+
 type Verb struct {
 	Verb int
 	Data []byte
+	BodyType int
 }
 
 type Parser struct {
@@ -114,6 +120,7 @@ func normal(c Connection) stateFunc {
 }
 
 func ehlo(c Connection) stateFunc {
+	// hardcoded, we don't care about configurability.
 	extensions := []string{
 		"250-8BITMIME",
 		"250-PIPELINING",

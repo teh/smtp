@@ -44,7 +44,14 @@ real_address = (('"' quoted_chars+  '"' | quoted_chars+)+ ('@' domain)?)
 
 address = '<' ignore_routes real_address '>';
 
-MAIL = [Ff][Rr][Oo][Mm] ':' address;
+optional_body_type = (
+    ' BODY=8BITMIME'
+	%{parser.current.BodyType = BodyType8BITMIME}
+	| ' BODY=7BIT'
+	%{parser.current.BodyType = BodyType7BIT}
+)?;
+
+MAIL = [Ff][Rr][Oo][Mm] ':' address optional_body_type;
 RCPT = [Tt][Oo] ':' address;
 
 do = ("HELO " host) %{parser.current.Verb = VerbHELO}
