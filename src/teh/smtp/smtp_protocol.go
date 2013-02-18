@@ -19,9 +19,10 @@ const (
 	VerbVRFY = 17
 )
 
+// Default to 8BITMIME cause that's what everyone seems to use.
 const (
-	BodyType8BITMIME = 1
-	BodyType7BIT = 2
+	BodyType8BITMIME = 0
+	BodyType7BIT = 1
 )
 
 type Verb struct {

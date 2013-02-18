@@ -54,6 +54,7 @@ func TestValidMail(t *testing.T) {
 		"MAIL fROm:<@route.1.com,@route2.com:peter@example.net>\r\n",
 		"MAIL FROM:<root> BODY=8BITMIME\r\n",
 		"MAIL FROM:<root> BODY=7BIT\r\n",
+		"MAIL FROM:<root> \r\n",
 	}
 	for _, entry := range entries {
 		_, err := parser.Feed([]byte(entry))
