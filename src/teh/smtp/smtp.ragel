@@ -49,6 +49,7 @@ optional_body_type = (
 	%{parser.current.BodyType = BodyType8BITMIME}
 	| ' BODY=7BIT'
 	%{parser.current.BodyType = BodyType7BIT}
+	| ' ' # some people send space but no BODY
 )?;
 
 MAIL = [Ff][Rr][Oo][Mm] ':' address optional_body_type;
