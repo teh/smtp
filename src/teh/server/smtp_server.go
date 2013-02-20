@@ -14,13 +14,20 @@ import (
 	"time"
 	"syscall"
 	"fmt"
+	"crypto/tls"
+	"crypto/x509"
 )
+
+type Config struct {
+	ListenAddress *string
+	Cert tls.Certificate
+}
 
 type Server struct {
 	stop bool
 }
 
-func handle(c net.Conn) {
+func handle(c net.Conn, config *Config) {
 	logger := log.New(os.Stdout, fmt.Sprintf("[%s] ", c.RemoteAddr()) , log.Ldate + log.Ltime)
 	logger.Printf("Handler started.")
 	conn := &smtp.Connection{
@@ -62,13 +69,39 @@ func (server *Server) listen(listener net.Listener, newConnections chan net.Conn
 }
 
 func main() {
+
+	pem := flag.String("tls_pem", "", "(required) Path to the TLS public key (PEM).")
+	key := flag.String("tls_key", "", "(required) Path to the TLS private key.")
 	listen_address := flag.String("listen_address", "127.0.0.1:2000", "Listen address, e.g. :25")
-	listener, err := net.Listen("tcp", *listen_address)
+
+	flag.Parse()
+
+	if *pem == "" {
+		log.Fatalf("Argument tls_pem is required.")
+	}
+	if *key == "" {
+		log.Fatalf("Argument tls_key is required.")
+	}
+	cert, err := tls.LoadX509KeyPair(*pem, *key)
+	if err != nil {
+		log.Fatalf("Could not load certificate: %s", err)
+	}
+
+	cert.Leaf, err = x509.ParseCertificate(cert.Certificate[0])
+	if err != nil {
+		log.Fatalf("Could not parse certificate %s", err)
+	}
+
+	config := &Config{
+		ListenAddress: listen_address,
+		Cert: cert,
+	}
+	listener, err := net.Listen("tcp", *config.ListenAddress)
 
 	if err != nil {
-		log.Fatalf("Could not listen on `%s`: `%s`", *listen_address, err)
+		log.Fatalf("Could not listen on `%s`: `%s`", *config.ListenAddress, err)
 	} else {
-		log.Printf("Listening on `%s`", *listen_address)
+		log.Printf("Listening on `%s` for domains: %v", *config.ListenAddress, config.Cert.Leaf.DNSNames)
 	}
 	newConnections := make(chan net.Conn)
 	signals := make(chan os.Signal, 2)
@@ -85,7 +118,7 @@ func main() {
 			server.stop = true
 			listener.Close()
 		case newConn := <-newConnections:
-			go handle(newConn)
+			go handle(newConn, config)
 		}
 	}
 	time.Sleep(time.Second)
