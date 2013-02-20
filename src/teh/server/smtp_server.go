@@ -68,8 +68,7 @@ func (server *Server) listen(listener net.Listener, newConnections chan net.Conn
 	}
 }
 
-func main() {
-
+func configure() *Config {
 	pem := flag.String("tls_pem", "", "(required) Path to the TLS public key (PEM).")
 	key := flag.String("tls_key", "", "(required) Path to the TLS private key.")
 	listen_address := flag.String("listen_address", "127.0.0.1:2000", "Listen address, e.g. :25")
@@ -92,10 +91,15 @@ func main() {
 		log.Fatalf("Could not parse certificate %s", err)
 	}
 
-	config := &Config{
+	return &Config{
 		ListenAddress: listen_address,
 		Cert: cert,
 	}
+}
+
+func main() {
+	config := configure()
+
 	listener, err := net.Listen("tcp", *config.ListenAddress)
 
 	if err != nil {
