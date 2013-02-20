@@ -10,19 +10,19 @@ import (
 
 // Good introduction on smtp: http://cr.yp.to/smtp/request.html
 
-// line 72 "smtp.ragel"
+// line 73 "smtp.ragel"
 
 
 
 // line 18 "smtp.go"
 const smtp_start = 1;
-const smtp_first_final = 192;
+const smtp_first_final = 200;
 const smtp_error = 0;
 
 const smtp_en_main = 1
 
 
-// line 75 "smtp.ragel"
+// line 76 "smtp.ragel"
 
 var Dangling = errors.New("DANGLING")
 
@@ -64,8 +64,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		goto st_case_4
 	case 5:
 		goto st_case_5
-	case 192:
-		goto st_case_192
+	case 200:
+		goto st_case_200
 	case 6:
 		goto st_case_6
 	case 7:
@@ -308,8 +308,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		goto st_case_125
 	case 126:
 		goto st_case_126
-	case 193:
-		goto st_case_193
+	case 201:
+		goto st_case_201
 	case 127:
 		goto st_case_127
 	case 128:
@@ -416,8 +416,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		goto st_case_178
 	case 179:
 		goto st_case_179
-	case 194:
-		goto st_case_194
+	case 202:
+		goto st_case_202
 	case 180:
 		goto st_case_180
 	case 181:
@@ -442,6 +442,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		goto st_case_190
 	case 191:
 		goto st_case_191
+	case 192:
+		goto st_case_192
+	case 193:
+		goto st_case_193
+	case 194:
+		goto st_case_194
+	case 195:
+		goto st_case_195
+	case 196:
+		goto st_case_196
+	case 197:
+		goto st_case_197
+	case 198:
+		goto st_case_198
+	case 199:
+		goto st_case_199
 	}
 goto st_end
 st_case_1:
@@ -458,8 +474,10 @@ goto st79
 goto st154
 	case 82:
 goto st158
-	case 86:
+	case 83:
 goto st186
+	case 86:
+goto st194
 	}
 {
 	goto st0
@@ -512,136 +530,10 @@ st5:
 st_case_5:
 	switch data[p] {
 	case 10:
-goto ctr11
-	case 13:
 goto ctr12
+	case 13:
+goto ctr13
 	}
-{
-	goto st0
-
-}
-ctr11:
-// line 64 "smtp.ragel"
-	{
-parser.current.Verb = VerbDATA}
-// line 71 "smtp.ragel"
-	{
-{ p++; cs = 192; goto _out }
-}
-	goto st192
-ctr13:
-// line 71 "smtp.ragel"
-	{
-{ p++; cs = 192; goto _out }
-}
-	goto st192
-ctr20:
-// line 20 "smtp.ragel"
-	{
-
-	parser.buffer.Write(data[pb:p])
-	parser.current.Data = parser.buffer.Bytes()
-	parser.buffer = nil
-}
-// line 60 "smtp.ragel"
-	{
-parser.current.Verb = VerbEHLO}
-// line 71 "smtp.ragel"
-	{
-{ p++; cs = 192; goto _out }
-}
-	goto st192
-ctr58:
-// line 20 "smtp.ragel"
-	{
-
-	parser.buffer.Write(data[pb:p])
-	parser.current.Data = parser.buffer.Bytes()
-	parser.buffer = nil
-}
-// line 59 "smtp.ragel"
-	{
-parser.current.Verb = VerbHELO}
-// line 71 "smtp.ragel"
-	{
-{ p++; cs = 192; goto _out }
-}
-	goto st192
-ctr110:
-// line 62 "smtp.ragel"
-	{
-parser.current.Verb = VerbMAIL}
-// line 71 "smtp.ragel"
-	{
-{ p++; cs = 192; goto _out }
-}
-	goto st192
-ctr124:
-// line 51 "smtp.ragel"
-	{
-parser.current.BodyType = BodyType7BIT}
-// line 62 "smtp.ragel"
-	{
-parser.current.Verb = VerbMAIL}
-// line 71 "smtp.ragel"
-	{
-{ p++; cs = 192; goto _out }
-}
-	goto st192
-ctr134:
-// line 49 "smtp.ragel"
-	{
-parser.current.BodyType = BodyType8BITMIME}
-// line 62 "smtp.ragel"
-	{
-parser.current.Verb = VerbMAIL}
-// line 71 "smtp.ragel"
-	{
-{ p++; cs = 192; goto _out }
-}
-	goto st192
-ctr186:
-// line 65 "smtp.ragel"
-	{
-parser.current.Verb = VerbQUIT}
-// line 71 "smtp.ragel"
-	{
-{ p++; cs = 192; goto _out }
-}
-	goto st192
-ctr207:
-// line 63 "smtp.ragel"
-	{
-parser.current.Verb = VerbRCPT}
-// line 71 "smtp.ragel"
-	{
-{ p++; cs = 192; goto _out }
-}
-	goto st192
-ctr222:
-// line 61 "smtp.ragel"
-	{
-parser.current.Verb = VerbRSET}
-// line 71 "smtp.ragel"
-	{
-{ p++; cs = 192; goto _out }
-}
-	goto st192
-ctr229:
-// line 66 "smtp.ragel"
-	{
-parser.current.Verb = VerbVRFY}
-// line 71 "smtp.ragel"
-	{
-{ p++; cs = 192; goto _out }
-}
-	goto st192
-st192:
-	if p++; p == pe {
-		goto _test_eof192
-	}
-st_case_192:
-// line 645 "smtp.go"
 {
 	goto st0
 
@@ -650,7 +542,17 @@ ctr12:
 // line 64 "smtp.ragel"
 	{
 parser.current.Verb = VerbDATA}
-	goto st6
+// line 72 "smtp.ragel"
+	{
+{ p++; cs = 200; goto _out }
+}
+	goto st200
+ctr14:
+// line 72 "smtp.ragel"
+	{
+{ p++; cs = 200; goto _out }
+}
+	goto st200
 ctr21:
 // line 20 "smtp.ragel"
 	{
@@ -662,7 +564,11 @@ ctr21:
 // line 60 "smtp.ragel"
 	{
 parser.current.Verb = VerbEHLO}
-	goto st6
+// line 72 "smtp.ragel"
+	{
+{ p++; cs = 200; goto _out }
+}
+	goto st200
 ctr59:
 // line 20 "smtp.ragel"
 	{
@@ -674,12 +580,20 @@ ctr59:
 // line 59 "smtp.ragel"
 	{
 parser.current.Verb = VerbHELO}
-	goto st6
+// line 72 "smtp.ragel"
+	{
+{ p++; cs = 200; goto _out }
+}
+	goto st200
 ctr111:
 // line 62 "smtp.ragel"
 	{
 parser.current.Verb = VerbMAIL}
-	goto st6
+// line 72 "smtp.ragel"
+	{
+{ p++; cs = 200; goto _out }
+}
+	goto st200
 ctr125:
 // line 51 "smtp.ragel"
 	{
@@ -687,7 +601,11 @@ parser.current.BodyType = BodyType7BIT}
 // line 62 "smtp.ragel"
 	{
 parser.current.Verb = VerbMAIL}
-	goto st6
+// line 72 "smtp.ragel"
+	{
+{ p++; cs = 200; goto _out }
+}
+	goto st200
 ctr135:
 // line 49 "smtp.ragel"
 	{
@@ -695,24 +613,138 @@ parser.current.BodyType = BodyType8BITMIME}
 // line 62 "smtp.ragel"
 	{
 parser.current.Verb = VerbMAIL}
-	goto st6
+// line 72 "smtp.ragel"
+	{
+{ p++; cs = 200; goto _out }
+}
+	goto st200
 ctr187:
 // line 65 "smtp.ragel"
 	{
 parser.current.Verb = VerbQUIT}
-	goto st6
+// line 72 "smtp.ragel"
+	{
+{ p++; cs = 200; goto _out }
+}
+	goto st200
 ctr208:
 // line 63 "smtp.ragel"
 	{
 parser.current.Verb = VerbRCPT}
-	goto st6
+// line 72 "smtp.ragel"
+	{
+{ p++; cs = 200; goto _out }
+}
+	goto st200
 ctr223:
 // line 61 "smtp.ragel"
 	{
 parser.current.Verb = VerbRSET}
-	goto st6
-ctr230:
+// line 72 "smtp.ragel"
+	{
+{ p++; cs = 200; goto _out }
+}
+	goto st200
+ctr232:
 // line 66 "smtp.ragel"
+	{
+parser.current.Verb = VerbSTARTTLS}
+// line 72 "smtp.ragel"
+	{
+{ p++; cs = 200; goto _out }
+}
+	goto st200
+ctr239:
+// line 67 "smtp.ragel"
+	{
+parser.current.Verb = VerbVRFY}
+// line 72 "smtp.ragel"
+	{
+{ p++; cs = 200; goto _out }
+}
+	goto st200
+st200:
+	if p++; p == pe {
+		goto _test_eof200
+	}
+st_case_200:
+// line 672 "smtp.go"
+{
+	goto st0
+
+}
+ctr13:
+// line 64 "smtp.ragel"
+	{
+parser.current.Verb = VerbDATA}
+	goto st6
+ctr22:
+// line 20 "smtp.ragel"
+	{
+
+	parser.buffer.Write(data[pb:p])
+	parser.current.Data = parser.buffer.Bytes()
+	parser.buffer = nil
+}
+// line 60 "smtp.ragel"
+	{
+parser.current.Verb = VerbEHLO}
+	goto st6
+ctr60:
+// line 20 "smtp.ragel"
+	{
+
+	parser.buffer.Write(data[pb:p])
+	parser.current.Data = parser.buffer.Bytes()
+	parser.buffer = nil
+}
+// line 59 "smtp.ragel"
+	{
+parser.current.Verb = VerbHELO}
+	goto st6
+ctr112:
+// line 62 "smtp.ragel"
+	{
+parser.current.Verb = VerbMAIL}
+	goto st6
+ctr126:
+// line 51 "smtp.ragel"
+	{
+parser.current.BodyType = BodyType7BIT}
+// line 62 "smtp.ragel"
+	{
+parser.current.Verb = VerbMAIL}
+	goto st6
+ctr136:
+// line 49 "smtp.ragel"
+	{
+parser.current.BodyType = BodyType8BITMIME}
+// line 62 "smtp.ragel"
+	{
+parser.current.Verb = VerbMAIL}
+	goto st6
+ctr188:
+// line 65 "smtp.ragel"
+	{
+parser.current.Verb = VerbQUIT}
+	goto st6
+ctr209:
+// line 63 "smtp.ragel"
+	{
+parser.current.Verb = VerbRCPT}
+	goto st6
+ctr224:
+// line 61 "smtp.ragel"
+	{
+parser.current.Verb = VerbRSET}
+	goto st6
+ctr233:
+// line 66 "smtp.ragel"
+	{
+parser.current.Verb = VerbSTARTTLS}
+	goto st6
+ctr240:
+// line 67 "smtp.ragel"
 	{
 parser.current.Verb = VerbVRFY}
 	goto st6
@@ -721,9 +753,9 @@ st6:
 		goto _test_eof6
 	}
 st_case_6:
-// line 725 "smtp.go"
+// line 757 "smtp.go"
 	if data[p] == 10 {
-		goto ctr13
+		goto ctr14
 	}
 {
 	goto st0
@@ -783,25 +815,25 @@ st11:
 	}
 st_case_11:
 	if data[p] == 91 {
-		goto ctr19
+		goto ctr20
 	}
 	switch {
 	case data[p] < 65:
 		if 48 <= data[p] && data[p] <= 57 {
-			goto ctr18
+			goto ctr19
 		}
 	case data[p] > 90:
 		if 97 <= data[p] && data[p] <= 122 {
-			goto ctr18
+			goto ctr19
 		}
 	default:
-		goto ctr18
+		goto ctr19
 	}
 {
 	goto st0
 
 }
-ctr18:
+ctr19:
 // line 26 "smtp.ragel"
 	{
 
@@ -814,12 +846,12 @@ st12:
 		goto _test_eof12
 	}
 st_case_12:
-// line 818 "smtp.go"
+// line 850 "smtp.go"
 	switch data[p] {
 	case 10:
-goto ctr20
-	case 13:
 goto ctr21
+	case 13:
+goto ctr22
 	case 46:
 goto st13
 	}
@@ -860,7 +892,7 @@ st_case_13:
 	goto st0
 
 }
-ctr19:
+ctr20:
 // line 26 "smtp.ragel"
 	{
 
@@ -873,7 +905,7 @@ st14:
 		goto _test_eof14
 	}
 st_case_14:
-// line 877 "smtp.go"
+// line 909 "smtp.go"
 	if data[p] == 48 {
 		goto st15
 	}
@@ -1054,9 +1086,9 @@ st25:
 st_case_25:
 	switch data[p] {
 	case 10:
-goto ctr20
-	case 13:
 goto ctr21
+	case 13:
+goto ctr22
 	}
 {
 	goto st0
@@ -1446,25 +1478,25 @@ st47:
 	}
 st_case_47:
 	if data[p] == 91 {
-		goto ctr57
+		goto ctr58
 	}
 	switch {
 	case data[p] < 65:
 		if 48 <= data[p] && data[p] <= 57 {
-			goto ctr56
+			goto ctr57
 		}
 	case data[p] > 90:
 		if 97 <= data[p] && data[p] <= 122 {
-			goto ctr56
+			goto ctr57
 		}
 	default:
-		goto ctr56
+		goto ctr57
 	}
 {
 	goto st0
 
 }
-ctr56:
+ctr57:
 // line 26 "smtp.ragel"
 	{
 
@@ -1477,12 +1509,12 @@ st48:
 		goto _test_eof48
 	}
 st_case_48:
-// line 1481 "smtp.go"
+// line 1513 "smtp.go"
 	switch data[p] {
 	case 10:
-goto ctr58
-	case 13:
 goto ctr59
+	case 13:
+goto ctr60
 	case 46:
 goto st49
 	}
@@ -1523,7 +1555,7 @@ st_case_49:
 	goto st0
 
 }
-ctr57:
+ctr58:
 // line 26 "smtp.ragel"
 	{
 
@@ -1536,7 +1568,7 @@ st50:
 		goto _test_eof50
 	}
 st_case_50:
-// line 1540 "smtp.go"
+// line 1572 "smtp.go"
 	if data[p] == 48 {
 		goto st51
 	}
@@ -1717,9 +1749,9 @@ st61:
 st_case_61:
 	switch data[p] {
 	case 10:
-goto ctr58
-	case 13:
 goto ctr59
+	case 13:
+goto ctr60
 	}
 {
 	goto st0
@@ -2194,33 +2226,33 @@ st89:
 st_case_89:
 	switch data[p] {
 	case 34:
-goto ctr100
+goto ctr101
 	case 43:
-goto ctr101
-	case 46:
-goto ctr101
-	case 64:
 goto ctr102
-	case 92:
+	case 46:
+goto ctr102
+	case 64:
 goto ctr103
+	case 92:
+goto ctr104
 	}
 	switch {
 	case data[p] < 65:
 		if 48 <= data[p] && data[p] <= 57 {
-			goto ctr101
+			goto ctr102
 		}
 	case data[p] > 90:
 		if 97 <= data[p] && data[p] <= 122 {
-			goto ctr101
+			goto ctr102
 		}
 	default:
-		goto ctr101
+		goto ctr102
 	}
 {
 	goto st0
 
 }
-ctr100:
+ctr101:
 // line 26 "smtp.ragel"
 	{
 
@@ -2233,7 +2265,7 @@ st90:
 		goto _test_eof90
 	}
 st_case_90:
-// line 2237 "smtp.go"
+// line 2269 "smtp.go"
 	switch data[p] {
 	case 43:
 goto st91
@@ -2289,7 +2321,7 @@ goto st119
 	goto st0
 
 }
-ctr101:
+ctr102:
 // line 26 "smtp.ragel"
 	{
 
@@ -2302,7 +2334,7 @@ st92:
 		goto _test_eof92
 	}
 st_case_92:
-// line 2306 "smtp.go"
+// line 2338 "smtp.go"
 	switch data[p] {
 	case 34:
 goto st90
@@ -2311,7 +2343,7 @@ goto st92
 	case 46:
 goto st92
 	case 62:
-goto ctr108
+goto ctr109
 	case 92:
 goto st118
 	}
@@ -2331,7 +2363,7 @@ goto st118
 	goto st0
 
 }
-ctr108:
+ctr109:
 // line 20 "smtp.ragel"
 	{
 
@@ -2345,12 +2377,12 @@ st93:
 		goto _test_eof93
 	}
 st_case_93:
-// line 2349 "smtp.go"
+// line 2381 "smtp.go"
 	switch data[p] {
 	case 10:
-goto ctr110
-	case 13:
 goto ctr111
+	case 13:
+goto ctr112
 	case 32:
 goto st94
 	}
@@ -2358,12 +2390,12 @@ goto st94
 	goto st0
 
 }
-ctr126:
+ctr127:
 // line 51 "smtp.ragel"
 	{
 parser.current.BodyType = BodyType7BIT}
 	goto st94
-ctr136:
+ctr137:
 // line 49 "smtp.ragel"
 	{
 parser.current.BodyType = BodyType8BITMIME}
@@ -2373,12 +2405,12 @@ st94:
 		goto _test_eof94
 	}
 st_case_94:
-// line 2377 "smtp.go"
+// line 2409 "smtp.go"
 	switch data[p] {
 	case 10:
-goto ctr110
-	case 13:
 goto ctr111
+	case 13:
+goto ctr112
 	case 32:
 goto st94
 	case 66:
@@ -2496,11 +2528,11 @@ st103:
 st_case_103:
 	switch data[p] {
 	case 10:
-goto ctr124
-	case 13:
 goto ctr125
-	case 32:
+	case 13:
 goto ctr126
+	case 32:
+goto ctr127
 	}
 {
 	goto st0
@@ -2597,11 +2629,11 @@ st111:
 st_case_111:
 	switch data[p] {
 	case 10:
-goto ctr134
-	case 13:
 goto ctr135
-	case 32:
+	case 13:
 goto ctr136
+	case 32:
+goto ctr137
 	}
 {
 	goto st0
@@ -2674,9 +2706,9 @@ st117:
 st_case_117:
 	switch data[p] {
 	case 10:
-goto ctr110
-	case 13:
 goto ctr111
+	case 13:
+goto ctr112
 	case 32:
 goto st94
 	}
@@ -2687,7 +2719,7 @@ goto st94
 	goto st0
 
 }
-ctr103:
+ctr104:
 // line 26 "smtp.ragel"
 	{
 
@@ -2700,7 +2732,7 @@ st118:
 		goto _test_eof118
 	}
 st_case_118:
-// line 2704 "smtp.go"
+// line 2736 "smtp.go"
 	switch data[p] {
 	case 32:
 goto st92
@@ -2758,7 +2790,7 @@ goto st91
 	goto st0
 
 }
-ctr102:
+ctr103:
 // line 26 "smtp.ragel"
 	{
 
@@ -2771,7 +2803,7 @@ st120:
 		goto _test_eof120
 	}
 st_case_120:
-// line 2775 "smtp.go"
+// line 2807 "smtp.go"
 	switch data[p] {
 	case 34:
 goto st123
@@ -2784,7 +2816,7 @@ goto st121
 	case 58:
 goto st0
 	case 62:
-goto ctr145
+goto ctr146
 	case 63:
 goto st121
 	case 91:
@@ -2853,25 +2885,25 @@ st122:
 st_case_122:
 	switch data[p] {
 	case 34:
-goto ctr100
+goto ctr101
 	case 43:
-goto ctr101
+goto ctr102
 	case 46:
-goto ctr101
+goto ctr102
 	case 92:
-goto ctr103
+goto ctr104
 	}
 	switch {
 	case data[p] < 64:
 		if 48 <= data[p] && data[p] <= 57 {
-			goto ctr101
+			goto ctr102
 		}
 	case data[p] > 90:
 		if 97 <= data[p] && data[p] <= 122 {
-			goto ctr101
+			goto ctr102
 		}
 	default:
-		goto ctr101
+		goto ctr102
 	}
 {
 	goto st0
@@ -3007,7 +3039,7 @@ goto st121
 	case 58:
 goto st122
 	case 62:
-goto ctr145
+goto ctr146
 	case 63:
 goto st121
 	case 91:
@@ -3054,7 +3086,7 @@ goto st152
 	goto st121
 
 }
-ctr145:
+ctr146:
 // line 20 "smtp.ragel"
 	{
 
@@ -3068,12 +3100,12 @@ st126:
 		goto _test_eof126
 	}
 st_case_126:
-// line 3072 "smtp.go"
+// line 3104 "smtp.go"
 	switch data[p] {
 	case 10:
-goto ctr150
-	case 13:
 goto ctr151
+	case 13:
+goto ctr152
 	case 32:
 goto st128
 	case 58:
@@ -3100,51 +3132,51 @@ goto st122
 	goto st121
 
 }
-ctr153:
-// line 71 "smtp.ragel"
+ctr154:
+// line 72 "smtp.ragel"
 	{
-{ p++; cs = 193; goto _out }
+{ p++; cs = 201; goto _out }
 }
-	goto st193
-ctr150:
+	goto st201
+ctr151:
 // line 62 "smtp.ragel"
 	{
 parser.current.Verb = VerbMAIL}
-// line 71 "smtp.ragel"
+// line 72 "smtp.ragel"
 	{
-{ p++; cs = 193; goto _out }
+{ p++; cs = 201; goto _out }
 }
-	goto st193
-ctr165:
+	goto st201
+ctr166:
 // line 51 "smtp.ragel"
 	{
 parser.current.BodyType = BodyType7BIT}
 // line 62 "smtp.ragel"
 	{
 parser.current.Verb = VerbMAIL}
-// line 71 "smtp.ragel"
+// line 72 "smtp.ragel"
 	{
-{ p++; cs = 193; goto _out }
+{ p++; cs = 201; goto _out }
 }
-	goto st193
-ctr175:
+	goto st201
+ctr176:
 // line 49 "smtp.ragel"
 	{
 parser.current.BodyType = BodyType8BITMIME}
 // line 62 "smtp.ragel"
 	{
 parser.current.Verb = VerbMAIL}
-// line 71 "smtp.ragel"
+// line 72 "smtp.ragel"
 	{
-{ p++; cs = 193; goto _out }
+{ p++; cs = 201; goto _out }
 }
-	goto st193
-st193:
+	goto st201
+st201:
 	if p++; p == pe {
-		goto _test_eof193
+		goto _test_eof201
 	}
-st_case_193:
-// line 3148 "smtp.go"
+st_case_201:
+// line 3180 "smtp.go"
 	if data[p] == 58 {
 		goto st122
 	}
@@ -3155,12 +3187,12 @@ st_case_193:
 	goto st121
 
 }
-ctr151:
+ctr152:
 // line 62 "smtp.ragel"
 	{
 parser.current.Verb = VerbMAIL}
 	goto st127
-ctr166:
+ctr167:
 // line 51 "smtp.ragel"
 	{
 parser.current.BodyType = BodyType7BIT}
@@ -3168,7 +3200,7 @@ parser.current.BodyType = BodyType7BIT}
 	{
 parser.current.Verb = VerbMAIL}
 	goto st127
-ctr176:
+ctr177:
 // line 49 "smtp.ragel"
 	{
 parser.current.BodyType = BodyType8BITMIME}
@@ -3181,10 +3213,10 @@ st127:
 		goto _test_eof127
 	}
 st_case_127:
-// line 3185 "smtp.go"
+// line 3217 "smtp.go"
 	switch data[p] {
 	case 10:
-goto ctr153
+goto ctr154
 	case 58:
 goto st122
 	}
@@ -3200,12 +3232,12 @@ goto st122
 	goto st121
 
 }
-ctr167:
+ctr168:
 // line 51 "smtp.ragel"
 	{
 parser.current.BodyType = BodyType7BIT}
 	goto st128
-ctr177:
+ctr178:
 // line 49 "smtp.ragel"
 	{
 parser.current.BodyType = BodyType8BITMIME}
@@ -3215,12 +3247,12 @@ st128:
 		goto _test_eof128
 	}
 st_case_128:
-// line 3219 "smtp.go"
+// line 3251 "smtp.go"
 	switch data[p] {
 	case 10:
-goto ctr150
-	case 13:
 goto ctr151
+	case 13:
+goto ctr152
 	case 32:
 goto st128
 	case 58:
@@ -3450,11 +3482,11 @@ st137:
 st_case_137:
 	switch data[p] {
 	case 10:
-goto ctr165
-	case 13:
 goto ctr166
-	case 32:
+	case 13:
 goto ctr167
+	case 32:
+goto ctr168
 	case 58:
 goto st122
 	}
@@ -3647,11 +3679,11 @@ st145:
 st_case_145:
 	switch data[p] {
 	case 10:
-goto ctr175
-	case 13:
 goto ctr176
-	case 32:
+	case 13:
 goto ctr177
+	case 32:
+goto ctr178
 	case 58:
 goto st122
 	}
@@ -3795,9 +3827,9 @@ st151:
 st_case_151:
 	switch data[p] {
 	case 10:
-goto ctr150
-	case 13:
 goto ctr151
+	case 13:
+goto ctr152
 	case 32:
 goto st128
 	case 58:
@@ -3992,9 +4024,9 @@ st157:
 st_case_157:
 	switch data[p] {
 	case 10:
-goto ctr186
-	case 13:
 goto ctr187
+	case 13:
+goto ctr188
 	}
 {
 	goto st0
@@ -4112,33 +4144,33 @@ st166:
 st_case_166:
 	switch data[p] {
 	case 34:
-goto ctr197
+goto ctr198
 	case 43:
-goto ctr198
-	case 46:
-goto ctr198
-	case 64:
 goto ctr199
-	case 92:
+	case 46:
+goto ctr199
+	case 64:
 goto ctr200
+	case 92:
+goto ctr201
 	}
 	switch {
 	case data[p] < 65:
 		if 48 <= data[p] && data[p] <= 57 {
-			goto ctr198
+			goto ctr199
 		}
 	case data[p] > 90:
 		if 97 <= data[p] && data[p] <= 122 {
-			goto ctr198
+			goto ctr199
 		}
 	default:
-		goto ctr198
+		goto ctr199
 	}
 {
 	goto st0
 
 }
-ctr197:
+ctr198:
 // line 26 "smtp.ragel"
 	{
 
@@ -4151,7 +4183,7 @@ st167:
 		goto _test_eof167
 	}
 st_case_167:
-// line 4155 "smtp.go"
+// line 4187 "smtp.go"
 	switch data[p] {
 	case 43:
 goto st168
@@ -4207,7 +4239,7 @@ goto st172
 	goto st0
 
 }
-ctr198:
+ctr199:
 // line 26 "smtp.ragel"
 	{
 
@@ -4220,7 +4252,7 @@ st169:
 		goto _test_eof169
 	}
 st_case_169:
-// line 4224 "smtp.go"
+// line 4256 "smtp.go"
 	switch data[p] {
 	case 34:
 goto st167
@@ -4229,7 +4261,7 @@ goto st169
 	case 46:
 goto st169
 	case 62:
-goto ctr205
+goto ctr206
 	case 92:
 goto st171
 	}
@@ -4249,7 +4281,7 @@ goto st171
 	goto st0
 
 }
-ctr205:
+ctr206:
 // line 20 "smtp.ragel"
 	{
 
@@ -4263,18 +4295,18 @@ st170:
 		goto _test_eof170
 	}
 st_case_170:
-// line 4267 "smtp.go"
+// line 4299 "smtp.go"
 	switch data[p] {
 	case 10:
-goto ctr207
-	case 13:
 goto ctr208
+	case 13:
+goto ctr209
 	}
 {
 	goto st0
 
 }
-ctr200:
+ctr201:
 // line 26 "smtp.ragel"
 	{
 
@@ -4287,7 +4319,7 @@ st171:
 		goto _test_eof171
 	}
 st_case_171:
-// line 4291 "smtp.go"
+// line 4323 "smtp.go"
 	switch data[p] {
 	case 32:
 goto st169
@@ -4345,7 +4377,7 @@ goto st168
 	goto st0
 
 }
-ctr199:
+ctr200:
 // line 26 "smtp.ragel"
 	{
 
@@ -4358,7 +4390,7 @@ st173:
 		goto _test_eof173
 	}
 st_case_173:
-// line 4362 "smtp.go"
+// line 4394 "smtp.go"
 	switch data[p] {
 	case 34:
 goto st176
@@ -4371,7 +4403,7 @@ goto st174
 	case 58:
 goto st0
 	case 62:
-goto ctr212
+goto ctr213
 	case 63:
 goto st174
 	case 91:
@@ -4440,25 +4472,25 @@ st175:
 st_case_175:
 	switch data[p] {
 	case 34:
-goto ctr197
+goto ctr198
 	case 43:
-goto ctr198
+goto ctr199
 	case 46:
-goto ctr198
+goto ctr199
 	case 92:
-goto ctr200
+goto ctr201
 	}
 	switch {
 	case data[p] < 64:
 		if 48 <= data[p] && data[p] <= 57 {
-			goto ctr198
+			goto ctr199
 		}
 	case data[p] > 90:
 		if 97 <= data[p] && data[p] <= 122 {
-			goto ctr198
+			goto ctr199
 		}
 	default:
-		goto ctr198
+		goto ctr199
 	}
 {
 	goto st0
@@ -4594,7 +4626,7 @@ goto st174
 	case 58:
 goto st175
 	case 62:
-goto ctr212
+goto ctr213
 	case 63:
 goto st174
 	case 91:
@@ -4641,7 +4673,7 @@ goto st181
 	goto st174
 
 }
-ctr212:
+ctr213:
 // line 20 "smtp.ragel"
 	{
 
@@ -4655,12 +4687,12 @@ st179:
 		goto _test_eof179
 	}
 st_case_179:
-// line 4659 "smtp.go"
+// line 4691 "smtp.go"
 	switch data[p] {
 	case 10:
-goto ctr217
-	case 13:
 goto ctr218
+	case 13:
+goto ctr219
 	case 58:
 goto st175
 	}
@@ -4680,27 +4712,27 @@ goto st175
 	goto st174
 
 }
-ctr219:
-// line 71 "smtp.ragel"
+ctr220:
+// line 72 "smtp.ragel"
 	{
-{ p++; cs = 194; goto _out }
+{ p++; cs = 202; goto _out }
 }
-	goto st194
-ctr217:
+	goto st202
+ctr218:
 // line 63 "smtp.ragel"
 	{
 parser.current.Verb = VerbRCPT}
-// line 71 "smtp.ragel"
+// line 72 "smtp.ragel"
 	{
-{ p++; cs = 194; goto _out }
+{ p++; cs = 202; goto _out }
 }
-	goto st194
-st194:
+	goto st202
+st202:
 	if p++; p == pe {
-		goto _test_eof194
+		goto _test_eof202
 	}
-st_case_194:
-// line 4704 "smtp.go"
+st_case_202:
+// line 4736 "smtp.go"
 	if data[p] == 58 {
 		goto st175
 	}
@@ -4711,7 +4743,7 @@ st_case_194:
 	goto st174
 
 }
-ctr218:
+ctr219:
 // line 63 "smtp.ragel"
 	{
 parser.current.Verb = VerbRCPT}
@@ -4721,10 +4753,10 @@ st180:
 		goto _test_eof180
 	}
 st_case_180:
-// line 4725 "smtp.go"
+// line 4757 "smtp.go"
 	switch data[p] {
 	case 10:
-goto ctr219
+goto ctr220
 	case 58:
 goto st175
 	}
@@ -4891,9 +4923,9 @@ st185:
 st_case_185:
 	switch data[p] {
 	case 10:
-goto ctr222
-	case 13:
 goto ctr223
+	case 13:
+goto ctr224
 	}
 {
 	goto st0
@@ -4904,7 +4936,7 @@ st186:
 		goto _test_eof186
 	}
 st_case_186:
-	if data[p] == 82 {
+	if data[p] == 84 {
 		goto st187
 	}
 {
@@ -4916,7 +4948,7 @@ st187:
 		goto _test_eof187
 	}
 st_case_187:
-	if data[p] == 70 {
+	if data[p] == 65 {
 		goto st188
 	}
 {
@@ -4928,7 +4960,7 @@ st188:
 		goto _test_eof188
 	}
 st_case_188:
-	if data[p] == 89 {
+	if data[p] == 82 {
 		goto st189
 	}
 {
@@ -4940,7 +4972,7 @@ st189:
 		goto _test_eof189
 	}
 st_case_189:
-	if data[p] == 32 {
+	if data[p] == 84 {
 		goto st190
 	}
 {
@@ -4952,22 +4984,11 @@ st190:
 		goto _test_eof190
 	}
 st_case_190:
-	switch data[p] {
-	case 10:
-goto st0
-	case 13:
-goto st0
-	}
-	switch {
-	case data[p] > 9:
-		if 11 <= data[p] && data[p] <= 12 {
-			goto st191
-		}
-	default:
+	if data[p] == 84 {
 		goto st191
 	}
 {
-	goto st191
+	goto st0
 
 }
 st191:
@@ -4975,22 +4996,132 @@ st191:
 		goto _test_eof191
 	}
 st_case_191:
+	if data[p] == 76 {
+		goto st192
+	}
+{
+	goto st0
+
+}
+st192:
+	if p++; p == pe {
+		goto _test_eof192
+	}
+st_case_192:
+	if data[p] == 83 {
+		goto st193
+	}
+{
+	goto st0
+
+}
+st193:
+	if p++; p == pe {
+		goto _test_eof193
+	}
+st_case_193:
 	switch data[p] {
 	case 10:
-goto ctr229
+goto ctr232
 	case 13:
-goto ctr230
+goto ctr233
+	}
+{
+	goto st0
+
+}
+st194:
+	if p++; p == pe {
+		goto _test_eof194
+	}
+st_case_194:
+	if data[p] == 82 {
+		goto st195
+	}
+{
+	goto st0
+
+}
+st195:
+	if p++; p == pe {
+		goto _test_eof195
+	}
+st_case_195:
+	if data[p] == 70 {
+		goto st196
+	}
+{
+	goto st0
+
+}
+st196:
+	if p++; p == pe {
+		goto _test_eof196
+	}
+st_case_196:
+	if data[p] == 89 {
+		goto st197
+	}
+{
+	goto st0
+
+}
+st197:
+	if p++; p == pe {
+		goto _test_eof197
+	}
+st_case_197:
+	if data[p] == 32 {
+		goto st198
+	}
+{
+	goto st0
+
+}
+st198:
+	if p++; p == pe {
+		goto _test_eof198
+	}
+st_case_198:
+	switch data[p] {
+	case 10:
+goto st0
+	case 13:
+goto st0
 	}
 	switch {
 	case data[p] > 9:
 		if 11 <= data[p] && data[p] <= 12 {
-			goto st191
+			goto st199
 		}
 	default:
-		goto st191
+		goto st199
 	}
 {
-	goto st191
+	goto st199
+
+}
+st199:
+	if p++; p == pe {
+		goto _test_eof199
+	}
+st_case_199:
+	switch data[p] {
+	case 10:
+goto ctr239
+	case 13:
+goto ctr240
+	}
+	switch {
+	case data[p] > 9:
+		if 11 <= data[p] && data[p] <= 12 {
+			goto st199
+		}
+	default:
+		goto st199
+	}
+{
+	goto st199
 
 }
 st_end:
@@ -5002,7 +5133,7 @@ st_end:
 	goto _test_eof
 	_test_eof5: cs = 5
 	goto _test_eof
-	_test_eof192: cs = 192
+	_test_eof200: cs = 200
 	goto _test_eof
 	_test_eof6: cs = 6
 	goto _test_eof
@@ -5246,7 +5377,7 @@ st_end:
 	goto _test_eof
 	_test_eof126: cs = 126
 	goto _test_eof
-	_test_eof193: cs = 193
+	_test_eof201: cs = 201
 	goto _test_eof
 	_test_eof127: cs = 127
 	goto _test_eof
@@ -5354,7 +5485,7 @@ st_end:
 	goto _test_eof
 	_test_eof179: cs = 179
 	goto _test_eof
-	_test_eof194: cs = 194
+	_test_eof202: cs = 202
 	goto _test_eof
 	_test_eof180: cs = 180
 	goto _test_eof
@@ -5380,12 +5511,28 @@ st_end:
 	goto _test_eof
 	_test_eof191: cs = 191
 	goto _test_eof
+	_test_eof192: cs = 192
+	goto _test_eof
+	_test_eof193: cs = 193
+	goto _test_eof
+	_test_eof194: cs = 194
+	goto _test_eof
+	_test_eof195: cs = 195
+	goto _test_eof
+	_test_eof196: cs = 196
+	goto _test_eof
+	_test_eof197: cs = 197
+	goto _test_eof
+	_test_eof198: cs = 198
+	goto _test_eof
+	_test_eof199: cs = 199
+	goto _test_eof
 
 	_test_eof: {}
 	_out: {}
 	}
 
-// line 98 "smtp.ragel"
+// line 99 "smtp.ragel"
 
 	if cs == smtp_error {
 		return data[p:], fmt.Errorf("Invalid character in pos %d: `%c`.", p, data[p])

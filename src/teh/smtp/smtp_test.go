@@ -90,6 +90,7 @@ func TestValidVerbs(t *testing.T) {
 		"VRFY <sue@example.com>\r\n",
 		"RCPT TO:<sue@example.com>\r\n",
 		"DATA\r\n",
+		"STARTTLS\r\n",
 	}
 	for _, entry := range entries {
 		_, err := parser.Feed([]byte(entry))

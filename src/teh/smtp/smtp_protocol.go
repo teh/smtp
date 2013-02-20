@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"io"
+	"crypto/tls"
 )
 
 const (
@@ -17,6 +18,7 @@ const (
 	VerbQUIT = 15
 	VerbDATA = 16
 	VerbVRFY = 17
+	VerbSTARTTLS = 18
 )
 
 // Default to 8BITMIME cause that's what everyone seems to use.
@@ -171,6 +173,9 @@ func envelope_set(c *Connection) stateFunc {
 	case VerbRCPT:
 		fmt.Fprintf(c, "250 ok\r\n")
 		return envelope_set
+	case VerbSTARTTLS:
+		fmt.Fprintf(c, "220 go ahead\r\n")
+		return starttls
 	case VerbDATA:
 		fmt.Fprintf(c, "354 ok\r\n")
 		nextMessage(c)
@@ -190,10 +195,33 @@ func ehlo(c *Connection) stateFunc {
 		"250-RSET",
 		"250-NOOP",
 		"250-VRFY",
+		"250-STARTTLS",
+		"250-AUTH GSSAPI DIGEST-MD5 CRAM-MD5 PLAIN",
 		"250 SIZE 33554432", // 32M
 	}
 	for _, e := range extensions {
 		fmt.Fprintf(c, "%s\r\n", e)
 	}
 	return no_mail_yet
+}
+
+func starttls(c *Connection) stateFunc {
+	err := nextVerb(c)
+	if err != nil {
+		log.Printf("Error on read: %s", err)
+		return ioError
+	}
+
+	// go tls example: https://gist.github.com/spikebike/2233075
+	// xxx key loading needs to go into servier init
+    cert, err := tls.LoadX509KeyPair("certs/client.pem", "certs/client.key")
+    if err != nil {
+        log.Fatalf("server: loadkeys: %s", err)
+    }
+    config := &tls.Config{Certificates: []tls.Certificate{cert}, InsecureSkipVerify: true}
+	// It's a TLS connection now, no going back.
+	c.Conn = tls.Server(c.Conn, config)
+
+	// Start all over again after TLS handshake
+	return Greet
 }

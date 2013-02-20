@@ -63,6 +63,7 @@ do = ("HELO " host) %{parser.current.Verb = VerbHELO}
 	| ("RCPT " RCPT) %{parser.current.Verb = VerbRCPT}
 	| "DATA" %{parser.current.Verb = VerbDATA}
 	| "QUIT" %{parser.current.Verb = VerbQUIT}
+	| "STARTTLS" %{parser.current.Verb = VerbSTARTTLS}
 	| ("VRFY " [^\n\r]+) %{parser.current.Verb = VerbVRFY}
 	;
 
