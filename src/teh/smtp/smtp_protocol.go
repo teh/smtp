@@ -47,6 +47,7 @@ type MessageParser struct {
 type Connection struct {
 	net.Conn
 	Hostname string
+	Cert tls.Certificate
 	remaining []byte
 	Parser *Parser
 	Recipients [][]byte
@@ -212,13 +213,7 @@ func starttls(c *Connection) stateFunc {
 		return ioError
 	}
 
-	// go tls example: https://gist.github.com/spikebike/2233075
-	// xxx key loading needs to go into servier init
-    cert, err := tls.LoadX509KeyPair("certs/client.pem", "certs/client.key")
-    if err != nil {
-        log.Fatalf("server: loadkeys: %s", err)
-    }
-    config := &tls.Config{Certificates: []tls.Certificate{cert}, InsecureSkipVerify: true}
+    config := &tls.Config{Certificates: []tls.Certificate{c.Cert}, InsecureSkipVerify: true}
 	// It's a TLS connection now, no going back.
 	c.Conn = tls.Server(c.Conn, config)
 

@@ -34,6 +34,7 @@ func handle(c net.Conn, config *Config) {
 		Conn: c,
 		Hostname: "testhost",
 		Parser: smtp.NewParser(),
+		Cert: config.Cert,
 	}
 	state := smtp.Greet(conn)
 	for {
