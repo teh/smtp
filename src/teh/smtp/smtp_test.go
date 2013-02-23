@@ -58,6 +58,8 @@ func TestValidMail(t *testing.T) {
 		"MAIL FROM:<root> SIZE=1024 BODY=7BIT\r\n",
 		"MAIL FROM:<root> BODY=7BIT SIZE=2048\r\n",
 		"MAIL FROM:<root> \r\n",
+		"MAIL FROM:<root_underscore> \r\n",
+		"MAIL FROM:<root-hyphen> \r\n",
 	}
 	for _, entry := range entries {
 		_, err := parser.Feed([]byte(entry))

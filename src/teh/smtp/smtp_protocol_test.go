@@ -80,4 +80,9 @@ func TestEHLO(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
+	
+	err = client.Mail("someonenew@example.com")
+	if err != nil {
+		t.Error(err)
+	}
 }

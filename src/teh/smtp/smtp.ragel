@@ -37,7 +37,7 @@ host = domain
 
 ignore_routes = ('@' [^:]+ ':')?;
 
-quoted_chars = [a-zA-Z0-9@.+] | '\\' [a-zA-Z0-9@.\"+ ];
+quoted_chars = [a-zA-Z0-9_\-@.+] | '\\' [a-zA-Z0-9@_\-.\"+ ];
 real_address = (('"' quoted_chars+  '"' | quoted_chars+)+ ('@' domain)?)
     %storeData
     >startRecording;

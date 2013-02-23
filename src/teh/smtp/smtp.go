@@ -2229,20 +2229,25 @@ st_case_89:
 goto ctr101
 	case 43:
 goto ctr102
-	case 46:
-goto ctr102
 	case 64:
 goto ctr103
 	case 92:
 goto ctr104
+	case 95:
+goto ctr102
 	}
 	switch {
-	case data[p] < 65:
-		if 48 <= data[p] && data[p] <= 57 {
+	case data[p] < 48:
+		if 45 <= data[p] && data[p] <= 46 {
 			goto ctr102
 		}
-	case data[p] > 90:
-		if 97 <= data[p] && data[p] <= 122 {
+	case data[p] > 57:
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto ctr102
+			}
+		case data[p] >= 65:
 			goto ctr102
 		}
 	default:
@@ -2265,22 +2270,27 @@ st90:
 		goto _test_eof90
 	}
 st_case_90:
-// line 2269 "smtp.go"
+// line 2274 "smtp.go"
 	switch data[p] {
 	case 43:
 goto st91
-	case 46:
-goto st91
 	case 92:
 goto st119
+	case 95:
+goto st91
 	}
 	switch {
-	case data[p] < 64:
-		if 48 <= data[p] && data[p] <= 57 {
+	case data[p] < 48:
+		if 45 <= data[p] && data[p] <= 46 {
 			goto st91
 		}
-	case data[p] > 90:
-		if 97 <= data[p] && data[p] <= 122 {
+	case data[p] > 57:
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st91
+			}
+		case data[p] >= 64:
 			goto st91
 		}
 	default:
@@ -2300,18 +2310,23 @@ st_case_91:
 goto st92
 	case 43:
 goto st91
-	case 46:
-goto st91
 	case 92:
 goto st119
+	case 95:
+goto st91
 	}
 	switch {
-	case data[p] < 64:
-		if 48 <= data[p] && data[p] <= 57 {
+	case data[p] < 48:
+		if 45 <= data[p] && data[p] <= 46 {
 			goto st91
 		}
-	case data[p] > 90:
-		if 97 <= data[p] && data[p] <= 122 {
+	case data[p] > 57:
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st91
+			}
+		case data[p] >= 64:
 			goto st91
 		}
 	default:
@@ -2334,26 +2349,31 @@ st92:
 		goto _test_eof92
 	}
 st_case_92:
-// line 2338 "smtp.go"
+// line 2353 "smtp.go"
 	switch data[p] {
 	case 34:
 goto st90
 	case 43:
 goto st92
-	case 46:
-goto st92
 	case 62:
 goto ctr109
 	case 92:
 goto st118
+	case 95:
+goto st92
 	}
 	switch {
-	case data[p] < 64:
-		if 48 <= data[p] && data[p] <= 57 {
+	case data[p] < 48:
+		if 45 <= data[p] && data[p] <= 46 {
 			goto st92
 		}
-	case data[p] > 90:
-		if 97 <= data[p] && data[p] <= 122 {
+	case data[p] > 57:
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st92
+			}
+		case data[p] >= 64:
 			goto st92
 		}
 	default:
@@ -2377,7 +2397,7 @@ st93:
 		goto _test_eof93
 	}
 st_case_93:
-// line 2381 "smtp.go"
+// line 2401 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr111
@@ -2405,7 +2425,7 @@ st94:
 		goto _test_eof94
 	}
 st_case_94:
-// line 2409 "smtp.go"
+// line 2429 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr111
@@ -2732,7 +2752,7 @@ st118:
 		goto _test_eof118
 	}
 st_case_118:
-// line 2736 "smtp.go"
+// line 2756 "smtp.go"
 	switch data[p] {
 	case 32:
 goto st92
@@ -2740,16 +2760,21 @@ goto st92
 goto st92
 	case 43:
 goto st92
-	case 46:
+	case 95:
 goto st92
 	}
 	switch {
-	case data[p] < 64:
-		if 48 <= data[p] && data[p] <= 57 {
+	case data[p] < 48:
+		if 45 <= data[p] && data[p] <= 46 {
 			goto st92
 		}
-	case data[p] > 90:
-		if 97 <= data[p] && data[p] <= 122 {
+	case data[p] > 57:
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st92
+			}
+		case data[p] >= 64:
 			goto st92
 		}
 	default:
@@ -2771,16 +2796,21 @@ goto st91
 goto st91
 	case 43:
 goto st91
-	case 46:
+	case 95:
 goto st91
 	}
 	switch {
-	case data[p] < 64:
-		if 48 <= data[p] && data[p] <= 57 {
+	case data[p] < 48:
+		if 45 <= data[p] && data[p] <= 46 {
 			goto st91
 		}
-	case data[p] > 90:
-		if 97 <= data[p] && data[p] <= 122 {
+	case data[p] > 57:
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st91
+			}
+		case data[p] >= 64:
 			goto st91
 		}
 	default:
@@ -2803,14 +2833,14 @@ st120:
 		goto _test_eof120
 	}
 st_case_120:
-// line 2807 "smtp.go"
+// line 2837 "smtp.go"
 	switch data[p] {
 	case 34:
 goto st123
 	case 43:
 goto st125
-	case 46:
-goto st125
+	case 44:
+goto st121
 	case 47:
 goto st121
 	case 58:
@@ -2823,6 +2853,10 @@ goto st121
 goto st121
 	case 92:
 goto st152
+	case 95:
+goto st125
+	case 96:
+goto st121
 	}
 	switch {
 	case data[p] < 48:
@@ -2832,8 +2866,8 @@ goto st152
 				goto st121
 			}
 		case data[p] > 42:
-			if 44 <= data[p] && data[p] <= 45 {
-				goto st121
+			if 45 <= data[p] && data[p] <= 46 {
+				goto st125
 			}
 		default:
 			goto st121
@@ -2846,8 +2880,8 @@ goto st152
 			}
 		case data[p] > 90:
 			switch {
-			case data[p] > 96:
-				if data[p] <= 122 {
+			case data[p] > 94:
+				if 97 <= data[p] && data[p] <= 122 {
 					goto st125
 				}
 			case data[p] >= 93:
@@ -2888,18 +2922,23 @@ st_case_122:
 goto ctr101
 	case 43:
 goto ctr102
-	case 46:
-goto ctr102
 	case 92:
 goto ctr104
+	case 95:
+goto ctr102
 	}
 	switch {
-	case data[p] < 64:
-		if 48 <= data[p] && data[p] <= 57 {
+	case data[p] < 48:
+		if 45 <= data[p] && data[p] <= 46 {
 			goto ctr102
 		}
-	case data[p] > 90:
-		if 97 <= data[p] && data[p] <= 122 {
+	case data[p] > 57:
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto ctr102
+			}
+		case data[p] >= 64:
 			goto ctr102
 		}
 	default:
@@ -2917,8 +2956,8 @@ st_case_123:
 	switch data[p] {
 	case 43:
 goto st124
-	case 46:
-goto st124
+	case 44:
+goto st121
 	case 47:
 goto st121
 	case 58:
@@ -2927,20 +2966,24 @@ goto st122
 goto st121
 	case 92:
 goto st153
+	case 95:
+goto st124
+	case 96:
+goto st121
 	}
 	switch {
 	case data[p] < 59:
 		switch {
-		case data[p] < 44:
+		case data[p] < 45:
 			if data[p] <= 42 {
 				goto st121
 			}
-		case data[p] > 45:
+		case data[p] > 46:
 			if 48 <= data[p] && data[p] <= 57 {
 				goto st124
 			}
 		default:
-			goto st121
+			goto st124
 		}
 	case data[p] > 63:
 		switch {
@@ -2948,8 +2991,8 @@ goto st153
 			if data[p] <= 90 {
 				goto st124
 			}
-		case data[p] > 96:
-			if data[p] <= 122 {
+		case data[p] > 94:
+			if 97 <= data[p] && data[p] <= 122 {
 				goto st124
 			}
 		default:
@@ -2972,8 +3015,8 @@ st_case_124:
 goto st125
 	case 43:
 goto st124
-	case 46:
-goto st124
+	case 44:
+goto st121
 	case 47:
 goto st121
 	case 58:
@@ -2982,6 +3025,10 @@ goto st122
 goto st121
 	case 92:
 goto st153
+	case 95:
+goto st124
+	case 96:
+goto st121
 	}
 	switch {
 	case data[p] < 48:
@@ -2991,8 +3038,8 @@ goto st153
 				goto st121
 			}
 		case data[p] > 42:
-			if 44 <= data[p] && data[p] <= 45 {
-				goto st121
+			if 45 <= data[p] && data[p] <= 46 {
+				goto st124
 			}
 		default:
 			goto st121
@@ -3005,8 +3052,8 @@ goto st153
 			}
 		case data[p] > 90:
 			switch {
-			case data[p] > 96:
-				if data[p] <= 122 {
+			case data[p] > 94:
+				if 97 <= data[p] && data[p] <= 122 {
 					goto st124
 				}
 			case data[p] >= 93:
@@ -3032,8 +3079,8 @@ st_case_125:
 goto st123
 	case 43:
 goto st125
-	case 46:
-goto st125
+	case 44:
+goto st121
 	case 47:
 goto st121
 	case 58:
@@ -3046,6 +3093,10 @@ goto st121
 goto st121
 	case 92:
 goto st152
+	case 95:
+goto st125
+	case 96:
+goto st121
 	}
 	switch {
 	case data[p] < 48:
@@ -3055,8 +3106,8 @@ goto st152
 				goto st121
 			}
 		case data[p] > 42:
-			if 44 <= data[p] && data[p] <= 45 {
-				goto st121
+			if 45 <= data[p] && data[p] <= 46 {
+				goto st125
 			}
 		default:
 			goto st121
@@ -3069,8 +3120,8 @@ goto st152
 			}
 		case data[p] > 90:
 			switch {
-			case data[p] > 96:
-				if data[p] <= 122 {
+			case data[p] > 94:
+				if 97 <= data[p] && data[p] <= 122 {
 					goto st125
 				}
 			case data[p] >= 93:
@@ -3100,7 +3151,7 @@ st126:
 		goto _test_eof126
 	}
 st_case_126:
-// line 3104 "smtp.go"
+// line 3155 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr151
@@ -3176,7 +3227,7 @@ st201:
 		goto _test_eof201
 	}
 st_case_201:
-// line 3180 "smtp.go"
+// line 3231 "smtp.go"
 	if data[p] == 58 {
 		goto st122
 	}
@@ -3213,7 +3264,7 @@ st127:
 		goto _test_eof127
 	}
 st_case_127:
-// line 3217 "smtp.go"
+// line 3268 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr154
@@ -3247,7 +3298,7 @@ st128:
 		goto _test_eof128
 	}
 st_case_128:
-// line 3251 "smtp.go"
+// line 3302 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr151
@@ -3875,12 +3926,16 @@ goto st121
 goto st125
 	case 43:
 goto st125
-	case 46:
-goto st125
+	case 44:
+goto st121
 	case 47:
 goto st121
 	case 58:
 goto st122
+	case 95:
+goto st125
+	case 96:
+goto st121
 	}
 	switch {
 	case data[p] < 48:
@@ -3890,8 +3945,8 @@ goto st122
 				goto st121
 			}
 		case data[p] > 42:
-			if 44 <= data[p] && data[p] <= 45 {
-				goto st121
+			if 45 <= data[p] && data[p] <= 46 {
+				goto st125
 			}
 		default:
 			goto st121
@@ -3904,8 +3959,8 @@ goto st122
 			}
 		case data[p] > 90:
 			switch {
-			case data[p] > 96:
-				if data[p] <= 122 {
+			case data[p] > 94:
+				if 97 <= data[p] && data[p] <= 122 {
 					goto st125
 				}
 			default:
@@ -3935,12 +3990,16 @@ goto st121
 goto st124
 	case 43:
 goto st124
-	case 46:
-goto st124
+	case 44:
+goto st121
 	case 47:
 goto st121
 	case 58:
 goto st122
+	case 95:
+goto st124
+	case 96:
+goto st121
 	}
 	switch {
 	case data[p] < 48:
@@ -3950,8 +4009,8 @@ goto st122
 				goto st121
 			}
 		case data[p] > 42:
-			if 44 <= data[p] && data[p] <= 45 {
-				goto st121
+			if 45 <= data[p] && data[p] <= 46 {
+				goto st124
 			}
 		default:
 			goto st121
@@ -3964,8 +4023,8 @@ goto st122
 			}
 		case data[p] > 90:
 			switch {
-			case data[p] > 96:
-				if data[p] <= 122 {
+			case data[p] > 94:
+				if 97 <= data[p] && data[p] <= 122 {
 					goto st124
 				}
 			default:
@@ -4147,20 +4206,25 @@ st_case_166:
 goto ctr198
 	case 43:
 goto ctr199
-	case 46:
-goto ctr199
 	case 64:
 goto ctr200
 	case 92:
 goto ctr201
+	case 95:
+goto ctr199
 	}
 	switch {
-	case data[p] < 65:
-		if 48 <= data[p] && data[p] <= 57 {
+	case data[p] < 48:
+		if 45 <= data[p] && data[p] <= 46 {
 			goto ctr199
 		}
-	case data[p] > 90:
-		if 97 <= data[p] && data[p] <= 122 {
+	case data[p] > 57:
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto ctr199
+			}
+		case data[p] >= 65:
 			goto ctr199
 		}
 	default:
@@ -4183,22 +4247,27 @@ st167:
 		goto _test_eof167
 	}
 st_case_167:
-// line 4187 "smtp.go"
+// line 4251 "smtp.go"
 	switch data[p] {
 	case 43:
 goto st168
-	case 46:
-goto st168
 	case 92:
 goto st172
+	case 95:
+goto st168
 	}
 	switch {
-	case data[p] < 64:
-		if 48 <= data[p] && data[p] <= 57 {
+	case data[p] < 48:
+		if 45 <= data[p] && data[p] <= 46 {
 			goto st168
 		}
-	case data[p] > 90:
-		if 97 <= data[p] && data[p] <= 122 {
+	case data[p] > 57:
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st168
+			}
+		case data[p] >= 64:
 			goto st168
 		}
 	default:
@@ -4218,18 +4287,23 @@ st_case_168:
 goto st169
 	case 43:
 goto st168
-	case 46:
-goto st168
 	case 92:
 goto st172
+	case 95:
+goto st168
 	}
 	switch {
-	case data[p] < 64:
-		if 48 <= data[p] && data[p] <= 57 {
+	case data[p] < 48:
+		if 45 <= data[p] && data[p] <= 46 {
 			goto st168
 		}
-	case data[p] > 90:
-		if 97 <= data[p] && data[p] <= 122 {
+	case data[p] > 57:
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st168
+			}
+		case data[p] >= 64:
 			goto st168
 		}
 	default:
@@ -4252,26 +4326,31 @@ st169:
 		goto _test_eof169
 	}
 st_case_169:
-// line 4256 "smtp.go"
+// line 4330 "smtp.go"
 	switch data[p] {
 	case 34:
 goto st167
 	case 43:
 goto st169
-	case 46:
-goto st169
 	case 62:
 goto ctr206
 	case 92:
 goto st171
+	case 95:
+goto st169
 	}
 	switch {
-	case data[p] < 64:
-		if 48 <= data[p] && data[p] <= 57 {
+	case data[p] < 48:
+		if 45 <= data[p] && data[p] <= 46 {
 			goto st169
 		}
-	case data[p] > 90:
-		if 97 <= data[p] && data[p] <= 122 {
+	case data[p] > 57:
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st169
+			}
+		case data[p] >= 64:
 			goto st169
 		}
 	default:
@@ -4295,7 +4374,7 @@ st170:
 		goto _test_eof170
 	}
 st_case_170:
-// line 4299 "smtp.go"
+// line 4378 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr208
@@ -4319,7 +4398,7 @@ st171:
 		goto _test_eof171
 	}
 st_case_171:
-// line 4323 "smtp.go"
+// line 4402 "smtp.go"
 	switch data[p] {
 	case 32:
 goto st169
@@ -4327,16 +4406,21 @@ goto st169
 goto st169
 	case 43:
 goto st169
-	case 46:
+	case 95:
 goto st169
 	}
 	switch {
-	case data[p] < 64:
-		if 48 <= data[p] && data[p] <= 57 {
+	case data[p] < 48:
+		if 45 <= data[p] && data[p] <= 46 {
 			goto st169
 		}
-	case data[p] > 90:
-		if 97 <= data[p] && data[p] <= 122 {
+	case data[p] > 57:
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st169
+			}
+		case data[p] >= 64:
 			goto st169
 		}
 	default:
@@ -4358,16 +4442,21 @@ goto st168
 goto st168
 	case 43:
 goto st168
-	case 46:
+	case 95:
 goto st168
 	}
 	switch {
-	case data[p] < 64:
-		if 48 <= data[p] && data[p] <= 57 {
+	case data[p] < 48:
+		if 45 <= data[p] && data[p] <= 46 {
 			goto st168
 		}
-	case data[p] > 90:
-		if 97 <= data[p] && data[p] <= 122 {
+	case data[p] > 57:
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st168
+			}
+		case data[p] >= 64:
 			goto st168
 		}
 	default:
@@ -4390,14 +4479,14 @@ st173:
 		goto _test_eof173
 	}
 st_case_173:
-// line 4394 "smtp.go"
+// line 4483 "smtp.go"
 	switch data[p] {
 	case 34:
 goto st176
 	case 43:
 goto st178
-	case 46:
-goto st178
+	case 44:
+goto st174
 	case 47:
 goto st174
 	case 58:
@@ -4410,6 +4499,10 @@ goto st174
 goto st174
 	case 92:
 goto st181
+	case 95:
+goto st178
+	case 96:
+goto st174
 	}
 	switch {
 	case data[p] < 48:
@@ -4419,8 +4512,8 @@ goto st181
 				goto st174
 			}
 		case data[p] > 42:
-			if 44 <= data[p] && data[p] <= 45 {
-				goto st174
+			if 45 <= data[p] && data[p] <= 46 {
+				goto st178
 			}
 		default:
 			goto st174
@@ -4433,8 +4526,8 @@ goto st181
 			}
 		case data[p] > 90:
 			switch {
-			case data[p] > 96:
-				if data[p] <= 122 {
+			case data[p] > 94:
+				if 97 <= data[p] && data[p] <= 122 {
 					goto st178
 				}
 			case data[p] >= 93:
@@ -4475,18 +4568,23 @@ st_case_175:
 goto ctr198
 	case 43:
 goto ctr199
-	case 46:
-goto ctr199
 	case 92:
 goto ctr201
+	case 95:
+goto ctr199
 	}
 	switch {
-	case data[p] < 64:
-		if 48 <= data[p] && data[p] <= 57 {
+	case data[p] < 48:
+		if 45 <= data[p] && data[p] <= 46 {
 			goto ctr199
 		}
-	case data[p] > 90:
-		if 97 <= data[p] && data[p] <= 122 {
+	case data[p] > 57:
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto ctr199
+			}
+		case data[p] >= 64:
 			goto ctr199
 		}
 	default:
@@ -4504,8 +4602,8 @@ st_case_176:
 	switch data[p] {
 	case 43:
 goto st177
-	case 46:
-goto st177
+	case 44:
+goto st174
 	case 47:
 goto st174
 	case 58:
@@ -4514,20 +4612,24 @@ goto st175
 goto st174
 	case 92:
 goto st182
+	case 95:
+goto st177
+	case 96:
+goto st174
 	}
 	switch {
 	case data[p] < 59:
 		switch {
-		case data[p] < 44:
+		case data[p] < 45:
 			if data[p] <= 42 {
 				goto st174
 			}
-		case data[p] > 45:
+		case data[p] > 46:
 			if 48 <= data[p] && data[p] <= 57 {
 				goto st177
 			}
 		default:
-			goto st174
+			goto st177
 		}
 	case data[p] > 63:
 		switch {
@@ -4535,8 +4637,8 @@ goto st182
 			if data[p] <= 90 {
 				goto st177
 			}
-		case data[p] > 96:
-			if data[p] <= 122 {
+		case data[p] > 94:
+			if 97 <= data[p] && data[p] <= 122 {
 				goto st177
 			}
 		default:
@@ -4559,8 +4661,8 @@ st_case_177:
 goto st178
 	case 43:
 goto st177
-	case 46:
-goto st177
+	case 44:
+goto st174
 	case 47:
 goto st174
 	case 58:
@@ -4569,6 +4671,10 @@ goto st175
 goto st174
 	case 92:
 goto st182
+	case 95:
+goto st177
+	case 96:
+goto st174
 	}
 	switch {
 	case data[p] < 48:
@@ -4578,8 +4684,8 @@ goto st182
 				goto st174
 			}
 		case data[p] > 42:
-			if 44 <= data[p] && data[p] <= 45 {
-				goto st174
+			if 45 <= data[p] && data[p] <= 46 {
+				goto st177
 			}
 		default:
 			goto st174
@@ -4592,8 +4698,8 @@ goto st182
 			}
 		case data[p] > 90:
 			switch {
-			case data[p] > 96:
-				if data[p] <= 122 {
+			case data[p] > 94:
+				if 97 <= data[p] && data[p] <= 122 {
 					goto st177
 				}
 			case data[p] >= 93:
@@ -4619,8 +4725,8 @@ st_case_178:
 goto st176
 	case 43:
 goto st178
-	case 46:
-goto st178
+	case 44:
+goto st174
 	case 47:
 goto st174
 	case 58:
@@ -4633,6 +4739,10 @@ goto st174
 goto st174
 	case 92:
 goto st181
+	case 95:
+goto st178
+	case 96:
+goto st174
 	}
 	switch {
 	case data[p] < 48:
@@ -4642,8 +4752,8 @@ goto st181
 				goto st174
 			}
 		case data[p] > 42:
-			if 44 <= data[p] && data[p] <= 45 {
-				goto st174
+			if 45 <= data[p] && data[p] <= 46 {
+				goto st178
 			}
 		default:
 			goto st174
@@ -4656,8 +4766,8 @@ goto st181
 			}
 		case data[p] > 90:
 			switch {
-			case data[p] > 96:
-				if data[p] <= 122 {
+			case data[p] > 94:
+				if 97 <= data[p] && data[p] <= 122 {
 					goto st178
 				}
 			case data[p] >= 93:
@@ -4687,7 +4797,7 @@ st179:
 		goto _test_eof179
 	}
 st_case_179:
-// line 4691 "smtp.go"
+// line 4801 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr218
@@ -4732,7 +4842,7 @@ st202:
 		goto _test_eof202
 	}
 st_case_202:
-// line 4736 "smtp.go"
+// line 4846 "smtp.go"
 	if data[p] == 58 {
 		goto st175
 	}
@@ -4753,7 +4863,7 @@ st180:
 		goto _test_eof180
 	}
 st_case_180:
-// line 4757 "smtp.go"
+// line 4867 "smtp.go"
 	switch data[p] {
 	case 10:
 goto ctr220
@@ -4786,12 +4896,16 @@ goto st174
 goto st178
 	case 43:
 goto st178
-	case 46:
-goto st178
+	case 44:
+goto st174
 	case 47:
 goto st174
 	case 58:
 goto st175
+	case 95:
+goto st178
+	case 96:
+goto st174
 	}
 	switch {
 	case data[p] < 48:
@@ -4801,8 +4915,8 @@ goto st175
 				goto st174
 			}
 		case data[p] > 42:
-			if 44 <= data[p] && data[p] <= 45 {
-				goto st174
+			if 45 <= data[p] && data[p] <= 46 {
+				goto st178
 			}
 		default:
 			goto st174
@@ -4815,8 +4929,8 @@ goto st175
 			}
 		case data[p] > 90:
 			switch {
-			case data[p] > 96:
-				if data[p] <= 122 {
+			case data[p] > 94:
+				if 97 <= data[p] && data[p] <= 122 {
 					goto st178
 				}
 			default:
@@ -4846,12 +4960,16 @@ goto st174
 goto st177
 	case 43:
 goto st177
-	case 46:
-goto st177
+	case 44:
+goto st174
 	case 47:
 goto st174
 	case 58:
 goto st175
+	case 95:
+goto st177
+	case 96:
+goto st174
 	}
 	switch {
 	case data[p] < 48:
@@ -4861,8 +4979,8 @@ goto st175
 				goto st174
 			}
 		case data[p] > 42:
-			if 44 <= data[p] && data[p] <= 45 {
-				goto st174
+			if 45 <= data[p] && data[p] <= 46 {
+				goto st177
 			}
 		default:
 			goto st174
@@ -4875,8 +4993,8 @@ goto st175
 			}
 		case data[p] > 90:
 			switch {
-			case data[p] > 96:
-				if data[p] <= 122 {
+			case data[p] > 94:
+				if 97 <= data[p] && data[p] <= 122 {
 					goto st177
 				}
 			default:

@@ -216,6 +216,7 @@ func starttls(c *Connection) stateFunc {
 	c.Conn = tls.Server(c.Conn, config)
 
 	// Next thing after a TLS handshake is another EHLO.
+	c.remaining = []byte("")
 	err := nextVerb(c)
 	if err != nil {
 		log.Printf("Error on read: %s", err)
