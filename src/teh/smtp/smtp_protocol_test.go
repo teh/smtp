@@ -81,7 +81,7 @@ func TestEHLO(t *testing.T) {
 		t.Error(err)
 	}
 	
-	err = client.Mail("someonenew@example.com")
+	err = client.Mail("someone_new@example.com")
 	if err != nil {
 		t.Error(err)
 	}
