@@ -11,6 +11,7 @@ import (
 	"time"
 	"crypto/rand"
 	"math/big"
+	"fmt"
 )
 
 func handle(c net.Conn, cert tls.Certificate) {
@@ -22,6 +23,7 @@ func handle(c net.Conn, cert tls.Certificate) {
 	}
 	state := Greet(conn)
 	for {
+		fmt.Printf("S %s %d, %#v\n", state, conn.Parser.current.Verb, string(conn.Parser.current.Data))
 		state = state(conn)
 		if state == nil {
 			return
@@ -55,6 +57,7 @@ func TestEHLO(t *testing.T) {
 		t.Fatal(err)
 	}
 	cert := tls.Certificate{Certificate:[][]byte{cert_data}}
+	cert.PrivateKey = privkey
 
 	s, c := net.Pipe()
 	go handle(s, cert)
@@ -62,7 +65,18 @@ func TestEHLO(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	err = client.Mail("tom")
+	err = client.Mail("someone@example.com")
+	if err != nil {
+		t.Error(err)
+	}
+	
+	tls_client_config := tls.Config{
+		Rand: rand.Reader,
+		ServerName: "example.com",
+		InsecureSkipVerify: true,
+	}
+
+	err = client.StartTLS(&tls_client_config)
 	if err != nil {
 		t.Error(err)
 	}

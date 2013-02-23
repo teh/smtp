@@ -207,16 +207,27 @@ func ehlo(c *Connection) stateFunc {
 }
 
 func starttls(c *Connection) stateFunc {
+    config := &tls.Config{
+		Certificates: []tls.Certificate{c.Cert},
+		InsecureSkipVerify: true,
+//		ClientAuth: tls.RequireAnyClientCert,
+	}
+	// It's a TLS connection now, no going back.
+	c.Conn = tls.Server(c.Conn, config)
+
+	// Next thing after a TLS handshake is another EHLO.
 	err := nextVerb(c)
 	if err != nil {
 		log.Printf("Error on read: %s", err)
 		return ioError
 	}
-
-    config := &tls.Config{Certificates: []tls.Certificate{c.Cert}, InsecureSkipVerify: true}
-	// It's a TLS connection now, no going back.
-	c.Conn = tls.Server(c.Conn, config)
-
-	// Start all over again after TLS handshake
-	return Greet
+	switch {
+	case c.Parser.current.Verb == VerbHELO:
+		fmt.Fprintf(c, "250 ok\r\n")
+		return no_mail_yet
+	case c.Parser.current.Verb == VerbEHLO:
+		return ehlo
+	}
+	log.Printf("Unexpected state after STARTTLS: %#v", c.Parser.current)
+	return ioError
 }
