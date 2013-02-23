@@ -47,7 +47,7 @@ func TestValidMail(t *testing.T) {
 	entries := []string{
 		"MAIL FROM:<me@example.com>\r\n",
 		"MAIL fROM:<root>\r\n",
-		"MAIL FrOM:<\"ro\"o\\\"t@some>\r\n",
+		"MAIL FrOM:<\"ro\\\"o\"t@some>\r\n",
 		"MAIL FRoM:<\\m\\o\\d@some>\r\n",
 		"MAIL FROm:<a+b+c@some>\r\n",
 		"MAIL FroM:<@q@@10.com>\r\n",
@@ -60,6 +60,8 @@ func TestValidMail(t *testing.T) {
 		"MAIL FROM:<root> \r\n",
 		"MAIL FROM:<root_underscore> \r\n",
 		"MAIL FROM:<root-hyphen> \r\n",
+		"MAIL FROM:<user@[IPv6:2001:db8:1ff::a0b:dbd0]>\r\n",
+		"MAIL FROM:<\"()<>[]:,;@\\\"!#$%&'*+-/=?^_`{}| ~.a\"@example.org>\r\n",
 	}
 	for _, entry := range entries {
 		_, err := parser.Feed([]byte(entry))
