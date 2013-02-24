@@ -6,7 +6,11 @@ import (
 	"bytes"
 )
 
-// Good introduction on smtp: http://cr.yp.to/smtp/request.html
+// Good introduction on smtp: http://cr.yp.to/smtp/request.html The
+// email address parser is actually wrong, see
+// http://en.wikipedia.org/wiki/Email_address#Local_part
+// for a correct parser. It's an OK approximation for now though.
+
 %%{
 machine smtp;
 

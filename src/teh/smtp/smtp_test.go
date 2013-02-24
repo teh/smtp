@@ -77,6 +77,7 @@ func TestInvalidMail(t *testing.T) {
 		"MAIL FROM: <me@example.com>\r\n",
 		"MAIL FROM:<\"me@example.com>\r\n",
 		"MAIL FROM:<\"m\"e\"x\"x\"@example.com>\r\n",
+		"MAIL FROM:<a\"b(c)d,e:f;g<h>i[j\\k]l@example.com>\r\n",
 	}
 	for _, entry := range entries {
 		_, err := parser.Feed([]byte(entry))
