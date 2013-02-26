@@ -53,6 +53,12 @@ type Connection struct {
 	Recipients [][]byte
 }
 
+type Message struct {
+	From []byte
+	Recipients [][]byte
+	Body []byte
+}
+
 type stateFunc func(c *Connection) stateFunc
 
 func nextVerb(c *Connection) error {
@@ -115,7 +121,7 @@ func nextMessage(c *Connection) error {
 	return nil
 }
 
-func Greet(c *Connection) stateFunc {
+func greet(c *Connection) stateFunc {
 	// Announce ESMTP, otherwise many clients won't EHLO.
 	fmt.Fprintf(c, "220 %s ESMTP\r\n", c.Hostname)
 	err := nextVerb(c)
@@ -232,4 +238,20 @@ func starttls(c *Connection) stateFunc {
 	}
 	log.Printf("Unexpected state after STARTTLS: %#v", c.Parser.current)
 	return ioError
+}
+
+func Handle(c net.Conn, cert tls.Certificate) {
+	conn := &Connection{
+		Conn: c,
+		Hostname: "testhost",
+		Parser: NewParser(),
+		Cert: cert,
+	}
+	state := greet(conn)
+	for {
+		state = state(conn)
+		if state == nil {
+			return
+		}
+	}
 }

@@ -21,7 +21,7 @@ func handle(c net.Conn, cert tls.Certificate) {
 		Parser: NewParser(),
 		Cert: cert,
 	}
-	state := Greet(conn)
+	state := greet(conn)
 	for {
 		fmt.Printf("S %s %d, %#v\n", state, conn.Parser.current.Verb, string(conn.Parser.current.Data))
 		state = state(conn)

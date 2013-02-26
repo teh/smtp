@@ -27,24 +27,6 @@ type Server struct {
 	stop bool
 }
 
-func handle(c net.Conn, config *Config) {
-	logger := log.New(os.Stdout, fmt.Sprintf("[%s] ", c.RemoteAddr()) , log.Ldate + log.Ltime)
-	logger.Printf("Handler started.")
-	conn := &smtp.Connection{
-		Conn: c,
-		Hostname: "testhost",
-		Parser: smtp.NewParser(),
-		Cert: config.Cert,
-	}
-	state := smtp.Greet(conn)
-	for {
-		state = state(conn)
-		if state == nil {
-			return
-		}
-	}
-}
-
 func (server *Server) listen(listener net.Listener, newConnections chan net.Conn) {
 	for {
 		c, err := listener.Accept()
@@ -123,7 +105,7 @@ func main() {
 			server.stop = true
 			listener.Close()
 		case newConn := <-newConnections:
-			go handle(newConn, config)
+			go smtp.Handle(newConn, config.Cert)
 		}
 	}
 	time.Sleep(time.Second)
