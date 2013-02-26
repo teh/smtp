@@ -204,7 +204,7 @@ func ehlo(c *Connection) stateFunc {
 		"250-NOOP",
 		"250-VRFY",
 		"250-STARTTLS",
-		"250-AUTH GSSAPI DIGEST-MD5 CRAM-MD5 PLAIN",
+		"250-AUTH DIGEST-MD5 CRAM-MD5 PLAIN",
 		"250 SIZE 33554432", // 32M
 	}
 	for _, e := range extensions {
@@ -243,7 +243,7 @@ func starttls(c *Connection) stateFunc {
 func Handle(c net.Conn, cert tls.Certificate) {
 	conn := &Connection{
 		Conn: c,
-		Hostname: "testhost",
+		Hostname: "localhost",
 		Parser: NewParser(),
 		Cert: cert,
 	}

@@ -13,7 +13,6 @@ import (
 	"os"
 	"time"
 	"syscall"
-	"fmt"
 	"crypto/tls"
 	"crypto/x509"
 )
