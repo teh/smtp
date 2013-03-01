@@ -95,6 +95,10 @@ func TestValidVerbs(t *testing.T) {
 		"VRFY <sue@example.com>\r\n",
 		"RCPT TO:<sue@example.com>\r\n",
 		"DATA\r\n",
+		"AUTH PLAIN text\r\n",
+		"AUTH PLAIN\r\n",
+		"AUTH CRAM-MD5\r\n",
+		"AUTH DIGEST-MD5\r\n",
 		"STARTTLS\r\n",
 	}
 	for _, entry := range entries {

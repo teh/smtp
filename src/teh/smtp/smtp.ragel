@@ -44,6 +44,11 @@ host = domain
     %storeData
     >startRecording;
 
+# only PLAIN auth can have initial data
+auth = [A-Z\-a-z=]+
+	%storeData
+    >startRecording;
+
 ignore_routes = ('@' [^:]+ ':')?;
 
 need_quote = [a-zA-Z0-9\(\)\[\]<>:,;!#@_\-.\$%&'*/=?^`{}~|+ ] | '\\"';
@@ -73,6 +78,10 @@ do = ("HELO " host) %{parser.current.Verb = VerbHELO}
 	| ("RCPT " RCPT) %{parser.current.Verb = VerbRCPT}
 	| "DATA" %{parser.current.Verb = VerbDATA}
 	| "QUIT" %{parser.current.Verb = VerbQUIT}
+	| ("AUTH PLAIN " auth) %{parser.current.Verb = VerbAUTH_PLAIN}
+	| "AUTH PLAIN" %{parser.current.Verb = VerbAUTH_PLAIN}
+	| "AUTH DIGEST-MD5" %{parser.current.Verb = VerbAUTH_DIGEST_MD5}
+	| "AUTH CRAM-MD5" %{parser.current.Verb = VerbAUTH_CRAM_MD5}
 	| "STARTTLS" %{parser.current.Verb = VerbSTARTTLS}
 	| ("VRFY " [^\n\r]+) %{parser.current.Verb = VerbVRFY}
 	;

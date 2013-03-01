@@ -2,34 +2,37 @@ package smtp
 
 import (
 	"bytes"
-	"net"
-	"fmt"
-	"log"
-	"io"
 	"crypto/tls"
+	"fmt"
+	"io"
+	"log"
+	"net"
 )
 
 const (
-	VerbHELO = 10
-	VerbEHLO = 11
-	VerbRSET = 12
-	VerbRCPT = 13
-	VerbMAIL = 14
-	VerbQUIT = 15
-	VerbDATA = 16
-	VerbVRFY = 17
-	VerbSTARTTLS = 18
+	VerbHELO            = 10
+	VerbEHLO            = 11
+	VerbRSET            = 12
+	VerbRCPT            = 13
+	VerbMAIL            = 14
+	VerbQUIT            = 15
+	VerbDATA            = 16
+	VerbVRFY            = 17
+	VerbSTARTTLS        = 18
+	VerbAUTH_PLAIN      = 19
+	VerbAUTH_DIGEST_MD5 = 20
+	VerbAUTH_CRAM_MD5   = 21
 )
 
 // Default to 8BITMIME cause that's what everyone seems to use.
 const (
 	BodyType8BITMIME = 0
-	BodyType7BIT = 1
+	BodyType7BIT     = 1
 )
 
 type Verb struct {
-	Verb int
-	Data []byte
+	Verb     int
+	Data     []byte
 	BodyType int
 }
 
@@ -46,17 +49,17 @@ type MessageParser struct {
 
 type Connection struct {
 	net.Conn
-	Hostname string
-	Cert tls.Certificate
-	remaining []byte
-	Parser *Parser
+	Hostname   string
+	Cert       tls.Certificate
+	remaining  []byte
+	Parser     *Parser
 	Recipients [][]byte
 }
 
 type Message struct {
-	From []byte
+	From       []byte
 	Recipients [][]byte
-	Body []byte
+	Body       []byte
 }
 
 type stateFunc func(c *Connection) stateFunc
@@ -214,10 +217,10 @@ func ehlo(c *Connection) stateFunc {
 }
 
 func starttls(c *Connection) stateFunc {
-    config := &tls.Config{
-		Certificates: []tls.Certificate{c.Cert},
+	config := &tls.Config{
+		Certificates:       []tls.Certificate{c.Cert},
 		InsecureSkipVerify: true,
-//		ClientAuth: tls.RequireAnyClientCert,
+		//		ClientAuth: tls.RequireAnyClientCert,
 	}
 	// It's a TLS connection now, no going back.
 	c.Conn = tls.Server(c.Conn, config)
@@ -242,10 +245,10 @@ func starttls(c *Connection) stateFunc {
 
 func Handle(c net.Conn, cert tls.Certificate) {
 	conn := &Connection{
-		Conn: c,
+		Conn:     c,
 		Hostname: "localhost",
-		Parser: NewParser(),
-		Cert: cert,
+		Parser:   NewParser(),
+		Cert:     cert,
 	}
 	state := greet(conn)
 	for {

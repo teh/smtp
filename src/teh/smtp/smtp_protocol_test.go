@@ -1,25 +1,25 @@
 package smtp
 
 import (
-	"testing"
-	"net"
-	smtp_client "net/smtp"
+	"crypto/rand"
+	"crypto/rsa"
+	"crypto/tls"
 	"crypto/x509"
 	"crypto/x509/pkix"
-	"crypto/tls"
-	"crypto/rsa"
-	"time"
-	"crypto/rand"
-	"math/big"
 	"fmt"
+	"math/big"
+	"net"
+	smtp_client "net/smtp"
+	"testing"
+	"time"
 )
 
 func handle(c net.Conn, cert tls.Certificate) {
 	conn := &Connection{
-		Conn: c,
+		Conn:     c,
 		Hostname: "testhost",
-		Parser: NewParser(),
-		Cert: cert,
+		Parser:   NewParser(),
+		Cert:     cert,
 	}
 	state := greet(conn)
 	for {
@@ -36,16 +36,16 @@ func TestEHLO(t *testing.T) {
 		Subject: pkix.Name{
 			Country: []string{"uk"},
 		},
-		DNSNames: []string{"www.example.com"},
-		NotBefore: time.Date(2010, 1, 1, 0, 0, 0, 0, time.UTC),
-		NotAfter: time.Date(2030, 1, 1, 0, 0, 0, 0, time.UTC),
-		SubjectKeyId: []byte("6fcf9dfbd479ed82697fee719b9f8c610a11ff2a"),
-		KeyUsage: x509.KeyUsageDataEncipherment,
-		BasicConstraintsValid: false,
+		DNSNames:                    []string{"www.example.com"},
+		NotBefore:                   time.Date(2010, 1, 1, 0, 0, 0, 0, time.UTC),
+		NotAfter:                    time.Date(2030, 1, 1, 0, 0, 0, 0, time.UTC),
+		SubjectKeyId:                []byte("6fcf9dfbd479ed82697fee719b9f8c610a11ff2a"),
+		KeyUsage:                    x509.KeyUsageDataEncipherment,
+		BasicConstraintsValid:       false,
 		PermittedDNSDomainsCritical: false,
-		PermittedDNSDomains: []string{},
-		SerialNumber: big.NewInt(100),
-		Version: 0,
+		PermittedDNSDomains:         []string{},
+		SerialNumber:                big.NewInt(100),
+		Version:                     0,
 	}
 
 	privkey, err := rsa.GenerateKey(rand.Reader, 1024)
@@ -56,12 +56,12 @@ func TestEHLO(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	cert := tls.Certificate{Certificate:[][]byte{cert_data}}
+	cert := tls.Certificate{Certificate: [][]byte{cert_data}}
 	cert.PrivateKey = privkey
 
 	s, c := net.Pipe()
 	go handle(s, cert)
-    client, err := smtp_client.NewClient(c, "localhost")
+	client, err := smtp_client.NewClient(c, "localhost")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -69,10 +69,10 @@ func TestEHLO(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	
+
 	tls_client_config := tls.Config{
-		Rand: rand.Reader,
-		ServerName: "example.com",
+		Rand:               rand.Reader,
+		ServerName:         "example.com",
 		InsecureSkipVerify: true,
 	}
 
@@ -80,7 +80,7 @@ func TestEHLO(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	
+
 	err = client.Mail("someone_new@example.com")
 	if err != nil {
 		t.Error(err)
