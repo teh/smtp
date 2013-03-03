@@ -232,13 +232,9 @@ func auth_cram_md5(c *Connection) stateFunc {
 	if n != challenge_n || err != nil {
 		return ioError
 	}
+	// ecnode challenge as hex in case clients can't deal with
+	// arbitrary binary data.
 	hex.Encode(challenge_hex, challenge)
-	expected_hmac := hmac.New(md5.New, user_password)
-	expected_hmac.Write(challenge_hex)
-	expected := expected_hmac.Sum(nil)
-	expected_hex := make([]byte, 32)
-	hex.Encode(expected_hex, expected)
-
 	fmt.Fprintf(c, "334 %s\r\n", base64.StdEncoding.EncodeToString(challenge_hex))
 
 	err = nextVerb(c)
@@ -261,9 +257,17 @@ func auth_cram_md5(c *Connection) stateFunc {
 
 	md5_lower := bytes.ToLower(md5_)
 
+	// Calculate the answer we are expecting from the client:
+	expected_hmac := hmac.New(md5.New, user_password)
+	expected_hmac.Write(challenge_hex)
+	expected := expected_hmac.Sum(nil)
+	expected_hex := make([]byte, 32)
+	hex.Encode(expected_hex, expected)
+
 	if subtle.ConstantTimeCompare(md5_lower, expected_hex) != 1 {
 		fmt.Fprintf(c, "535 noko\r\n")
 	}
+	fmt.Fprintf(c, "235 ok\r\n")
 	return auth_ok
 }
 
