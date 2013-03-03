@@ -302,8 +302,6 @@ func auth_ok_envelope_set(c *Connection) stateFunc {
 		c.Recipients = nil // reset recipient list
 		return no_auth_envelope_set
 	case VerbRCPT:
-		// xxx no auth means only local recipients possible (check
-		// against domain).
 		fmt.Fprintf(c, "250 ok\r\n")
 		return no_auth_envelope_set
 	case VerbSTARTTLS:
