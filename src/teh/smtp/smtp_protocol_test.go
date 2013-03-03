@@ -18,12 +18,12 @@ func handle(c net.Conn, cert tls.Certificate) {
 	conn := &Connection{
 		Conn:     c,
 		Hostname: "testhost",
-		Parser:   NewParser(),
+		protocolParser:   NewProtocolParser(),
 		Cert:     cert,
 	}
 	state := greet(conn)
 	for {
-		fmt.Printf("S %s %d, %#v\n", state, conn.Parser.current.Verb, string(conn.Parser.current.Data))
+		fmt.Printf("S %s %d, %#v\n", state, conn.protocolParser.current.Verb, string(conn.protocolParser.current.Data))
 		state = state(conn)
 		if state == nil {
 			return

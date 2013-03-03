@@ -37,7 +37,11 @@ type Verb struct {
 	BodyType int
 }
 
-type Parser struct {
+type Parser interface {
+	Feed(data []byte) (remaining []byte, err error)
+}
+
+type ProtocolParser struct {
 	cs      int
 	current Verb
 	buffer  *bytes.Buffer
@@ -53,7 +57,7 @@ type Connection struct {
 	Hostname   string
 	Cert       tls.Certificate
 	remaining  []byte
-	Parser     *Parser
+	protocolParser     *ProtocolParser
 	Recipients [][]byte
 }
 
@@ -65,12 +69,10 @@ type Message struct {
 
 type stateFunc func(c *Connection) stateFunc
 
-func nextVerb(c *Connection) error {
+func next(c *Connection, parser Parser) error {
 	var data []byte = make([]byte, 1<<14)
 	var err error
 	var n int
-	// clear data
-	c.Parser.current.Data = []byte{}
 	for {
 		// remaining always gets parsed first before reading new data.
 		// This is important not just for ordering but also because
@@ -87,7 +89,7 @@ func nextVerb(c *Connection) error {
 				return err
 			}
 		}
-		c.remaining, err = c.Parser.Feed(data[:n])
+		c.remaining, err = parser.Feed(data[:n])
 		if err == Dangling {
 			continue
 		}
@@ -99,32 +101,15 @@ func nextVerb(c *Connection) error {
 	return nil
 }
 
+func nextVerb(c *Connection) error {
+	// clear data
+	c.protocolParser.current.Data = []byte{}
+	return next(c, c.protocolParser)
+}
+
 func nextMessage(c *Connection) error {
-	var data []byte = make([]byte, 1<<14)
-	var err error
-	var n int
 	mp := NewMessageParser()
-	for {
-		if len(c.remaining) != 0 {
-			n = copy(data, c.remaining)
-		} else {
-			n, err = c.Read(data)
-			if err == io.EOF && len(c.remaining) == 0 {
-				return err
-			}
-			if err != nil && err != io.EOF {
-				return err
-			}
-		}
-		c.remaining, err = mp.Feed(data[:n])
-		if err == Dangling {
-			continue
-		}
-		if err == nil {
-			return nil
-		}
-	}
-	return nil
+	return next(c, mp)
 }
 
 func greet(c *Connection) stateFunc {
@@ -136,10 +121,10 @@ func greet(c *Connection) stateFunc {
 		return ioError
 	}
 	switch {
-	case c.Parser.current.Verb == VerbHELO:
+	case c.protocolParser.current.Verb == VerbHELO:
 		fmt.Fprintf(c, "250 ok\r\n")
 		return wait_for_tls
-	case c.Parser.current.Verb == VerbEHLO:
+	case c.protocolParser.current.Verb == VerbEHLO:
 		return ehlo_no_tls
 	default:
 		return wait_for_tls
@@ -158,7 +143,7 @@ func no_auth_envelope_empty(c *Connection) stateFunc {
 		log.Printf("Error on read: %s", err)
 		return ioError
 	}
-	switch c.Parser.current.Verb {
+	switch c.protocolParser.current.Verb {
 	case VerbQUIT:
 		c.Close()
 		return nil
@@ -174,7 +159,7 @@ func no_auth_envelope_empty(c *Connection) stateFunc {
 	case VerbAUTH_PLAIN_DIRECT:
 		return auth_plain_direct
 	}
-	log.Printf("503 bad command sequence [no_auth_envelope_empty]. Verb: %d", c.Parser.current.Verb)
+	log.Printf("503 bad command sequence [no_auth_envelope_empty]. Verb: %d", c.protocolParser.current.Verb)
 	fmt.Fprintf(c, "503 bad command sequence\r\n")
 	return no_auth_envelope_empty
 }
@@ -185,7 +170,7 @@ func auth_ok_envelope_empty(c *Connection) stateFunc {
 		log.Printf("Error on read: %s", err)
 		return ioError
 	}
-	switch c.Parser.current.Verb {
+	switch c.protocolParser.current.Verb {
 	case VerbQUIT:
 		c.Close()
 		return nil
@@ -197,13 +182,13 @@ func auth_ok_envelope_empty(c *Connection) stateFunc {
 		fmt.Fprintf(c, "252 Send some mail to check.\r\n")
 		return no_auth_envelope_empty
 	}
-	log.Printf("503 bad command sequence [auth_ok_envelope_empty]. Verb: %d", c.Parser.current.Verb)
+	log.Printf("503 bad command sequence [auth_ok_envelope_empty]. Verb: %d", c.protocolParser.current.Verb)
 	fmt.Fprintf(c, "503 bad command sequence\r\n")
 	return no_auth_envelope_empty
 }
 
 func auth_plain_direct(c *Connection) stateFunc {
-	user, _ := decodeUserAndMd5(c.Parser.current.Data)
+	user, _ := decodeUserAndMd5(c.protocolParser.current.Data)
 	if user == nil {
 		fmt.Fprintf(c, "501 syntax error\r\n")
 		return ioError
@@ -241,11 +226,11 @@ func auth_plain(c *Connection) stateFunc {
 		log.Printf("Error on read: %s", err)
 		return ioError
 	}
-	if c.Parser.current.Verb != VerbBASE64 {
+	if c.protocolParser.current.Verb != VerbBASE64 {
 		return ioError
 	}
 
-	_, _ = decodeUserAndMd5(c.Parser.current.Data)
+	_, _ = decodeUserAndMd5(c.protocolParser.current.Data)
 
 	return auth_ok_envelope_empty
 }
@@ -259,7 +244,7 @@ func no_auth_envelope_set(c *Connection) stateFunc {
 		log.Printf("Error on read: %s", err)
 		return ioError
 	}
-	switch c.Parser.current.Verb {
+	switch c.protocolParser.current.Verb {
 	case VerbQUIT:
 		c.Close()
 		return nil
@@ -282,7 +267,7 @@ func no_auth_envelope_set(c *Connection) stateFunc {
 		c.Recipients = nil // reset recipient list
 		return no_auth_envelope_set
 	}
-	log.Printf("503 bad command sequence [no_auth_envelope_set]. Verb: %d", c.Parser.current.Verb)
+	log.Printf("503 bad command sequence [no_auth_envelope_set]. Verb: %d", c.protocolParser.current.Verb)
 	fmt.Fprintf(c, "503 bad command sequence\r\n")
 	return no_auth_envelope_set
 }
@@ -293,7 +278,7 @@ func auth_ok_envelope_set(c *Connection) stateFunc {
 		log.Printf("Error on read: %s", err)
 		return ioError
 	}
-	switch c.Parser.current.Verb {
+	switch c.protocolParser.current.Verb {
 	case VerbQUIT:
 		c.Close()
 		return nil
@@ -314,7 +299,7 @@ func auth_ok_envelope_set(c *Connection) stateFunc {
 		c.Recipients = nil // reset recipient list
 		return no_auth_envelope_set
 	}
-	log.Printf("503 bad command sequence [no_auth_envelope_set]. Verb: %d", c.Parser.current.Verb)
+	log.Printf("503 bad command sequence [no_auth_envelope_set]. Verb: %d", c.protocolParser.current.Verb)
 	fmt.Fprintf(c, "503 bad command sequence\r\n")
 	return no_auth_envelope_set
 }
@@ -340,10 +325,10 @@ func wait_for_tls(c *Connection) stateFunc {
 		return ioError
 	}
 	switch {
-	case c.Parser.current.Verb == VerbQUIT:
+	case c.protocolParser.current.Verb == VerbQUIT:
 		c.Close()
 		return nil
-	case c.Parser.current.Verb == VerbSTARTTLS:
+	case c.protocolParser.current.Verb == VerbSTARTTLS:
 		fmt.Fprintf(c, "220 go ahead\r\n")
 		return starttls
 	default:
@@ -376,26 +361,26 @@ func starttls(c *Connection) stateFunc {
 	config := &tls.Config{
 		Certificates:       []tls.Certificate{c.Cert},
 		InsecureSkipVerify: true,
-		//		ClientAuth: tls.RequireAnyClientCert,
 	}
+
 	// It's a TLS connection now, no going back.
 	c.Conn = tls.Server(c.Conn, config)
 
 	// Next thing after a TLS handshake is another EHLO.
-	c.remaining = []byte("")
+	c.remaining = []byte{}
 	err := nextVerb(c)
 	if err != nil {
 		log.Printf("Error on read: %s", err)
 		return ioError
 	}
 	switch {
-	case c.Parser.current.Verb == VerbHELO:
+	case c.protocolParser.current.Verb == VerbHELO:
 		fmt.Fprintf(c, "250 ok\r\n")
 		return no_auth_envelope_empty
-	case c.Parser.current.Verb == VerbEHLO:
+	case c.protocolParser.current.Verb == VerbEHLO:
 		return ehlo_with_tls
 	}
-	log.Printf("Unexpected state after STARTTLS: %#v", c.Parser.current)
+	log.Printf("Unexpected state after STARTTLS: %#v", c.protocolParser.current)
 	return ioError
 }
 
@@ -403,7 +388,7 @@ func Handle(c net.Conn, cert tls.Certificate) {
 	conn := &Connection{
 		Conn:     c,
 		Hostname: "localhost",
-		Parser:   NewParser(),
+		protocolParser:   NewProtocolParser(),
 		Cert:     cert,
 	}
 	state := greet(conn)

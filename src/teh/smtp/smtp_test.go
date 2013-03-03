@@ -6,7 +6,7 @@ import (
 )
 
 func TestValidHelo(t *testing.T) {
-	parser := NewParser()
+	parser := NewProtocolParser()
 	entries := []string{
 		"HELO some.domain\r\n",
 		"EHLO some.domain\r\n",
@@ -28,7 +28,7 @@ func TestValidHelo(t *testing.T) {
 }
 
 func TestInvalidHelo(t *testing.T) {
-	parser := NewParser()
+	parser := NewProtocolParser()
 	entries := []string{
 		"HELO  some.domain\r\n",
 		"EHLO \r\n",
@@ -43,7 +43,7 @@ func TestInvalidHelo(t *testing.T) {
 }
 
 func TestValidMail(t *testing.T) {
-	parser := NewParser()
+	parser := NewProtocolParser()
 	entries := []string{
 		"MAIL FROM:<me@example.com>\r\n",
 		"MAIL fROM:<root>\r\n",
@@ -72,7 +72,7 @@ func TestValidMail(t *testing.T) {
 }
 
 func TestInvalidMail(t *testing.T) {
-	parser := NewParser()
+	parser := NewProtocolParser()
 	entries := []string{
 		"MAIL FROM: <me@example.com>\r\n",
 		"MAIL FROM:<\"me@example.com>\r\n",
@@ -88,7 +88,7 @@ func TestInvalidMail(t *testing.T) {
 }
 
 func TestValidVerbs(t *testing.T) {
-	parser := NewParser()
+	parser := NewProtocolParser()
 	entries := []string{
 		"QUIT\r\n",
 		"VRFY root\r\n",
@@ -108,7 +108,7 @@ func TestValidVerbs(t *testing.T) {
 }
 
 func TestSplitParsing(t *testing.T) {
-	parser := NewParser()
+	parser := NewProtocolParser()
 	entry := "EHLO [192.167.1.1]\r\nQUIT\r\n"
 
 	for i := range entry[:19] {

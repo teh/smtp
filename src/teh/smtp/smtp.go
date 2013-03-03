@@ -30,8 +30,8 @@ const smtp_en_main = 1
 
 var Dangling = errors.New("DANGLING")
 
-func NewParser() *Parser {
-	return &Parser{cs: smtp_en_main}
+func NewProtocolParser() *ProtocolParser {
+	return &ProtocolParser{cs: smtp_en_main}
 }
 
 // Feed new bytes while keepting track of state in parser.current. If
@@ -44,7 +44,7 @@ func NewParser() *Parser {
 // intermediate values. * Parsing is not bounded: the internal
 // parser.buffer grows as much as the input, restrictions need to be
 // imposed from the outside (using e.g. a LimitReader).
-func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
+func (parser *ProtocolParser) Feed(data []byte) (remaining []byte, err error) {
 	var p, pb int
 	cs := parser.cs
 	pe := len(data)
