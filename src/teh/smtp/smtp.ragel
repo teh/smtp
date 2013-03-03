@@ -59,6 +59,11 @@ real_address = (('"' need_quote+  '"' | quoted_chars+)+ ('@' domain)?)
 
 address = '<' ignore_routes real_address '>';
 
+# have to fit at least a space and an md5 sum, hence 45
+base64 = [A-Za-z+=/0-9]{45,}
+    %storeData
+    >startRecording;
+
 mail_options = (
     ' BODY=8BITMIME'
 	%{parser.current.BodyType = BodyType8BITMIME}
@@ -84,6 +89,7 @@ do = ("HELO " host) %{parser.current.Verb = VerbHELO}
 	| "AUTH CRAM-MD5" %{parser.current.Verb = VerbAUTH_CRAM_MD5}
 	| "STARTTLS" %{parser.current.Verb = VerbSTARTTLS}
 	| ("VRFY " [^\n\r]+) %{parser.current.Verb = VerbVRFY}
+    | base64 %{parser.current.Verb = VerbBASE64}
 	;
 
 line = do newline;

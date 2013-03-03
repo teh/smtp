@@ -12,16 +12,16 @@ import (
 // http://en.wikipedia.org/wiki/Email_address#Local_part
 // for a correct parser. It's an OK approximation for now though.
 
-// line 92 "smtp.ragel"
+// line 98 "smtp.ragel"
 
 // line 22 "smtp.go"
 const smtp_start = 1
-const smtp_first_final = 410
+const smtp_first_final = 455
 const smtp_error = 0
 
 const smtp_en_main = 1
 
-// line 95 "smtp.ragel"
+// line 101 "smtp.ragel"
 
 var Dangling = errors.New("DANGLING")
 
@@ -80,8 +80,6 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto st_case_13
 		case 14:
 			goto st_case_14
-		case 410:
-			goto st_case_410
 		case 15:
 			goto st_case_15
 		case 16:
@@ -146,6 +144,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto st_case_45
 		case 46:
 			goto st_case_46
+		case 455:
+			goto st_case_455
 		case 47:
 			goto st_case_47
 		case 48:
@@ -710,8 +710,6 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto st_case_327
 		case 328:
 			goto st_case_328
-		case 411:
-			goto st_case_411
 		case 329:
 			goto st_case_329
 		case 330:
@@ -802,6 +800,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto st_case_372
 		case 373:
 			goto st_case_373
+		case 456:
+			goto st_case_456
 		case 374:
 			goto st_case_374
 		case 375:
@@ -834,8 +834,6 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto st_case_388
 		case 389:
 			goto st_case_389
-		case 412:
-			goto st_case_412
 		case 390:
 			goto st_case_390
 		case 391:
@@ -876,28 +874,159 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto st_case_408
 		case 409:
 			goto st_case_409
+		case 410:
+			goto st_case_410
+		case 411:
+			goto st_case_411
+		case 412:
+			goto st_case_412
+		case 413:
+			goto st_case_413
+		case 414:
+			goto st_case_414
+		case 415:
+			goto st_case_415
+		case 416:
+			goto st_case_416
+		case 417:
+			goto st_case_417
+		case 418:
+			goto st_case_418
+		case 419:
+			goto st_case_419
+		case 420:
+			goto st_case_420
+		case 421:
+			goto st_case_421
+		case 422:
+			goto st_case_422
+		case 423:
+			goto st_case_423
+		case 424:
+			goto st_case_424
+		case 425:
+			goto st_case_425
+		case 426:
+			goto st_case_426
+		case 427:
+			goto st_case_427
+		case 428:
+			goto st_case_428
+		case 429:
+			goto st_case_429
+		case 430:
+			goto st_case_430
+		case 431:
+			goto st_case_431
+		case 432:
+			goto st_case_432
+		case 433:
+			goto st_case_433
+		case 434:
+			goto st_case_434
+		case 457:
+			goto st_case_457
+		case 435:
+			goto st_case_435
+		case 436:
+			goto st_case_436
+		case 437:
+			goto st_case_437
+		case 438:
+			goto st_case_438
+		case 439:
+			goto st_case_439
+		case 440:
+			goto st_case_440
+		case 441:
+			goto st_case_441
+		case 442:
+			goto st_case_442
+		case 443:
+			goto st_case_443
+		case 444:
+			goto st_case_444
+		case 445:
+			goto st_case_445
+		case 446:
+			goto st_case_446
+		case 447:
+			goto st_case_447
+		case 448:
+			goto st_case_448
+		case 449:
+			goto st_case_449
+		case 450:
+			goto st_case_450
+		case 451:
+			goto st_case_451
+		case 452:
+			goto st_case_452
+		case 453:
+			goto st_case_453
+		case 454:
+			goto st_case_454
 		}
 		goto st_end
 	st_case_1:
 		switch data[p] {
+		case 43:
+			goto ctr0
+		case 61:
+			goto ctr0
 		case 65:
-			goto st2
+			goto ctr2
 		case 68:
-			goto st33
+			goto ctr3
 		case 69:
-			goto st37
+			goto ctr4
 		case 72:
-			goto st143
+			goto ctr5
 		case 77:
-			goto st249
+			goto ctr6
 		case 81:
-			goto st356
+			goto ctr7
 		case 82:
-			goto st360
+			goto ctr8
 		case 83:
-			goto st396
+			goto ctr9
 		case 86:
-			goto st404
+			goto ctr10
+		}
+		switch {
+		case data[p] < 73:
+			switch {
+			case data[p] < 66:
+				if 47 <= data[p] && data[p] <= 57 {
+					goto ctr0
+				}
+			case data[p] > 67:
+				if 70 <= data[p] && data[p] <= 71 {
+					goto ctr0
+				}
+			default:
+				goto ctr0
+			}
+		case data[p] > 76:
+			switch {
+			case data[p] < 84:
+				if 78 <= data[p] && data[p] <= 80 {
+					goto ctr0
+				}
+			case data[p] > 85:
+				switch {
+				case data[p] > 90:
+					if 97 <= data[p] && data[p] <= 122 {
+						goto ctr0
+					}
+				case data[p] >= 87:
+					goto ctr0
+				}
+			default:
+				goto ctr0
+			}
+		default:
+			goto ctr0
 		}
 		{
 			goto st0
@@ -907,12 +1036,36 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 	st0:
 		cs = 0
 		goto _out
+	ctr0:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st2
 	st2:
 		if p++; p == pe {
 			goto _test_eof2
 		}
 	st_case_2:
-		if data[p] == 85 {
+		// line 1059 "smtp.go"
+		switch data[p] {
+		case 43:
+			goto st3
+		case 61:
+			goto st3
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st3
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st3
+			}
+		default:
 			goto st3
 		}
 		{
@@ -924,7 +1077,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof3
 		}
 	st_case_3:
-		if data[p] == 84 {
+		switch data[p] {
+		case 43:
+			goto st4
+		case 61:
+			goto st4
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st4
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st4
+			}
+		default:
 			goto st4
 		}
 		{
@@ -936,7 +1104,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof4
 		}
 	st_case_4:
-		if data[p] == 72 {
+		switch data[p] {
+		case 43:
+			goto st5
+		case 61:
+			goto st5
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st5
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st5
+			}
+		default:
 			goto st5
 		}
 		{
@@ -948,7 +1131,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof5
 		}
 	st_case_5:
-		if data[p] == 32 {
+		switch data[p] {
+		case 43:
+			goto st6
+		case 61:
+			goto st6
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st6
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st6
+			}
+		default:
 			goto st6
 		}
 		{
@@ -961,12 +1159,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_6:
 		switch data[p] {
-		case 67:
+		case 43:
 			goto st7
-		case 68:
-			goto st16
-		case 80:
-			goto st26
+		case 61:
+			goto st7
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st7
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st7
+			}
+		default:
+			goto st7
 		}
 		{
 			goto st0
@@ -977,7 +1185,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof7
 		}
 	st_case_7:
-		if data[p] == 82 {
+		switch data[p] {
+		case 43:
+			goto st8
+		case 61:
+			goto st8
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st8
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st8
+			}
+		default:
 			goto st8
 		}
 		{
@@ -989,7 +1212,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof8
 		}
 	st_case_8:
-		if data[p] == 65 {
+		switch data[p] {
+		case 43:
+			goto st9
+		case 61:
+			goto st9
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st9
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st9
+			}
+		default:
 			goto st9
 		}
 		{
@@ -1001,7 +1239,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof9
 		}
 	st_case_9:
-		if data[p] == 77 {
+		switch data[p] {
+		case 43:
+			goto st10
+		case 61:
+			goto st10
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st10
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st10
+			}
+		default:
 			goto st10
 		}
 		{
@@ -1013,7 +1266,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof10
 		}
 	st_case_10:
-		if data[p] == 45 {
+		switch data[p] {
+		case 43:
+			goto st11
+		case 61:
+			goto st11
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st11
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st11
+			}
+		default:
 			goto st11
 		}
 		{
@@ -1025,7 +1293,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof11
 		}
 	st_case_11:
-		if data[p] == 77 {
+		switch data[p] {
+		case 43:
+			goto st12
+		case 61:
+			goto st12
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st12
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st12
+			}
+		default:
 			goto st12
 		}
 		{
@@ -1037,7 +1320,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof12
 		}
 	st_case_12:
-		if data[p] == 68 {
+		switch data[p] {
+		case 43:
+			goto st13
+		case 61:
+			goto st13
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st13
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st13
+			}
+		default:
 			goto st13
 		}
 		{
@@ -1049,7 +1347,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof13
 		}
 	st_case_13:
-		if data[p] == 53 {
+		switch data[p] {
+		case 43:
+			goto st14
+		case 61:
+			goto st14
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st14
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st14
+			}
+		default:
 			goto st14
 		}
 		{
@@ -1062,401 +1375,49 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_14:
 		switch data[p] {
-		case 10:
-			goto ctr24
-		case 13:
-			goto ctr25
+		case 43:
+			goto st15
+		case 61:
+			goto st15
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st15
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st15
+			}
+		default:
+			goto st15
 		}
 		{
 			goto st0
 
 		}
-	ctr24:
-		// line 84 "smtp.ragel"
-		{
-			parser.current.Verb = VerbAUTH_CRAM_MD5
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr26:
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr36:
-		// line 83 "smtp.ragel"
-		{
-			parser.current.Verb = VerbAUTH_DIGEST_MD5
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr42:
-		// line 82 "smtp.ragel"
-		{
-			parser.current.Verb = VerbAUTH_PLAIN
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr46:
-		// line 26 "smtp.ragel"
-		{
-
-			parser.buffer.Write(data[pb:p])
-			parser.current.Data = parser.buffer.Bytes()
-			parser.buffer = nil
-		}
-		// line 81 "smtp.ragel"
-		{
-			parser.current.Verb = VerbAUTH_PLAIN
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr52:
-		// line 79 "smtp.ragel"
-		{
-			parser.current.Verb = VerbDATA
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr60:
-		// line 26 "smtp.ragel"
-		{
-
-			parser.buffer.Write(data[pb:p])
-			parser.current.Data = parser.buffer.Bytes()
-			parser.buffer = nil
-		}
-		// line 75 "smtp.ragel"
-		{
-			parser.current.Verb = VerbEHLO
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr168:
-		// line 26 "smtp.ragel"
-		{
-
-			parser.buffer.Write(data[pb:p])
-			parser.current.Data = parser.buffer.Bytes()
-			parser.buffer = nil
-		}
-		// line 74 "smtp.ragel"
-		{
-			parser.current.Verb = VerbHELO
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr290:
-		// line 77 "smtp.ragel"
-		{
-			parser.current.Verb = VerbMAIL
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr304:
-		// line 66 "smtp.ragel"
-		{
-			parser.current.BodyType = BodyType7BIT
-		}
-		// line 77 "smtp.ragel"
-		{
-			parser.current.Verb = VerbMAIL
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr314:
-		// line 64 "smtp.ragel"
-		{
-			parser.current.BodyType = BodyType8BITMIME
-		}
-		// line 77 "smtp.ragel"
-		{
-			parser.current.Verb = VerbMAIL
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr404:
-		// line 80 "smtp.ragel"
-		{
-			parser.current.Verb = VerbQUIT
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr425:
-		// line 78 "smtp.ragel"
-		{
-			parser.current.Verb = VerbRCPT
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr452:
-		// line 76 "smtp.ragel"
-		{
-			parser.current.Verb = VerbRSET
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr461:
-		// line 85 "smtp.ragel"
-		{
-			parser.current.Verb = VerbSTARTTLS
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	ctr468:
-		// line 86 "smtp.ragel"
-		{
-			parser.current.Verb = VerbVRFY
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 410
-				goto _out
-			}
-		}
-		goto st410
-	st410:
-		if p++; p == pe {
-			goto _test_eof410
-		}
-	st_case_410:
-		// line 1254 "smtp.go"
-		{
-			goto st0
-
-		}
-	ctr25:
-		// line 84 "smtp.ragel"
-		{
-			parser.current.Verb = VerbAUTH_CRAM_MD5
-		}
-		goto st15
-	ctr37:
-		// line 83 "smtp.ragel"
-		{
-			parser.current.Verb = VerbAUTH_DIGEST_MD5
-		}
-		goto st15
-	ctr43:
-		// line 82 "smtp.ragel"
-		{
-			parser.current.Verb = VerbAUTH_PLAIN
-		}
-		goto st15
-	ctr47:
-		// line 26 "smtp.ragel"
-		{
-
-			parser.buffer.Write(data[pb:p])
-			parser.current.Data = parser.buffer.Bytes()
-			parser.buffer = nil
-		}
-		// line 81 "smtp.ragel"
-		{
-			parser.current.Verb = VerbAUTH_PLAIN
-		}
-		goto st15
-	ctr53:
-		// line 79 "smtp.ragel"
-		{
-			parser.current.Verb = VerbDATA
-		}
-		goto st15
-	ctr61:
-		// line 26 "smtp.ragel"
-		{
-
-			parser.buffer.Write(data[pb:p])
-			parser.current.Data = parser.buffer.Bytes()
-			parser.buffer = nil
-		}
-		// line 75 "smtp.ragel"
-		{
-			parser.current.Verb = VerbEHLO
-		}
-		goto st15
-	ctr169:
-		// line 26 "smtp.ragel"
-		{
-
-			parser.buffer.Write(data[pb:p])
-			parser.current.Data = parser.buffer.Bytes()
-			parser.buffer = nil
-		}
-		// line 74 "smtp.ragel"
-		{
-			parser.current.Verb = VerbHELO
-		}
-		goto st15
-	ctr291:
-		// line 77 "smtp.ragel"
-		{
-			parser.current.Verb = VerbMAIL
-		}
-		goto st15
-	ctr305:
-		// line 66 "smtp.ragel"
-		{
-			parser.current.BodyType = BodyType7BIT
-		}
-		// line 77 "smtp.ragel"
-		{
-			parser.current.Verb = VerbMAIL
-		}
-		goto st15
-	ctr315:
-		// line 64 "smtp.ragel"
-		{
-			parser.current.BodyType = BodyType8BITMIME
-		}
-		// line 77 "smtp.ragel"
-		{
-			parser.current.Verb = VerbMAIL
-		}
-		goto st15
-	ctr405:
-		// line 80 "smtp.ragel"
-		{
-			parser.current.Verb = VerbQUIT
-		}
-		goto st15
-	ctr426:
-		// line 78 "smtp.ragel"
-		{
-			parser.current.Verb = VerbRCPT
-		}
-		goto st15
-	ctr453:
-		// line 76 "smtp.ragel"
-		{
-			parser.current.Verb = VerbRSET
-		}
-		goto st15
-	ctr462:
-		// line 85 "smtp.ragel"
-		{
-			parser.current.Verb = VerbSTARTTLS
-		}
-		goto st15
-	ctr469:
-		// line 86 "smtp.ragel"
-		{
-			parser.current.Verb = VerbVRFY
-		}
-		goto st15
 	st15:
 		if p++; p == pe {
 			goto _test_eof15
 		}
 	st_case_15:
-		// line 1366 "smtp.go"
-		if data[p] == 10 {
-			goto ctr26
+		switch data[p] {
+		case 43:
+			goto st16
+		case 61:
+			goto st16
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st16
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st16
+			}
+		default:
+			goto st16
 		}
 		{
 			goto st0
@@ -1467,7 +1428,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof16
 		}
 	st_case_16:
-		if data[p] == 73 {
+		switch data[p] {
+		case 43:
+			goto st17
+		case 61:
+			goto st17
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st17
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st17
+			}
+		default:
 			goto st17
 		}
 		{
@@ -1479,7 +1455,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof17
 		}
 	st_case_17:
-		if data[p] == 71 {
+		switch data[p] {
+		case 43:
+			goto st18
+		case 61:
+			goto st18
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st18
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st18
+			}
+		default:
 			goto st18
 		}
 		{
@@ -1491,7 +1482,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof18
 		}
 	st_case_18:
-		if data[p] == 69 {
+		switch data[p] {
+		case 43:
+			goto st19
+		case 61:
+			goto st19
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st19
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st19
+			}
+		default:
 			goto st19
 		}
 		{
@@ -1503,7 +1509,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof19
 		}
 	st_case_19:
-		if data[p] == 83 {
+		switch data[p] {
+		case 43:
+			goto st20
+		case 61:
+			goto st20
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st20
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st20
+			}
+		default:
 			goto st20
 		}
 		{
@@ -1515,7 +1536,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof20
 		}
 	st_case_20:
-		if data[p] == 84 {
+		switch data[p] {
+		case 43:
+			goto st21
+		case 61:
+			goto st21
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st21
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st21
+			}
+		default:
 			goto st21
 		}
 		{
@@ -1527,7 +1563,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof21
 		}
 	st_case_21:
-		if data[p] == 45 {
+		switch data[p] {
+		case 43:
+			goto st22
+		case 61:
+			goto st22
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st22
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st22
+			}
+		default:
 			goto st22
 		}
 		{
@@ -1539,7 +1590,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof22
 		}
 	st_case_22:
-		if data[p] == 77 {
+		switch data[p] {
+		case 43:
+			goto st23
+		case 61:
+			goto st23
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st23
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st23
+			}
+		default:
 			goto st23
 		}
 		{
@@ -1551,7 +1617,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof23
 		}
 	st_case_23:
-		if data[p] == 68 {
+		switch data[p] {
+		case 43:
+			goto st24
+		case 61:
+			goto st24
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st24
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st24
+			}
+		default:
 			goto st24
 		}
 		{
@@ -1563,7 +1644,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof24
 		}
 	st_case_24:
-		if data[p] == 53 {
+		switch data[p] {
+		case 43:
+			goto st25
+		case 61:
+			goto st25
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st25
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st25
+			}
+		default:
 			goto st25
 		}
 		{
@@ -1576,10 +1672,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_25:
 		switch data[p] {
-		case 10:
-			goto ctr36
-		case 13:
-			goto ctr37
+		case 43:
+			goto st26
+		case 61:
+			goto st26
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st26
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st26
+			}
+		default:
+			goto st26
 		}
 		{
 			goto st0
@@ -1590,7 +1698,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof26
 		}
 	st_case_26:
-		if data[p] == 76 {
+		switch data[p] {
+		case 43:
+			goto st27
+		case 61:
+			goto st27
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st27
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st27
+			}
+		default:
 			goto st27
 		}
 		{
@@ -1602,7 +1725,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof27
 		}
 	st_case_27:
-		if data[p] == 65 {
+		switch data[p] {
+		case 43:
+			goto st28
+		case 61:
+			goto st28
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st28
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st28
+			}
+		default:
 			goto st28
 		}
 		{
@@ -1614,7 +1752,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof28
 		}
 	st_case_28:
-		if data[p] == 73 {
+		switch data[p] {
+		case 43:
+			goto st29
+		case 61:
+			goto st29
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st29
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st29
+			}
+		default:
 			goto st29
 		}
 		{
@@ -1626,7 +1779,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof29
 		}
 	st_case_29:
-		if data[p] == 78 {
+		switch data[p] {
+		case 43:
+			goto st30
+		case 61:
+			goto st30
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st30
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st30
+			}
+		default:
 			goto st30
 		}
 		{
@@ -1639,11 +1807,21 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_30:
 		switch data[p] {
-		case 10:
-			goto ctr42
-		case 13:
-			goto ctr43
-		case 32:
+		case 43:
+			goto st31
+		case 61:
+			goto st31
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st31
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st31
+			}
+		default:
 			goto st31
 		}
 		{
@@ -1656,54 +1834,49 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_31:
 		switch data[p] {
-		case 45:
-			goto ctr45
+		case 43:
+			goto st32
 		case 61:
-			goto ctr45
+			goto st32
 		}
 		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st32
+			}
 		case data[p] > 90:
 			if 97 <= data[p] && data[p] <= 122 {
-				goto ctr45
+				goto st32
 			}
-		case data[p] >= 65:
-			goto ctr45
+		default:
+			goto st32
 		}
 		{
 			goto st0
 
 		}
-	ctr45:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st32
 	st32:
 		if p++; p == pe {
 			goto _test_eof32
 		}
 	st_case_32:
-		// line 1598 "smtp.go"
 		switch data[p] {
-		case 10:
-			goto ctr46
-		case 13:
-			goto ctr47
-		case 45:
-			goto st32
+		case 43:
+			goto st33
 		case 61:
-			goto st32
+			goto st33
 		}
 		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st33
+			}
 		case data[p] > 90:
 			if 97 <= data[p] && data[p] <= 122 {
-				goto st32
+				goto st33
 			}
-		case data[p] >= 65:
-			goto st32
+		default:
+			goto st33
 		}
 		{
 			goto st0
@@ -1714,7 +1887,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof33
 		}
 	st_case_33:
-		if data[p] == 65 {
+		switch data[p] {
+		case 43:
+			goto st34
+		case 61:
+			goto st34
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st34
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st34
+			}
+		default:
 			goto st34
 		}
 		{
@@ -1726,7 +1914,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof34
 		}
 	st_case_34:
-		if data[p] == 84 {
+		switch data[p] {
+		case 43:
+			goto st35
+		case 61:
+			goto st35
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st35
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st35
+			}
+		default:
 			goto st35
 		}
 		{
@@ -1738,7 +1941,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof35
 		}
 	st_case_35:
-		if data[p] == 65 {
+		switch data[p] {
+		case 43:
+			goto st36
+		case 61:
+			goto st36
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st36
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st36
+			}
+		default:
 			goto st36
 		}
 		{
@@ -1751,10 +1969,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_36:
 		switch data[p] {
-		case 10:
-			goto ctr52
-		case 13:
-			goto ctr53
+		case 43:
+			goto st37
+		case 61:
+			goto st37
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st37
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st37
+			}
+		default:
+			goto st37
 		}
 		{
 			goto st0
@@ -1765,7 +1995,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof37
 		}
 	st_case_37:
-		if data[p] == 72 {
+		switch data[p] {
+		case 43:
+			goto st38
+		case 61:
+			goto st38
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st38
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st38
+			}
+		default:
 			goto st38
 		}
 		{
@@ -1777,7 +2022,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof38
 		}
 	st_case_38:
-		if data[p] == 76 {
+		switch data[p] {
+		case 43:
+			goto st39
+		case 61:
+			goto st39
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st39
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st39
+			}
+		default:
 			goto st39
 		}
 		{
@@ -1789,7 +2049,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof39
 		}
 	st_case_39:
-		if data[p] == 79 {
+		switch data[p] {
+		case 43:
+			goto st40
+		case 61:
+			goto st40
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st40
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st40
+			}
+		default:
 			goto st40
 		}
 		{
@@ -1801,7 +2076,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof40
 		}
 	st_case_40:
-		if data[p] == 32 {
+		switch data[p] {
+		case 43:
+			goto st41
+		case 61:
+			goto st41
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st41
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st41
+			}
+		default:
 			goto st41
 		}
 		{
@@ -1813,50 +2103,15 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof41
 		}
 	st_case_41:
-		if data[p] == 91 {
-			goto ctr59
-		}
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto ctr58
-			}
-		case data[p] > 90:
-			if 97 <= data[p] && data[p] <= 122 {
-				goto ctr58
-			}
-		default:
-			goto ctr58
-		}
-		{
-			goto st0
-
-		}
-	ctr58:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st42
-	st42:
-		if p++; p == pe {
-			goto _test_eof42
-		}
-	st_case_42:
-		// line 1757 "smtp.go"
 		switch data[p] {
-		case 10:
-			goto ctr60
-		case 13:
-			goto ctr61
-		case 46:
-			goto st43
+		case 43:
+			goto st42
+		case 61:
+			goto st42
 		}
 		switch {
 		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
+			if 47 <= data[p] && data[p] <= 57 {
 				goto st42
 			}
 		case data[p] > 90:
@@ -1865,6 +2120,33 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			}
 		default:
 			goto st42
+		}
+		{
+			goto st0
+
+		}
+	st42:
+		if p++; p == pe {
+			goto _test_eof42
+		}
+	st_case_42:
+		switch data[p] {
+		case 43:
+			goto st43
+		case 61:
+			goto st43
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st43
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st43
+			}
+		default:
+			goto st43
 		}
 		{
 			goto st0
@@ -1875,44 +2157,50 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof43
 		}
 	st_case_43:
+		switch data[p] {
+		case 43:
+			goto st44
+		case 61:
+			goto st44
+		}
 		switch {
 		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st42
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st44
 			}
 		case data[p] > 90:
 			if 97 <= data[p] && data[p] <= 122 {
-				goto st42
+				goto st44
 			}
 		default:
-			goto st42
+			goto st44
 		}
 		{
 			goto st0
 
 		}
-	ctr59:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st44
 	st44:
 		if p++; p == pe {
 			goto _test_eof44
 		}
 	st_case_44:
-		// line 1816 "smtp.go"
 		switch data[p] {
-		case 48:
+		case 43:
 			goto st45
-		case 73:
-			goto st135
+		case 61:
+			goto st45
 		}
-		if 49 <= data[p] && data[p] <= 57 {
-			goto st131
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st45
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st45
+			}
+		default:
+			goto st45
 		}
 		{
 			goto st0
@@ -1924,15 +2212,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_45:
 		switch data[p] {
-		case 46:
+		case 43:
 			goto st46
-		case 58:
-			goto st71
-		case 120:
-			goto st128
+		case 61:
+			goto st46
 		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st68
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st46
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st46
+			}
+		default:
+			goto st46
 		}
 		{
 			goto st0
@@ -1943,46 +2238,495 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof46
 		}
 	st_case_46:
-		if data[p] == 48 {
-			goto st47
+		switch data[p] {
+		case 10:
+			goto ctr55
+		case 13:
+			goto ctr56
+		case 43:
+			goto st46
+		case 61:
+			goto st46
 		}
-		if 49 <= data[p] && data[p] <= 57 {
-			goto st63
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st46
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st46
+			}
+		default:
+			goto st46
 		}
 		{
 			goto st0
 
 		}
+	ctr55:
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		// line 92 "smtp.ragel"
+		{
+			parser.current.Verb = VerbBASE64
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr57:
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr72:
+		// line 89 "smtp.ragel"
+		{
+			parser.current.Verb = VerbAUTH_CRAM_MD5
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr83:
+		// line 88 "smtp.ragel"
+		{
+			parser.current.Verb = VerbAUTH_DIGEST_MD5
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr89:
+		// line 87 "smtp.ragel"
+		{
+			parser.current.Verb = VerbAUTH_PLAIN
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr93:
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		// line 86 "smtp.ragel"
+		{
+			parser.current.Verb = VerbAUTH_PLAIN
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr99:
+		// line 84 "smtp.ragel"
+		{
+			parser.current.Verb = VerbDATA
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr107:
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		// line 80 "smtp.ragel"
+		{
+			parser.current.Verb = VerbEHLO
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr215:
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		// line 79 "smtp.ragel"
+		{
+			parser.current.Verb = VerbHELO
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr337:
+		// line 82 "smtp.ragel"
+		{
+			parser.current.Verb = VerbMAIL
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr351:
+		// line 71 "smtp.ragel"
+		{
+			parser.current.BodyType = BodyType7BIT
+		}
+		// line 82 "smtp.ragel"
+		{
+			parser.current.Verb = VerbMAIL
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr361:
+		// line 69 "smtp.ragel"
+		{
+			parser.current.BodyType = BodyType8BITMIME
+		}
+		// line 82 "smtp.ragel"
+		{
+			parser.current.Verb = VerbMAIL
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr451:
+		// line 85 "smtp.ragel"
+		{
+			parser.current.Verb = VerbQUIT
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr472:
+		// line 83 "smtp.ragel"
+		{
+			parser.current.Verb = VerbRCPT
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr499:
+		// line 81 "smtp.ragel"
+		{
+			parser.current.Verb = VerbRSET
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr508:
+		// line 90 "smtp.ragel"
+		{
+			parser.current.Verb = VerbSTARTTLS
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	ctr515:
+		// line 91 "smtp.ragel"
+		{
+			parser.current.Verb = VerbVRFY
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 455
+				goto _out
+			}
+		}
+		goto st455
+	st455:
+		if p++; p == pe {
+			goto _test_eof455
+		}
+	st_case_455:
+		// line 2463 "smtp.go"
+		{
+			goto st0
+
+		}
+	ctr56:
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		// line 92 "smtp.ragel"
+		{
+			parser.current.Verb = VerbBASE64
+		}
+		goto st47
+	ctr73:
+		// line 89 "smtp.ragel"
+		{
+			parser.current.Verb = VerbAUTH_CRAM_MD5
+		}
+		goto st47
+	ctr84:
+		// line 88 "smtp.ragel"
+		{
+			parser.current.Verb = VerbAUTH_DIGEST_MD5
+		}
+		goto st47
+	ctr90:
+		// line 87 "smtp.ragel"
+		{
+			parser.current.Verb = VerbAUTH_PLAIN
+		}
+		goto st47
+	ctr94:
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		// line 86 "smtp.ragel"
+		{
+			parser.current.Verb = VerbAUTH_PLAIN
+		}
+		goto st47
+	ctr100:
+		// line 84 "smtp.ragel"
+		{
+			parser.current.Verb = VerbDATA
+		}
+		goto st47
+	ctr108:
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		// line 80 "smtp.ragel"
+		{
+			parser.current.Verb = VerbEHLO
+		}
+		goto st47
+	ctr216:
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		// line 79 "smtp.ragel"
+		{
+			parser.current.Verb = VerbHELO
+		}
+		goto st47
+	ctr338:
+		// line 82 "smtp.ragel"
+		{
+			parser.current.Verb = VerbMAIL
+		}
+		goto st47
+	ctr352:
+		// line 71 "smtp.ragel"
+		{
+			parser.current.BodyType = BodyType7BIT
+		}
+		// line 82 "smtp.ragel"
+		{
+			parser.current.Verb = VerbMAIL
+		}
+		goto st47
+	ctr362:
+		// line 69 "smtp.ragel"
+		{
+			parser.current.BodyType = BodyType8BITMIME
+		}
+		// line 82 "smtp.ragel"
+		{
+			parser.current.Verb = VerbMAIL
+		}
+		goto st47
+	ctr452:
+		// line 85 "smtp.ragel"
+		{
+			parser.current.Verb = VerbQUIT
+		}
+		goto st47
+	ctr473:
+		// line 83 "smtp.ragel"
+		{
+			parser.current.Verb = VerbRCPT
+		}
+		goto st47
+	ctr500:
+		// line 81 "smtp.ragel"
+		{
+			parser.current.Verb = VerbRSET
+		}
+		goto st47
+	ctr509:
+		// line 90 "smtp.ragel"
+		{
+			parser.current.Verb = VerbSTARTTLS
+		}
+		goto st47
+	ctr516:
+		// line 91 "smtp.ragel"
+		{
+			parser.current.Verb = VerbVRFY
+		}
+		goto st47
 	st47:
 		if p++; p == pe {
 			goto _test_eof47
 		}
 	st_case_47:
-		switch data[p] {
-		case 46:
-			goto st48
-		case 93:
-			goto st55
-		case 120:
-			goto st66
-		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st63
+		// line 2587 "smtp.go"
+		if data[p] == 10 {
+			goto ctr57
 		}
 		{
 			goto st0
 
 		}
+	ctr2:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st48
 	st48:
 		if p++; p == pe {
 			goto _test_eof48
 		}
 	st_case_48:
-		if data[p] == 48 {
+		// line 2608 "smtp.go"
+		switch data[p] {
+		case 43:
+			goto st3
+		case 61:
+			goto st3
+		case 85:
 			goto st49
 		}
-		if 49 <= data[p] && data[p] <= 57 {
-			goto st58
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st3
+			}
+		case data[p] > 84:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st3
+				}
+			case data[p] >= 86:
+				goto st3
+			}
+		default:
+			goto st3
 		}
 		{
 			goto st0
@@ -1994,15 +2738,29 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_49:
 		switch data[p] {
-		case 46:
+		case 43:
+			goto st4
+		case 61:
+			goto st4
+		case 84:
 			goto st50
-		case 93:
-			goto st55
-		case 120:
-			goto st61
 		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st58
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st4
+			}
+		case data[p] > 83:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st4
+				}
+			case data[p] >= 85:
+				goto st4
+			}
+		default:
+			goto st4
 		}
 		{
 			goto st0
@@ -2013,11 +2771,30 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof50
 		}
 	st_case_50:
-		if data[p] == 48 {
+		switch data[p] {
+		case 43:
+			goto st5
+		case 61:
+			goto st5
+		case 72:
 			goto st51
 		}
-		if 49 <= data[p] && data[p] <= 57 {
-			goto st52
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st5
+			}
+		case data[p] > 71:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st5
+				}
+			case data[p] >= 73:
+				goto st5
+			}
+		default:
+			goto st5
 		}
 		{
 			goto st0
@@ -2029,13 +2806,24 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_51:
 		switch data[p] {
-		case 93:
-			goto st55
-		case 120:
-			goto st56
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		case 32:
 			goto st52
+		case 43:
+			goto st6
+		case 61:
+			goto st6
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st6
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st6
+			}
+		default:
+			goto st6
 		}
 		{
 			goto st0
@@ -2046,11 +2834,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof52
 		}
 	st_case_52:
-		if data[p] == 93 {
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		switch data[p] {
+		case 67:
 			goto st53
+		case 68:
+			goto st61
+		case 80:
+			goto st71
 		}
 		{
 			goto st0
@@ -2061,10 +2851,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof53
 		}
 	st_case_53:
-		if data[p] == 93 {
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 82 {
 			goto st54
 		}
 		{
@@ -2076,7 +2863,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof54
 		}
 	st_case_54:
-		if data[p] == 93 {
+		if data[p] == 65 {
 			goto st55
 		}
 		{
@@ -2088,11 +2875,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof55
 		}
 	st_case_55:
-		switch data[p] {
-		case 10:
-			goto ctr60
-		case 13:
-			goto ctr61
+		if data[p] == 77 {
+			goto st56
 		}
 		{
 			goto st0
@@ -2103,16 +2887,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof56
 		}
 	st_case_56:
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st57
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st57
-			}
-		default:
+		if data[p] == 45 {
 			goto st57
 		}
 		{
@@ -2124,20 +2899,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof57
 		}
 	st_case_57:
-		if data[p] == 93 {
-			goto st55
-		}
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st54
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st54
-			}
-		default:
-			goto st54
+		if data[p] == 77 {
+			goto st58
 		}
 		{
 			goto st0
@@ -2148,13 +2911,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof58
 		}
 	st_case_58:
-		switch data[p] {
-		case 46:
-			goto st50
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 68 {
 			goto st59
 		}
 		{
@@ -2166,13 +2923,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof59
 		}
 	st_case_59:
-		switch data[p] {
-		case 46:
-			goto st50
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 53 {
 			goto st60
 		}
 		{
@@ -2185,10 +2936,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_60:
 		switch data[p] {
-		case 46:
-			goto st50
-		case 93:
-			goto st55
+		case 10:
+			goto ctr72
+		case 13:
+			goto ctr73
 		}
 		{
 			goto st0
@@ -2199,16 +2950,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof61
 		}
 	st_case_61:
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st62
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st62
-			}
-		default:
+		if data[p] == 73 {
 			goto st62
 		}
 		{
@@ -2220,23 +2962,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof62
 		}
 	st_case_62:
-		switch data[p] {
-		case 46:
-			goto st50
-		case 93:
-			goto st55
-		}
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st60
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st60
-			}
-		default:
-			goto st60
+		if data[p] == 71 {
+			goto st63
 		}
 		{
 			goto st0
@@ -2247,13 +2974,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof63
 		}
 	st_case_63:
-		switch data[p] {
-		case 46:
-			goto st48
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 69 {
 			goto st64
 		}
 		{
@@ -2265,13 +2986,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof64
 		}
 	st_case_64:
-		switch data[p] {
-		case 46:
-			goto st48
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 83 {
 			goto st65
 		}
 		{
@@ -2283,11 +2998,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof65
 		}
 	st_case_65:
-		switch data[p] {
-		case 46:
-			goto st48
-		case 93:
-			goto st55
+		if data[p] == 84 {
+			goto st66
 		}
 		{
 			goto st0
@@ -2298,16 +3010,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof66
 		}
 	st_case_66:
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st67
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st67
-			}
-		default:
+		if data[p] == 45 {
 			goto st67
 		}
 		{
@@ -2319,23 +3022,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof67
 		}
 	st_case_67:
-		switch data[p] {
-		case 46:
-			goto st48
-		case 93:
-			goto st55
-		}
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st65
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st65
-			}
-		default:
-			goto st65
+		if data[p] == 77 {
+			goto st68
 		}
 		{
 			goto st0
@@ -2346,13 +3034,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof68
 		}
 	st_case_68:
-		switch data[p] {
-		case 46:
-			goto st46
-		case 58:
-			goto st71
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 68 {
 			goto st69
 		}
 		{
@@ -2364,13 +3046,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof69
 		}
 	st_case_69:
-		switch data[p] {
-		case 46:
-			goto st46
-		case 58:
-			goto st71
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 53 {
 			goto st70
 		}
 		{
@@ -2383,10 +3059,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_70:
 		switch data[p] {
-		case 46:
-			goto st46
-		case 58:
-			goto st71
+		case 10:
+			goto ctr83
+		case 13:
+			goto ctr84
 		}
 		{
 			goto st0
@@ -2397,10 +3073,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof71
 		}
 	st_case_71:
-		if data[p] == 58 {
-			goto st127
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 76 {
 			goto st72
 		}
 		{
@@ -2412,13 +3085,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof72
 		}
 	st_case_72:
-		switch data[p] {
-		case 58:
-			goto st76
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 65 {
 			goto st73
 		}
 		{
@@ -2430,13 +3097,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof73
 		}
 	st_case_73:
-		switch data[p] {
-		case 58:
-			goto st76
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 73 {
 			goto st74
 		}
 		{
@@ -2448,13 +3109,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof74
 		}
 	st_case_74:
-		switch data[p] {
-		case 58:
-			goto st76
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 78 {
 			goto st75
 		}
 		{
@@ -2467,10 +3122,12 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_75:
 		switch data[p] {
-		case 58:
+		case 10:
+			goto ctr89
+		case 13:
+			goto ctr90
+		case 32:
 			goto st76
-		case 93:
-			goto st55
 		}
 		{
 			goto st0
@@ -2481,47 +3138,93 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof76
 		}
 	st_case_76:
-		if data[p] == 58 {
-			goto st126
+		switch data[p] {
+		case 45:
+			goto ctr92
+		case 61:
+			goto ctr92
 		}
-		if 48 <= data[p] && data[p] <= 57 {
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto ctr92
+			}
+		case data[p] >= 65:
+			goto ctr92
+		}
+		{
+			goto st0
+
+		}
+	ctr92:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st77
+	st77:
+		if p++; p == pe {
+			goto _test_eof77
+		}
+	st_case_77:
+		// line 3075 "smtp.go"
+		switch data[p] {
+		case 10:
+			goto ctr93
+		case 13:
+			goto ctr94
+		case 45:
+			goto st77
+		case 61:
+			goto st77
+		}
+		switch {
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st77
+			}
+		case data[p] >= 65:
 			goto st77
 		}
 		{
 			goto st0
 
 		}
-	st77:
-		if p++; p == pe {
-			goto _test_eof77
-		}
-	st_case_77:
-		switch data[p] {
-		case 58:
-			goto st81
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st78
-		}
+	ctr3:
+		// line 32 "smtp.ragel"
 		{
-			goto st0
 
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
 		}
+		goto st78
 	st78:
 		if p++; p == pe {
 			goto _test_eof78
 		}
 	st_case_78:
+		// line 3111 "smtp.go"
 		switch data[p] {
-		case 58:
-			goto st81
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		case 43:
+			goto st3
+		case 61:
+			goto st3
+		case 65:
 			goto st79
+		}
+		switch {
+		case data[p] < 66:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st3
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st3
+			}
+		default:
+			goto st3
 		}
 		{
 			goto st0
@@ -2533,13 +3236,29 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_79:
 		switch data[p] {
-		case 58:
-			goto st81
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		case 43:
+			goto st4
+		case 61:
+			goto st4
+		case 84:
 			goto st80
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st4
+			}
+		case data[p] > 83:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st4
+				}
+			case data[p] >= 85:
+				goto st4
+			}
+		default:
+			goto st4
 		}
 		{
 			goto st0
@@ -2551,10 +3270,24 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_80:
 		switch data[p] {
-		case 58:
+		case 43:
+			goto st5
+		case 61:
+			goto st5
+		case 65:
 			goto st81
-		case 93:
-			goto st55
+		}
+		switch {
+		case data[p] < 66:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st5
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st5
+			}
+		default:
+			goto st5
 		}
 		{
 			goto st0
@@ -2565,29 +3298,70 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof81
 		}
 	st_case_81:
-		if data[p] == 58 {
-			goto st125
+		switch data[p] {
+		case 10:
+			goto ctr99
+		case 13:
+			goto ctr100
+		case 43:
+			goto st6
+		case 61:
+			goto st6
 		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st82
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st6
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st6
+			}
+		default:
+			goto st6
 		}
 		{
 			goto st0
 
 		}
+	ctr4:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st82
 	st82:
 		if p++; p == pe {
 			goto _test_eof82
 		}
 	st_case_82:
+		// line 3243 "smtp.go"
 		switch data[p] {
-		case 58:
-			goto st86
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		case 43:
+			goto st3
+		case 61:
+			goto st3
+		case 72:
 			goto st83
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st3
+			}
+		case data[p] > 71:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st3
+				}
+			case data[p] >= 73:
+				goto st3
+			}
+		default:
+			goto st3
 		}
 		{
 			goto st0
@@ -2599,13 +3373,29 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_83:
 		switch data[p] {
-		case 58:
-			goto st86
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		case 43:
+			goto st4
+		case 61:
+			goto st4
+		case 76:
 			goto st84
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st4
+			}
+		case data[p] > 75:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st4
+				}
+			case data[p] >= 77:
+				goto st4
+			}
+		default:
+			goto st4
 		}
 		{
 			goto st0
@@ -2617,13 +3407,29 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_84:
 		switch data[p] {
-		case 58:
-			goto st86
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		case 43:
+			goto st5
+		case 61:
+			goto st5
+		case 79:
 			goto st85
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st5
+			}
+		case data[p] > 78:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st5
+				}
+			case data[p] >= 80:
+				goto st5
+			}
+		default:
+			goto st5
 		}
 		{
 			goto st0
@@ -2635,10 +3441,24 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_85:
 		switch data[p] {
-		case 58:
+		case 32:
 			goto st86
-		case 93:
-			goto st55
+		case 43:
+			goto st6
+		case 61:
+			goto st6
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st6
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st6
+			}
+		default:
+			goto st6
 		}
 		{
 			goto st0
@@ -2649,29 +3469,58 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof86
 		}
 	st_case_86:
-		if data[p] == 58 {
-			goto st124
+		if data[p] == 91 {
+			goto ctr106
 		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st87
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto ctr105
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto ctr105
+			}
+		default:
+			goto ctr105
 		}
 		{
 			goto st0
 
 		}
+	ctr105:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st87
 	st87:
 		if p++; p == pe {
 			goto _test_eof87
 		}
 	st_case_87:
+		// line 3407 "smtp.go"
 		switch data[p] {
-		case 58:
-			goto st91
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		case 10:
+			goto ctr107
+		case 13:
+			goto ctr108
+		case 46:
 			goto st88
+		}
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st87
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st87
+			}
+		default:
+			goto st87
 		}
 		{
 			goto st0
@@ -2682,32 +3531,44 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof88
 		}
 	st_case_88:
-		switch data[p] {
-		case 58:
-			goto st91
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st89
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st87
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st87
+			}
+		default:
+			goto st87
 		}
 		{
 			goto st0
 
 		}
+	ctr106:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st89
 	st89:
 		if p++; p == pe {
 			goto _test_eof89
 		}
 	st_case_89:
+		// line 3466 "smtp.go"
 		switch data[p] {
-		case 58:
-			goto st91
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		case 48:
 			goto st90
+		case 73:
+			goto st180
+		}
+		if 49 <= data[p] && data[p] <= 57 {
+			goto st176
 		}
 		{
 			goto st0
@@ -2719,10 +3580,15 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_90:
 		switch data[p] {
-		case 58:
+		case 46:
 			goto st91
-		case 93:
-			goto st55
+		case 58:
+			goto st116
+		case 120:
+			goto st173
+		}
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st113
 		}
 		{
 			goto st0
@@ -2733,11 +3599,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof91
 		}
 	st_case_91:
-		if data[p] == 58 {
-			goto st123
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 48 {
 			goto st92
+		}
+		if 49 <= data[p] && data[p] <= 57 {
+			goto st108
 		}
 		{
 			goto st0
@@ -2749,13 +3615,15 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_92:
 		switch data[p] {
-		case 58:
-			goto st96
+		case 46:
+			goto st93
 		case 93:
-			goto st55
+			goto st100
+		case 120:
+			goto st111
 		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st93
+			goto st108
 		}
 		{
 			goto st0
@@ -2766,14 +3634,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof93
 		}
 	st_case_93:
-		switch data[p] {
-		case 58:
-			goto st96
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 48 {
 			goto st94
+		}
+		if 49 <= data[p] && data[p] <= 57 {
+			goto st103
 		}
 		{
 			goto st0
@@ -2785,13 +3650,15 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_94:
 		switch data[p] {
-		case 58:
-			goto st96
+		case 46:
+			goto st95
 		case 93:
-			goto st55
+			goto st100
+		case 120:
+			goto st106
 		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st95
+			goto st103
 		}
 		{
 			goto st0
@@ -2802,11 +3669,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof95
 		}
 	st_case_95:
-		switch data[p] {
-		case 58:
+		if data[p] == 48 {
 			goto st96
-		case 93:
-			goto st55
+		}
+		if 49 <= data[p] && data[p] <= 57 {
+			goto st97
 		}
 		{
 			goto st0
@@ -2817,8 +3684,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof96
 		}
 	st_case_96:
-		if data[p] == 58 {
-			goto st122
+		switch data[p] {
+		case 93:
+			goto st100
+		case 120:
+			goto st101
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st97
@@ -2832,11 +3702,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof97
 		}
 	st_case_97:
-		switch data[p] {
-		case 58:
-			goto st101
-		case 93:
-			goto st55
+		if data[p] == 93 {
+			goto st100
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st98
@@ -2850,11 +3717,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof98
 		}
 	st_case_98:
-		switch data[p] {
-		case 58:
-			goto st101
-		case 93:
-			goto st55
+		if data[p] == 93 {
+			goto st100
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st99
@@ -2868,13 +3732,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof99
 		}
 	st_case_99:
-		switch data[p] {
-		case 58:
-			goto st101
-		case 93:
-			goto st55
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 93 {
 			goto st100
 		}
 		{
@@ -2887,10 +3745,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_100:
 		switch data[p] {
-		case 58:
-			goto st101
-		case 93:
-			goto st55
+		case 10:
+			goto ctr107
+		case 13:
+			goto ctr108
 		}
 		{
 			goto st0
@@ -2901,10 +3759,16 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof101
 		}
 	st_case_101:
-		if data[p] == 58 {
-			goto st121
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st102
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st102
+			}
+		default:
 			goto st102
 		}
 		{
@@ -2916,14 +3780,20 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof102
 		}
 	st_case_102:
-		switch data[p] {
-		case 58:
-			goto st106
-		case 93:
-			goto st55
+		if data[p] == 93 {
+			goto st100
 		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st103
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st99
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st99
+			}
+		default:
+			goto st99
 		}
 		{
 			goto st0
@@ -2935,10 +3805,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_103:
 		switch data[p] {
-		case 58:
-			goto st106
+		case 46:
+			goto st95
 		case 93:
-			goto st55
+			goto st100
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st104
@@ -2953,10 +3823,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_104:
 		switch data[p] {
-		case 58:
-			goto st106
+		case 46:
+			goto st95
 		case 93:
-			goto st55
+			goto st100
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st105
@@ -2971,10 +3841,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_105:
 		switch data[p] {
-		case 58:
-			goto st106
+		case 46:
+			goto st95
 		case 93:
-			goto st55
+			goto st100
 		}
 		{
 			goto st0
@@ -2985,10 +3855,16 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof106
 		}
 	st_case_106:
-		if data[p] == 58 {
-			goto st120
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st107
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st107
+			}
+		default:
 			goto st107
 		}
 		{
@@ -3001,13 +3877,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_107:
 		switch data[p] {
-		case 58:
-			goto st111
+		case 46:
+			goto st95
 		case 93:
-			goto st55
+			goto st100
 		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st108
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st105
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st105
+			}
+		default:
+			goto st105
 		}
 		{
 			goto st0
@@ -3019,10 +3904,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_108:
 		switch data[p] {
-		case 58:
-			goto st111
+		case 46:
+			goto st93
 		case 93:
-			goto st55
+			goto st100
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st109
@@ -3037,10 +3922,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_109:
 		switch data[p] {
-		case 58:
-			goto st111
+		case 46:
+			goto st93
 		case 93:
-			goto st55
+			goto st100
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st110
@@ -3055,10 +3940,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_110:
 		switch data[p] {
-		case 58:
-			goto st111
+		case 46:
+			goto st93
 		case 93:
-			goto st55
+			goto st100
 		}
 		{
 			goto st0
@@ -3069,10 +3954,16 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof111
 		}
 	st_case_111:
-		if data[p] == 58 {
-			goto st119
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st112
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st112
+			}
+		default:
 			goto st112
 		}
 		{
@@ -3085,13 +3976,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_112:
 		switch data[p] {
-		case 58:
-			goto st116
+		case 46:
+			goto st93
 		case 93:
-			goto st55
+			goto st100
 		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st113
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st110
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st110
+			}
+		default:
+			goto st110
 		}
 		{
 			goto st0
@@ -3103,10 +4003,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_113:
 		switch data[p] {
+		case 46:
+			goto st91
 		case 58:
 			goto st116
-		case 93:
-			goto st55
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st114
@@ -3121,10 +4021,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_114:
 		switch data[p] {
+		case 46:
+			goto st91
 		case 58:
 			goto st116
-		case 93:
-			goto st55
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st115
@@ -3139,10 +4039,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_115:
 		switch data[p] {
+		case 46:
+			goto st91
 		case 58:
 			goto st116
-		case 93:
-			goto st55
 		}
 		{
 			goto st0
@@ -3154,7 +4054,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_116:
 		if data[p] == 58 {
-			goto st118
+			goto st172
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st117
@@ -3168,11 +4068,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof117
 		}
 	st_case_117:
-		if data[p] == 93 {
-			goto st55
+		switch data[p] {
+		case 58:
+			goto st121
+		case 93:
+			goto st100
 		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st52
+			goto st118
 		}
 		{
 			goto st0
@@ -3183,8 +4086,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof118
 		}
 	st_case_118:
+		switch data[p] {
+		case 58:
+			goto st121
+		case 93:
+			goto st100
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st117
+			goto st119
 		}
 		{
 			goto st0
@@ -3195,8 +4104,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof119
 		}
 	st_case_119:
+		switch data[p] {
+		case 58:
+			goto st121
+		case 93:
+			goto st100
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st112
+			goto st120
 		}
 		{
 			goto st0
@@ -3207,8 +4122,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof120
 		}
 	st_case_120:
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st107
+		switch data[p] {
+		case 58:
+			goto st121
+		case 93:
+			goto st100
 		}
 		{
 			goto st0
@@ -3219,8 +4137,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof121
 		}
 	st_case_121:
+		if data[p] == 58 {
+			goto st171
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st102
+			goto st122
 		}
 		{
 			goto st0
@@ -3231,8 +4152,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof122
 		}
 	st_case_122:
+		switch data[p] {
+		case 58:
+			goto st126
+		case 93:
+			goto st100
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st97
+			goto st123
 		}
 		{
 			goto st0
@@ -3243,8 +4170,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof123
 		}
 	st_case_123:
+		switch data[p] {
+		case 58:
+			goto st126
+		case 93:
+			goto st100
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st92
+			goto st124
 		}
 		{
 			goto st0
@@ -3255,8 +4188,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof124
 		}
 	st_case_124:
+		switch data[p] {
+		case 58:
+			goto st126
+		case 93:
+			goto st100
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st87
+			goto st125
 		}
 		{
 			goto st0
@@ -3267,8 +4206,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof125
 		}
 	st_case_125:
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st82
+		switch data[p] {
+		case 58:
+			goto st126
+		case 93:
+			goto st100
 		}
 		{
 			goto st0
@@ -3279,8 +4221,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof126
 		}
 	st_case_126:
+		if data[p] == 58 {
+			goto st170
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st77
+			goto st127
 		}
 		{
 			goto st0
@@ -3291,8 +4236,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof127
 		}
 	st_case_127:
+		switch data[p] {
+		case 58:
+			goto st131
+		case 93:
+			goto st100
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st72
+			goto st128
 		}
 		{
 			goto st0
@@ -3303,16 +4254,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof128
 		}
 	st_case_128:
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st129
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st129
-			}
-		default:
+		switch data[p] {
+		case 58:
+			goto st131
+		case 93:
+			goto st100
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st129
 		}
 		{
@@ -3324,19 +4272,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof129
 		}
 	st_case_129:
-		if data[p] == 46 {
-			goto st46
+		switch data[p] {
+		case 58:
+			goto st131
+		case 93:
+			goto st100
 		}
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st130
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st130
-			}
-		default:
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st130
 		}
 		{
@@ -3348,8 +4290,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof130
 		}
 	st_case_130:
-		if data[p] == 46 {
-			goto st46
+		switch data[p] {
+		case 58:
+			goto st131
+		case 93:
+			goto st100
 		}
 		{
 			goto st0
@@ -3360,11 +4305,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof131
 		}
 	st_case_131:
-		switch data[p] {
-		case 46:
-			goto st46
-		case 58:
-			goto st71
+		if data[p] == 58 {
+			goto st169
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st132
@@ -3379,10 +4321,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_132:
 		switch data[p] {
-		case 46:
-			goto st46
 		case 58:
-			goto st71
+			goto st136
+		case 93:
+			goto st100
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st133
@@ -3397,10 +4339,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_133:
 		switch data[p] {
-		case 46:
-			goto st46
 		case 58:
-			goto st71
+			goto st136
+		case 93:
+			goto st100
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st134
@@ -3414,8 +4356,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof134
 		}
 	st_case_134:
-		if data[p] == 58 {
-			goto st71
+		switch data[p] {
+		case 58:
+			goto st136
+		case 93:
+			goto st100
+		}
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st135
 		}
 		{
 			goto st0
@@ -3426,8 +4374,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof135
 		}
 	st_case_135:
-		if data[p] == 80 {
+		switch data[p] {
+		case 58:
 			goto st136
+		case 93:
+			goto st100
 		}
 		{
 			goto st0
@@ -3438,7 +4389,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof136
 		}
 	st_case_136:
-		if data[p] == 118 {
+		if data[p] == 58 {
+			goto st168
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st137
 		}
 		{
@@ -3450,7 +4404,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof137
 		}
 	st_case_137:
-		if data[p] == 54 {
+		switch data[p] {
+		case 58:
+			goto st141
+		case 93:
+			goto st100
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st138
 		}
 		{
@@ -3462,7 +4422,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof138
 		}
 	st_case_138:
-		if data[p] == 58 {
+		switch data[p] {
+		case 58:
+			goto st141
+		case 93:
+			goto st100
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st139
 		}
 		{
@@ -3474,6 +4440,12 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof139
 		}
 	st_case_139:
+		switch data[p] {
+		case 58:
+			goto st141
+		case 93:
+			goto st100
+		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st140
 		}
@@ -3486,11 +4458,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof140
 		}
 	st_case_140:
-		if data[p] == 58 {
-			goto st71
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		switch data[p] {
+		case 58:
 			goto st141
+		case 93:
+			goto st100
 		}
 		{
 			goto st0
@@ -3502,7 +4474,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_141:
 		if data[p] == 58 {
-			goto st71
+			goto st167
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st142
@@ -3516,11 +4488,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof142
 		}
 	st_case_142:
-		if data[p] == 58 {
-			goto st71
+		switch data[p] {
+		case 58:
+			goto st146
+		case 93:
+			goto st100
 		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st134
+			goto st143
 		}
 		{
 			goto st0
@@ -3531,7 +4506,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof143
 		}
 	st_case_143:
-		if data[p] == 69 {
+		switch data[p] {
+		case 58:
+			goto st146
+		case 93:
+			goto st100
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st144
 		}
 		{
@@ -3543,7 +4524,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof144
 		}
 	st_case_144:
-		if data[p] == 76 {
+		switch data[p] {
+		case 58:
+			goto st146
+		case 93:
+			goto st100
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st145
 		}
 		{
@@ -3555,8 +4542,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof145
 		}
 	st_case_145:
-		if data[p] == 79 {
+		switch data[p] {
+		case 58:
 			goto st146
+		case 93:
+			goto st100
 		}
 		{
 			goto st0
@@ -3567,7 +4557,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof146
 		}
 	st_case_146:
-		if data[p] == 32 {
+		if data[p] == 58 {
+			goto st166
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st147
 		}
 		{
@@ -3579,58 +4572,32 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof147
 		}
 	st_case_147:
-		if data[p] == 91 {
-			goto ctr167
+		switch data[p] {
+		case 58:
+			goto st151
+		case 93:
+			goto st100
 		}
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto ctr166
-			}
-		case data[p] > 90:
-			if 97 <= data[p] && data[p] <= 122 {
-				goto ctr166
-			}
-		default:
-			goto ctr166
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st148
 		}
 		{
 			goto st0
 
 		}
-	ctr166:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st148
 	st148:
 		if p++; p == pe {
 			goto _test_eof148
 		}
 	st_case_148:
-		// line 3523 "smtp.go"
 		switch data[p] {
-		case 10:
-			goto ctr168
-		case 13:
-			goto ctr169
-		case 46:
-			goto st149
+		case 58:
+			goto st151
+		case 93:
+			goto st100
 		}
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st148
-			}
-		case data[p] > 90:
-			if 97 <= data[p] && data[p] <= 122 {
-				goto st148
-			}
-		default:
-			goto st148
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st149
 		}
 		{
 			goto st0
@@ -3641,44 +4608,29 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof149
 		}
 	st_case_149:
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st148
-			}
-		case data[p] > 90:
-			if 97 <= data[p] && data[p] <= 122 {
-				goto st148
-			}
-		default:
-			goto st148
+		switch data[p] {
+		case 58:
+			goto st151
+		case 93:
+			goto st100
+		}
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st150
 		}
 		{
 			goto st0
 
 		}
-	ctr167:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st150
 	st150:
 		if p++; p == pe {
 			goto _test_eof150
 		}
 	st_case_150:
-		// line 3582 "smtp.go"
 		switch data[p] {
-		case 48:
+		case 58:
 			goto st151
-		case 73:
-			goto st241
-		}
-		if 49 <= data[p] && data[p] <= 57 {
-			goto st237
+		case 93:
+			goto st100
 		}
 		{
 			goto st0
@@ -3689,16 +4641,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof151
 		}
 	st_case_151:
-		switch data[p] {
-		case 46:
-			goto st152
-		case 58:
-			goto st177
-		case 120:
-			goto st234
+		if data[p] == 58 {
+			goto st165
 		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st174
+			goto st152
 		}
 		{
 			goto st0
@@ -3709,11 +4656,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof152
 		}
 	st_case_152:
-		if data[p] == 48 {
-			goto st153
+		switch data[p] {
+		case 58:
+			goto st156
+		case 93:
+			goto st100
 		}
-		if 49 <= data[p] && data[p] <= 57 {
-			goto st169
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st153
 		}
 		{
 			goto st0
@@ -3725,15 +4675,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_153:
 		switch data[p] {
-		case 46:
-			goto st154
+		case 58:
+			goto st156
 		case 93:
-			goto st161
-		case 120:
-			goto st172
+			goto st100
 		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st169
+			goto st154
 		}
 		{
 			goto st0
@@ -3744,11 +4692,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof154
 		}
 	st_case_154:
-		if data[p] == 48 {
-			goto st155
+		switch data[p] {
+		case 58:
+			goto st156
+		case 93:
+			goto st100
 		}
-		if 49 <= data[p] && data[p] <= 57 {
-			goto st164
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st155
 		}
 		{
 			goto st0
@@ -3760,15 +4711,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_155:
 		switch data[p] {
-		case 46:
+		case 58:
 			goto st156
 		case 93:
-			goto st161
-		case 120:
-			goto st167
-		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st164
+			goto st100
 		}
 		{
 			goto st0
@@ -3779,11 +4725,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof156
 		}
 	st_case_156:
-		if data[p] == 48 {
-			goto st157
+		if data[p] == 58 {
+			goto st164
 		}
-		if 49 <= data[p] && data[p] <= 57 {
-			goto st158
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st157
 		}
 		{
 			goto st0
@@ -3795,10 +4741,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_157:
 		switch data[p] {
-		case 93:
+		case 58:
 			goto st161
-		case 120:
-			goto st162
+		case 93:
+			goto st100
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st158
@@ -3812,8 +4758,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof158
 		}
 	st_case_158:
-		if data[p] == 93 {
+		switch data[p] {
+		case 58:
 			goto st161
+		case 93:
+			goto st100
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st159
@@ -3827,8 +4776,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof159
 		}
 	st_case_159:
-		if data[p] == 93 {
+		switch data[p] {
+		case 58:
 			goto st161
+		case 93:
+			goto st100
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st160
@@ -3842,8 +4794,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof160
 		}
 	st_case_160:
-		if data[p] == 93 {
+		switch data[p] {
+		case 58:
 			goto st161
+		case 93:
+			goto st100
 		}
 		{
 			goto st0
@@ -3854,11 +4809,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof161
 		}
 	st_case_161:
-		switch data[p] {
-		case 10:
-			goto ctr168
-		case 13:
-			goto ctr169
+		if data[p] == 58 {
+			goto st163
+		}
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st162
 		}
 		{
 			goto st0
@@ -3869,17 +4824,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof162
 		}
 	st_case_162:
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st163
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st163
-			}
-		default:
-			goto st163
+		if data[p] == 93 {
+			goto st100
+		}
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st97
 		}
 		{
 			goto st0
@@ -3890,20 +4839,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof163
 		}
 	st_case_163:
-		if data[p] == 93 {
-			goto st161
-		}
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st160
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st160
-			}
-		default:
-			goto st160
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st162
 		}
 		{
 			goto st0
@@ -3914,14 +4851,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof164
 		}
 	st_case_164:
-		switch data[p] {
-		case 46:
-			goto st156
-		case 93:
-			goto st161
-		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st165
+			goto st157
 		}
 		{
 			goto st0
@@ -3932,14 +4863,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof165
 		}
 	st_case_165:
-		switch data[p] {
-		case 46:
-			goto st156
-		case 93:
-			goto st161
-		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st166
+			goto st152
 		}
 		{
 			goto st0
@@ -3950,11 +4875,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof166
 		}
 	st_case_166:
-		switch data[p] {
-		case 46:
-			goto st156
-		case 93:
-			goto st161
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st147
 		}
 		{
 			goto st0
@@ -3965,17 +4887,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof167
 		}
 	st_case_167:
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st168
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st168
-			}
-		default:
-			goto st168
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st142
 		}
 		{
 			goto st0
@@ -3986,23 +4899,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof168
 		}
 	st_case_168:
-		switch data[p] {
-		case 46:
-			goto st156
-		case 93:
-			goto st161
-		}
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st166
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st166
-			}
-		default:
-			goto st166
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st137
 		}
 		{
 			goto st0
@@ -4013,14 +4911,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof169
 		}
 	st_case_169:
-		switch data[p] {
-		case 46:
-			goto st154
-		case 93:
-			goto st161
-		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st170
+			goto st132
 		}
 		{
 			goto st0
@@ -4031,14 +4923,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof170
 		}
 	st_case_170:
-		switch data[p] {
-		case 46:
-			goto st154
-		case 93:
-			goto st161
-		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st171
+			goto st127
 		}
 		{
 			goto st0
@@ -4049,11 +4935,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof171
 		}
 	st_case_171:
-		switch data[p] {
-		case 46:
-			goto st154
-		case 93:
-			goto st161
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st122
 		}
 		{
 			goto st0
@@ -4064,17 +4947,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof172
 		}
 	st_case_172:
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st173
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st173
-			}
-		default:
-			goto st173
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st117
 		}
 		{
 			goto st0
@@ -4085,23 +4959,17 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof173
 		}
 	st_case_173:
-		switch data[p] {
-		case 46:
-			goto st154
-		case 93:
-			goto st161
-		}
 		switch {
 		case data[p] < 65:
 			if 48 <= data[p] && data[p] <= 57 {
-				goto st171
+				goto st174
 			}
 		case data[p] > 70:
 			if 97 <= data[p] && data[p] <= 102 {
-				goto st171
+				goto st174
 			}
 		default:
-			goto st171
+			goto st174
 		}
 		{
 			goto st0
@@ -4112,13 +4980,19 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof174
 		}
 	st_case_174:
-		switch data[p] {
-		case 46:
-			goto st152
-		case 58:
-			goto st177
+		if data[p] == 46 {
+			goto st91
 		}
-		if 48 <= data[p] && data[p] <= 57 {
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st175
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st175
+			}
+		default:
 			goto st175
 		}
 		{
@@ -4130,14 +5004,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof175
 		}
 	st_case_175:
-		switch data[p] {
-		case 46:
-			goto st152
-		case 58:
-			goto st177
-		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st176
+		if data[p] == 46 {
+			goto st91
 		}
 		{
 			goto st0
@@ -4150,8 +5018,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 	st_case_176:
 		switch data[p] {
 		case 46:
-			goto st152
+			goto st91
 		case 58:
+			goto st116
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st177
 		}
 		{
@@ -4163,8 +5034,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof177
 		}
 	st_case_177:
-		if data[p] == 58 {
-			goto st233
+		switch data[p] {
+		case 46:
+			goto st91
+		case 58:
+			goto st116
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st178
@@ -4179,10 +5053,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_178:
 		switch data[p] {
+		case 46:
+			goto st91
 		case 58:
-			goto st182
-		case 93:
-			goto st161
+			goto st116
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st179
@@ -4196,14 +5070,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof179
 		}
 	st_case_179:
-		switch data[p] {
-		case 58:
-			goto st182
-		case 93:
-			goto st161
-		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st180
+		if data[p] == 58 {
+			goto st116
 		}
 		{
 			goto st0
@@ -4214,13 +5082,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof180
 		}
 	st_case_180:
-		switch data[p] {
-		case 58:
-			goto st182
-		case 93:
-			goto st161
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 80 {
 			goto st181
 		}
 		{
@@ -4232,11 +5094,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof181
 		}
 	st_case_181:
-		switch data[p] {
-		case 58:
+		if data[p] == 118 {
 			goto st182
-		case 93:
-			goto st161
 		}
 		{
 			goto st0
@@ -4247,10 +5106,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof182
 		}
 	st_case_182:
-		if data[p] == 58 {
-			goto st232
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 54 {
 			goto st183
 		}
 		{
@@ -4262,13 +5118,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof183
 		}
 	st_case_183:
-		switch data[p] {
-		case 58:
-			goto st187
-		case 93:
-			goto st161
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 58 {
 			goto st184
 		}
 		{
@@ -4280,12 +5130,6 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof184
 		}
 	st_case_184:
-		switch data[p] {
-		case 58:
-			goto st187
-		case 93:
-			goto st161
-		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st185
 		}
@@ -4298,11 +5142,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof185
 		}
 	st_case_185:
-		switch data[p] {
-		case 58:
-			goto st187
-		case 93:
-			goto st161
+		if data[p] == 58 {
+			goto st116
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st186
@@ -4316,11 +5157,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof186
 		}
 	st_case_186:
-		switch data[p] {
-		case 58:
+		if data[p] == 58 {
+			goto st116
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st187
-		case 93:
-			goto st161
 		}
 		{
 			goto st0
@@ -4332,28 +5173,53 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_187:
 		if data[p] == 58 {
-			goto st231
+			goto st116
 		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st188
+			goto st179
 		}
 		{
 			goto st0
 
 		}
+	ctr5:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st188
 	st188:
 		if p++; p == pe {
 			goto _test_eof188
 		}
 	st_case_188:
+		// line 5101 "smtp.go"
 		switch data[p] {
-		case 58:
-			goto st192
-		case 93:
-			goto st161
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		case 43:
+			goto st3
+		case 61:
+			goto st3
+		case 69:
 			goto st189
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st3
+			}
+		case data[p] > 68:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st3
+				}
+			case data[p] >= 70:
+				goto st3
+			}
+		default:
+			goto st3
 		}
 		{
 			goto st0
@@ -4365,13 +5231,29 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_189:
 		switch data[p] {
-		case 58:
-			goto st192
-		case 93:
-			goto st161
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		case 43:
+			goto st4
+		case 61:
+			goto st4
+		case 76:
 			goto st190
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st4
+			}
+		case data[p] > 75:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st4
+				}
+			case data[p] >= 77:
+				goto st4
+			}
+		default:
+			goto st4
 		}
 		{
 			goto st0
@@ -4383,13 +5265,29 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_190:
 		switch data[p] {
-		case 58:
-			goto st192
-		case 93:
-			goto st161
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		case 43:
+			goto st5
+		case 61:
+			goto st5
+		case 79:
 			goto st191
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st5
+			}
+		case data[p] > 78:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st5
+				}
+			case data[p] >= 80:
+				goto st5
+			}
+		default:
+			goto st5
 		}
 		{
 			goto st0
@@ -4401,10 +5299,24 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_191:
 		switch data[p] {
-		case 58:
+		case 32:
 			goto st192
-		case 93:
-			goto st161
+		case 43:
+			goto st6
+		case 61:
+			goto st6
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st6
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st6
+			}
+		default:
+			goto st6
 		}
 		{
 			goto st0
@@ -4415,29 +5327,58 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof192
 		}
 	st_case_192:
-		if data[p] == 58 {
-			goto st230
+		if data[p] == 91 {
+			goto ctr214
 		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st193
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto ctr213
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto ctr213
+			}
+		default:
+			goto ctr213
 		}
 		{
 			goto st0
 
 		}
+	ctr213:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st193
 	st193:
 		if p++; p == pe {
 			goto _test_eof193
 		}
 	st_case_193:
+		// line 5265 "smtp.go"
 		switch data[p] {
-		case 58:
-			goto st197
-		case 93:
-			goto st161
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		case 10:
+			goto ctr215
+		case 13:
+			goto ctr216
+		case 46:
 			goto st194
+		}
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st193
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st193
+			}
+		default:
+			goto st193
 		}
 		{
 			goto st0
@@ -4448,32 +5389,44 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof194
 		}
 	st_case_194:
-		switch data[p] {
-		case 58:
-			goto st197
-		case 93:
-			goto st161
-		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st195
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st193
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st193
+			}
+		default:
+			goto st193
 		}
 		{
 			goto st0
 
 		}
+	ctr214:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st195
 	st195:
 		if p++; p == pe {
 			goto _test_eof195
 		}
 	st_case_195:
+		// line 5324 "smtp.go"
 		switch data[p] {
-		case 58:
-			goto st197
-		case 93:
-			goto st161
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		case 48:
 			goto st196
+		case 73:
+			goto st286
+		}
+		if 49 <= data[p] && data[p] <= 57 {
+			goto st282
 		}
 		{
 			goto st0
@@ -4485,10 +5438,15 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_196:
 		switch data[p] {
-		case 58:
+		case 46:
 			goto st197
-		case 93:
-			goto st161
+		case 58:
+			goto st222
+		case 120:
+			goto st279
+		}
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st219
 		}
 		{
 			goto st0
@@ -4499,11 +5457,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof197
 		}
 	st_case_197:
-		if data[p] == 58 {
-			goto st229
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 48 {
 			goto st198
+		}
+		if 49 <= data[p] && data[p] <= 57 {
+			goto st214
 		}
 		{
 			goto st0
@@ -4515,13 +5473,15 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_198:
 		switch data[p] {
-		case 58:
-			goto st202
+		case 46:
+			goto st199
 		case 93:
-			goto st161
+			goto st206
+		case 120:
+			goto st217
 		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st199
+			goto st214
 		}
 		{
 			goto st0
@@ -4532,14 +5492,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof199
 		}
 	st_case_199:
-		switch data[p] {
-		case 58:
-			goto st202
-		case 93:
-			goto st161
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 48 {
 			goto st200
+		}
+		if 49 <= data[p] && data[p] <= 57 {
+			goto st209
 		}
 		{
 			goto st0
@@ -4551,13 +5508,15 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_200:
 		switch data[p] {
-		case 58:
-			goto st202
+		case 46:
+			goto st201
 		case 93:
-			goto st161
+			goto st206
+		case 120:
+			goto st212
 		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st201
+			goto st209
 		}
 		{
 			goto st0
@@ -4568,11 +5527,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof201
 		}
 	st_case_201:
-		switch data[p] {
-		case 58:
+		if data[p] == 48 {
 			goto st202
-		case 93:
-			goto st161
+		}
+		if 49 <= data[p] && data[p] <= 57 {
+			goto st203
 		}
 		{
 			goto st0
@@ -4583,8 +5542,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof202
 		}
 	st_case_202:
-		if data[p] == 58 {
-			goto st228
+		switch data[p] {
+		case 93:
+			goto st206
+		case 120:
+			goto st207
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st203
@@ -4598,11 +5560,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof203
 		}
 	st_case_203:
-		switch data[p] {
-		case 58:
-			goto st207
-		case 93:
-			goto st161
+		if data[p] == 93 {
+			goto st206
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st204
@@ -4616,11 +5575,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof204
 		}
 	st_case_204:
-		switch data[p] {
-		case 58:
-			goto st207
-		case 93:
-			goto st161
+		if data[p] == 93 {
+			goto st206
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st205
@@ -4634,13 +5590,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof205
 		}
 	st_case_205:
-		switch data[p] {
-		case 58:
-			goto st207
-		case 93:
-			goto st161
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 93 {
 			goto st206
 		}
 		{
@@ -4653,10 +5603,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_206:
 		switch data[p] {
-		case 58:
-			goto st207
-		case 93:
-			goto st161
+		case 10:
+			goto ctr215
+		case 13:
+			goto ctr216
 		}
 		{
 			goto st0
@@ -4667,10 +5617,16 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof207
 		}
 	st_case_207:
-		if data[p] == 58 {
-			goto st227
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st208
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st208
+			}
+		default:
 			goto st208
 		}
 		{
@@ -4682,14 +5638,20 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof208
 		}
 	st_case_208:
-		switch data[p] {
-		case 58:
-			goto st212
-		case 93:
-			goto st161
+		if data[p] == 93 {
+			goto st206
 		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st209
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st205
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st205
+			}
+		default:
+			goto st205
 		}
 		{
 			goto st0
@@ -4701,10 +5663,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_209:
 		switch data[p] {
-		case 58:
-			goto st212
+		case 46:
+			goto st201
 		case 93:
-			goto st161
+			goto st206
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st210
@@ -4719,10 +5681,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_210:
 		switch data[p] {
-		case 58:
-			goto st212
+		case 46:
+			goto st201
 		case 93:
-			goto st161
+			goto st206
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st211
@@ -4737,10 +5699,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_211:
 		switch data[p] {
-		case 58:
-			goto st212
+		case 46:
+			goto st201
 		case 93:
-			goto st161
+			goto st206
 		}
 		{
 			goto st0
@@ -4751,10 +5713,16 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof212
 		}
 	st_case_212:
-		if data[p] == 58 {
-			goto st226
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st213
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st213
+			}
+		default:
 			goto st213
 		}
 		{
@@ -4767,13 +5735,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_213:
 		switch data[p] {
-		case 58:
-			goto st217
+		case 46:
+			goto st201
 		case 93:
-			goto st161
+			goto st206
 		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st214
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st211
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st211
+			}
+		default:
+			goto st211
 		}
 		{
 			goto st0
@@ -4785,10 +5762,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_214:
 		switch data[p] {
-		case 58:
-			goto st217
+		case 46:
+			goto st199
 		case 93:
-			goto st161
+			goto st206
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st215
@@ -4803,10 +5780,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_215:
 		switch data[p] {
-		case 58:
-			goto st217
+		case 46:
+			goto st199
 		case 93:
-			goto st161
+			goto st206
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st216
@@ -4821,10 +5798,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_216:
 		switch data[p] {
-		case 58:
-			goto st217
+		case 46:
+			goto st199
 		case 93:
-			goto st161
+			goto st206
 		}
 		{
 			goto st0
@@ -4835,10 +5812,16 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof217
 		}
 	st_case_217:
-		if data[p] == 58 {
-			goto st225
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st218
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st218
+			}
+		default:
 			goto st218
 		}
 		{
@@ -4851,13 +5834,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_218:
 		switch data[p] {
-		case 58:
-			goto st222
+		case 46:
+			goto st199
 		case 93:
-			goto st161
+			goto st206
 		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st219
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st216
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st216
+			}
+		default:
+			goto st216
 		}
 		{
 			goto st0
@@ -4869,10 +5861,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_219:
 		switch data[p] {
+		case 46:
+			goto st197
 		case 58:
 			goto st222
-		case 93:
-			goto st161
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st220
@@ -4887,10 +5879,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_220:
 		switch data[p] {
+		case 46:
+			goto st197
 		case 58:
 			goto st222
-		case 93:
-			goto st161
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st221
@@ -4905,10 +5897,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_221:
 		switch data[p] {
+		case 46:
+			goto st197
 		case 58:
 			goto st222
-		case 93:
-			goto st161
 		}
 		{
 			goto st0
@@ -4920,7 +5912,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_222:
 		if data[p] == 58 {
-			goto st224
+			goto st278
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st223
@@ -4934,11 +5926,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof223
 		}
 	st_case_223:
-		if data[p] == 93 {
-			goto st161
+		switch data[p] {
+		case 58:
+			goto st227
+		case 93:
+			goto st206
 		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st158
+			goto st224
 		}
 		{
 			goto st0
@@ -4949,8 +5944,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof224
 		}
 	st_case_224:
+		switch data[p] {
+		case 58:
+			goto st227
+		case 93:
+			goto st206
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st223
+			goto st225
 		}
 		{
 			goto st0
@@ -4961,8 +5962,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof225
 		}
 	st_case_225:
+		switch data[p] {
+		case 58:
+			goto st227
+		case 93:
+			goto st206
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st218
+			goto st226
 		}
 		{
 			goto st0
@@ -4973,8 +5980,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof226
 		}
 	st_case_226:
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st213
+		switch data[p] {
+		case 58:
+			goto st227
+		case 93:
+			goto st206
 		}
 		{
 			goto st0
@@ -4985,8 +5995,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof227
 		}
 	st_case_227:
+		if data[p] == 58 {
+			goto st277
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st208
+			goto st228
 		}
 		{
 			goto st0
@@ -4997,8 +6010,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof228
 		}
 	st_case_228:
+		switch data[p] {
+		case 58:
+			goto st232
+		case 93:
+			goto st206
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st203
+			goto st229
 		}
 		{
 			goto st0
@@ -5009,8 +6028,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof229
 		}
 	st_case_229:
+		switch data[p] {
+		case 58:
+			goto st232
+		case 93:
+			goto st206
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st198
+			goto st230
 		}
 		{
 			goto st0
@@ -5021,8 +6046,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof230
 		}
 	st_case_230:
+		switch data[p] {
+		case 58:
+			goto st232
+		case 93:
+			goto st206
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st193
+			goto st231
 		}
 		{
 			goto st0
@@ -5033,8 +6064,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof231
 		}
 	st_case_231:
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st188
+		switch data[p] {
+		case 58:
+			goto st232
+		case 93:
+			goto st206
 		}
 		{
 			goto st0
@@ -5045,8 +6079,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof232
 		}
 	st_case_232:
+		if data[p] == 58 {
+			goto st276
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st183
+			goto st233
 		}
 		{
 			goto st0
@@ -5057,8 +6094,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof233
 		}
 	st_case_233:
+		switch data[p] {
+		case 58:
+			goto st237
+		case 93:
+			goto st206
+		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st178
+			goto st234
 		}
 		{
 			goto st0
@@ -5069,16 +6112,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof234
 		}
 	st_case_234:
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st235
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st235
-			}
-		default:
+		switch data[p] {
+		case 58:
+			goto st237
+		case 93:
+			goto st206
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st235
 		}
 		{
@@ -5090,19 +6130,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof235
 		}
 	st_case_235:
-		if data[p] == 46 {
-			goto st152
+		switch data[p] {
+		case 58:
+			goto st237
+		case 93:
+			goto st206
 		}
-		switch {
-		case data[p] < 65:
-			if 48 <= data[p] && data[p] <= 57 {
-				goto st236
-			}
-		case data[p] > 70:
-			if 97 <= data[p] && data[p] <= 102 {
-				goto st236
-			}
-		default:
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st236
 		}
 		{
@@ -5114,8 +6148,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof236
 		}
 	st_case_236:
-		if data[p] == 46 {
-			goto st152
+		switch data[p] {
+		case 58:
+			goto st237
+		case 93:
+			goto st206
 		}
 		{
 			goto st0
@@ -5126,11 +6163,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof237
 		}
 	st_case_237:
-		switch data[p] {
-		case 46:
-			goto st152
-		case 58:
-			goto st177
+		if data[p] == 58 {
+			goto st275
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st238
@@ -5145,10 +6179,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_238:
 		switch data[p] {
-		case 46:
-			goto st152
 		case 58:
-			goto st177
+			goto st242
+		case 93:
+			goto st206
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st239
@@ -5163,10 +6197,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_239:
 		switch data[p] {
-		case 46:
-			goto st152
 		case 58:
-			goto st177
+			goto st242
+		case 93:
+			goto st206
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st240
@@ -5180,8 +6214,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof240
 		}
 	st_case_240:
-		if data[p] == 58 {
-			goto st177
+		switch data[p] {
+		case 58:
+			goto st242
+		case 93:
+			goto st206
+		}
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st241
 		}
 		{
 			goto st0
@@ -5192,8 +6232,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof241
 		}
 	st_case_241:
-		if data[p] == 80 {
+		switch data[p] {
+		case 58:
 			goto st242
+		case 93:
+			goto st206
 		}
 		{
 			goto st0
@@ -5204,7 +6247,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof242
 		}
 	st_case_242:
-		if data[p] == 118 {
+		if data[p] == 58 {
+			goto st274
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st243
 		}
 		{
@@ -5216,7 +6262,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof243
 		}
 	st_case_243:
-		if data[p] == 54 {
+		switch data[p] {
+		case 58:
+			goto st247
+		case 93:
+			goto st206
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st244
 		}
 		{
@@ -5228,7 +6280,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof244
 		}
 	st_case_244:
-		if data[p] == 58 {
+		switch data[p] {
+		case 58:
+			goto st247
+		case 93:
+			goto st206
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st245
 		}
 		{
@@ -5240,6 +6298,12 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof245
 		}
 	st_case_245:
+		switch data[p] {
+		case 58:
+			goto st247
+		case 93:
+			goto st206
+		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st246
 		}
@@ -5252,11 +6316,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof246
 		}
 	st_case_246:
-		if data[p] == 58 {
-			goto st177
-		}
-		if 48 <= data[p] && data[p] <= 57 {
+		switch data[p] {
+		case 58:
 			goto st247
+		case 93:
+			goto st206
 		}
 		{
 			goto st0
@@ -5268,7 +6332,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_247:
 		if data[p] == 58 {
-			goto st177
+			goto st273
 		}
 		if 48 <= data[p] && data[p] <= 57 {
 			goto st248
@@ -5282,11 +6346,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof248
 		}
 	st_case_248:
-		if data[p] == 58 {
-			goto st177
+		switch data[p] {
+		case 58:
+			goto st252
+		case 93:
+			goto st206
 		}
 		if 48 <= data[p] && data[p] <= 57 {
-			goto st240
+			goto st249
 		}
 		{
 			goto st0
@@ -5297,7 +6364,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof249
 		}
 	st_case_249:
-		if data[p] == 65 {
+		switch data[p] {
+		case 58:
+			goto st252
+		case 93:
+			goto st206
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st250
 		}
 		{
@@ -5309,7 +6382,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof250
 		}
 	st_case_250:
-		if data[p] == 73 {
+		switch data[p] {
+		case 58:
+			goto st252
+		case 93:
+			goto st206
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st251
 		}
 		{
@@ -5321,8 +6400,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof251
 		}
 	st_case_251:
-		if data[p] == 76 {
+		switch data[p] {
+		case 58:
 			goto st252
+		case 93:
+			goto st206
 		}
 		{
 			goto st0
@@ -5333,7 +6415,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof252
 		}
 	st_case_252:
-		if data[p] == 32 {
+		if data[p] == 58 {
+			goto st272
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st253
 		}
 		{
@@ -5346,9 +6431,12 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_253:
 		switch data[p] {
-		case 70:
-			goto st254
-		case 102:
+		case 58:
+			goto st257
+		case 93:
+			goto st206
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st254
 		}
 		{
@@ -5361,9 +6449,12 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_254:
 		switch data[p] {
-		case 82:
-			goto st255
-		case 114:
+		case 58:
+			goto st257
+		case 93:
+			goto st206
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st255
 		}
 		{
@@ -5376,9 +6467,12 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_255:
 		switch data[p] {
-		case 79:
-			goto st256
-		case 111:
+		case 58:
+			goto st257
+		case 93:
+			goto st206
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st256
 		}
 		{
@@ -5391,10 +6485,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_256:
 		switch data[p] {
-		case 77:
+		case 58:
 			goto st257
-		case 109:
-			goto st257
+		case 93:
+			goto st206
 		}
 		{
 			goto st0
@@ -5406,6 +6500,9 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_257:
 		if data[p] == 58 {
+			goto st271
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st258
 		}
 		{
@@ -5417,7 +6514,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof258
 		}
 	st_case_258:
-		if data[p] == 60 {
+		switch data[p] {
+		case 58:
+			goto st262
+		case 93:
+			goto st206
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st259
 		}
 		{
@@ -5430,99 +6533,46 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_259:
 		switch data[p] {
-		case 33:
-			goto ctr280
-		case 34:
-			goto ctr281
-		case 64:
-			goto ctr282
-		case 92:
-			goto ctr283
+		case 58:
+			goto st262
+		case 93:
+			goto st206
 		}
-		switch {
-		case data[p] < 65:
-			if 35 <= data[p] && data[p] <= 63 {
-				goto ctr280
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto ctr280
-			}
-		default:
-			goto ctr280
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st260
 		}
 		{
 			goto st0
 
 		}
-	ctr280:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st260
 	st260:
 		if p++; p == pe {
 			goto _test_eof260
 		}
 	st_case_260:
-		// line 5380 "smtp.go"
 		switch data[p] {
-		case 33:
-			goto st260
-		case 34:
-			goto st261
-		case 62:
-			goto ctr286
-		case 92:
-			goto st289
+		case 58:
+			goto st262
+		case 93:
+			goto st206
 		}
-		switch {
-		case data[p] < 63:
-			if 35 <= data[p] && data[p] <= 61 {
-				goto st260
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st260
-			}
-		default:
-			goto st260
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st261
 		}
 		{
 			goto st0
 
 		}
-	ctr281:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st261
 	st261:
 		if p++; p == pe {
 			goto _test_eof261
 		}
 	st_case_261:
-		// line 5420 "smtp.go"
-		if data[p] == 92 {
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st262
-			}
-		default:
+		switch data[p] {
+		case 58:
 			goto st262
+		case 93:
+			goto st206
 		}
 		{
 			goto st0
@@ -5533,23 +6583,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof262
 		}
 	st_case_262:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 92:
-			goto st263
+		if data[p] == 58 {
+			goto st270
 		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st262
-			}
-		default:
-			goto st262
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st263
 		}
 		{
 			goto st0
@@ -5560,104 +6598,50 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof263
 		}
 	st_case_263:
-		if data[p] == 34 {
-			goto st262
+		switch data[p] {
+		case 58:
+			goto st267
+		case 93:
+			goto st206
+		}
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st264
 		}
 		{
 			goto st0
 
 		}
-	ctr286:
-		// line 26 "smtp.ragel"
-		{
-
-			parser.buffer.Write(data[pb:p])
-			parser.current.Data = parser.buffer.Bytes()
-			parser.buffer = nil
-		}
-		goto st264
-	ctr366:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		// line 26 "smtp.ragel"
-		{
-
-			parser.buffer.Write(data[pb:p])
-			parser.current.Data = parser.buffer.Bytes()
-			parser.buffer = nil
-		}
-		goto st264
 	st264:
 		if p++; p == pe {
 			goto _test_eof264
 		}
 	st_case_264:
-		// line 5508 "smtp.go"
 		switch data[p] {
-		case 10:
-			goto ctr290
-		case 13:
-			goto ctr291
-		case 32:
-			goto st265
-		case 33:
-			goto st260
-		case 34:
-			goto st261
-		case 62:
-			goto ctr286
-		case 92:
-			goto st289
+		case 58:
+			goto st267
+		case 93:
+			goto st206
 		}
-		switch {
-		case data[p] < 63:
-			if 35 <= data[p] && data[p] <= 61 {
-				goto st260
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st260
-			}
-		default:
-			goto st260
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st265
 		}
 		{
 			goto st0
 
 		}
-	ctr306:
-		// line 66 "smtp.ragel"
-		{
-			parser.current.BodyType = BodyType7BIT
-		}
-		goto st265
-	ctr316:
-		// line 64 "smtp.ragel"
-		{
-			parser.current.BodyType = BodyType8BITMIME
-		}
-		goto st265
 	st265:
 		if p++; p == pe {
 			goto _test_eof265
 		}
 	st_case_265:
-		// line 5556 "smtp.go"
 		switch data[p] {
-		case 10:
-			goto ctr290
-		case 13:
-			goto ctr291
-		case 32:
-			goto st265
-		case 66:
+		case 58:
+			goto st267
+		case 93:
+			goto st206
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st266
-		case 83:
-			goto st283
 		}
 		{
 			goto st0
@@ -5668,8 +6652,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof266
 		}
 	st_case_266:
-		if data[p] == 79 {
+		switch data[p] {
+		case 58:
 			goto st267
+		case 93:
+			goto st206
 		}
 		{
 			goto st0
@@ -5680,7 +6667,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof267
 		}
 	st_case_267:
-		if data[p] == 68 {
+		if data[p] == 58 {
+			goto st269
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st268
 		}
 		{
@@ -5692,8 +6682,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof268
 		}
 	st_case_268:
-		if data[p] == 89 {
-			goto st269
+		if data[p] == 93 {
+			goto st206
+		}
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st203
 		}
 		{
 			goto st0
@@ -5704,8 +6697,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof269
 		}
 	st_case_269:
-		if data[p] == 61 {
-			goto st270
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st268
 		}
 		{
 			goto st0
@@ -5716,11 +6709,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof270
 		}
 	st_case_270:
-		switch data[p] {
-		case 55:
-			goto st271
-		case 56:
-			goto st275
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st263
 		}
 		{
 			goto st0
@@ -5731,8 +6721,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof271
 		}
 	st_case_271:
-		if data[p] == 66 {
-			goto st272
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st258
 		}
 		{
 			goto st0
@@ -5743,8 +6733,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof272
 		}
 	st_case_272:
-		if data[p] == 73 {
-			goto st273
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st253
 		}
 		{
 			goto st0
@@ -5755,8 +6745,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof273
 		}
 	st_case_273:
-		if data[p] == 84 {
-			goto st274
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st248
 		}
 		{
 			goto st0
@@ -5767,13 +6757,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof274
 		}
 	st_case_274:
-		switch data[p] {
-		case 10:
-			goto ctr304
-		case 13:
-			goto ctr305
-		case 32:
-			goto ctr306
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st243
 		}
 		{
 			goto st0
@@ -5784,8 +6769,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof275
 		}
 	st_case_275:
-		if data[p] == 66 {
-			goto st276
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st238
 		}
 		{
 			goto st0
@@ -5796,8 +6781,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof276
 		}
 	st_case_276:
-		if data[p] == 73 {
-			goto st277
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st233
 		}
 		{
 			goto st0
@@ -5808,8 +6793,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof277
 		}
 	st_case_277:
-		if data[p] == 84 {
-			goto st278
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st228
 		}
 		{
 			goto st0
@@ -5820,8 +6805,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof278
 		}
 	st_case_278:
-		if data[p] == 77 {
-			goto st279
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st223
 		}
 		{
 			goto st0
@@ -5832,7 +6817,16 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof279
 		}
 	st_case_279:
-		if data[p] == 73 {
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st280
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st280
+			}
+		default:
 			goto st280
 		}
 		{
@@ -5844,7 +6838,19 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof280
 		}
 	st_case_280:
-		if data[p] == 77 {
+		if data[p] == 46 {
+			goto st197
+		}
+		switch {
+		case data[p] < 65:
+			if 48 <= data[p] && data[p] <= 57 {
+				goto st281
+			}
+		case data[p] > 70:
+			if 97 <= data[p] && data[p] <= 102 {
+				goto st281
+			}
+		default:
 			goto st281
 		}
 		{
@@ -5856,8 +6862,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof281
 		}
 	st_case_281:
-		if data[p] == 69 {
-			goto st282
+		if data[p] == 46 {
+			goto st197
 		}
 		{
 			goto st0
@@ -5869,12 +6875,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_282:
 		switch data[p] {
-		case 10:
-			goto ctr314
-		case 13:
-			goto ctr315
-		case 32:
-			goto ctr316
+		case 46:
+			goto st197
+		case 58:
+			goto st222
+		}
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st283
 		}
 		{
 			goto st0
@@ -5885,7 +6892,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof283
 		}
 	st_case_283:
-		if data[p] == 73 {
+		switch data[p] {
+		case 46:
+			goto st197
+		case 58:
+			goto st222
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st284
 		}
 		{
@@ -5897,7 +6910,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof284
 		}
 	st_case_284:
-		if data[p] == 90 {
+		switch data[p] {
+		case 46:
+			goto st197
+		case 58:
+			goto st222
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st285
 		}
 		{
@@ -5909,8 +6928,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof285
 		}
 	st_case_285:
-		if data[p] == 69 {
-			goto st286
+		if data[p] == 58 {
+			goto st222
 		}
 		{
 			goto st0
@@ -5921,7 +6940,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof286
 		}
 	st_case_286:
-		if data[p] == 61 {
+		if data[p] == 80 {
 			goto st287
 		}
 		{
@@ -5933,7 +6952,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof287
 		}
 	st_case_287:
-		if 48 <= data[p] && data[p] <= 57 {
+		if data[p] == 118 {
 			goto st288
 		}
 		{
@@ -5945,49 +6964,20 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof288
 		}
 	st_case_288:
-		switch data[p] {
-		case 10:
-			goto ctr290
-		case 13:
-			goto ctr291
-		case 32:
-			goto st265
-		}
-		if 48 <= data[p] && data[p] <= 57 {
-			goto st288
+		if data[p] == 54 {
+			goto st289
 		}
 		{
 			goto st0
 
 		}
-	ctr283:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st289
 	st289:
 		if p++; p == pe {
 			goto _test_eof289
 		}
 	st_case_289:
-		// line 5883 "smtp.go"
-		if data[p] == 92 {
+		if data[p] == 58 {
 			goto st290
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st260
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st260
-			}
-		default:
-			goto st260
 		}
 		{
 			goto st0
@@ -5998,63 +6988,26 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof290
 		}
 	st_case_290:
-		if data[p] == 34 {
-			goto st260
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st291
 		}
 		{
 			goto st0
 
 		}
-	ctr282:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st291
 	st291:
 		if p++; p == pe {
 			goto _test_eof291
 		}
 	st_case_291:
-		// line 5928 "smtp.go"
-		switch data[p] {
-		case 33:
-			goto st294
-		case 34:
-			goto st295
-		case 58:
-			goto st260
-		case 62:
-			goto ctr326
-		case 92:
-			goto st354
+		if data[p] == 58 {
+			goto st222
 		}
-		switch {
-		case data[p] < 59:
-			switch {
-			case data[p] > 32:
-				if 35 <= data[p] && data[p] <= 57 {
-					goto st294
-				}
-			default:
-				goto st292
-			}
-		case data[p] > 61:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st294
-				}
-			case data[p] >= 63:
-				goto st294
-			}
-		default:
-			goto st294
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st292
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st292:
@@ -6063,13 +7016,13 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_292:
 		if data[p] == 58 {
+			goto st222
+		}
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st293
 		}
-		if data[p] <= 57 {
-			goto st292
-		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st293:
@@ -6077,67 +7030,52 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof293
 		}
 	st_case_293:
-		switch data[p] {
-		case 33:
-			goto ctr280
-		case 34:
-			goto ctr281
-		case 92:
-			goto ctr283
+		if data[p] == 58 {
+			goto st222
 		}
-		switch {
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto ctr280
-			}
-		case data[p] >= 35:
-			goto ctr280
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st285
 		}
 		{
 			goto st0
 
 		}
+	ctr6:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st294
 	st294:
 		if p++; p == pe {
 			goto _test_eof294
 		}
 	st_case_294:
+		// line 6959 "smtp.go"
 		switch data[p] {
-		case 33:
-			goto st294
-		case 34:
+		case 43:
+			goto st3
+		case 61:
+			goto st3
+		case 65:
 			goto st295
-		case 58:
-			goto st327
-		case 62:
-			goto ctr326
-		case 92:
-			goto st354
 		}
 		switch {
-		case data[p] < 59:
-			switch {
-			case data[p] > 32:
-				if 35 <= data[p] && data[p] <= 57 {
-					goto st294
-				}
-			default:
-				goto st292
+		case data[p] < 66:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st3
 			}
-		case data[p] > 61:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st294
-				}
-			case data[p] >= 63:
-				goto st294
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st3
 			}
 		default:
-			goto st294
+			goto st3
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st295:
@@ -6146,37 +7084,32 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_295:
 		switch data[p] {
-		case 34:
-			goto st292
-		case 58:
-			goto st297
-		case 92:
-			goto st326
-		}
-		switch {
-		case data[p] < 35:
-			switch {
-			case data[p] > 31:
-				if data[p] <= 33 {
-					goto st296
-				}
-			default:
-				goto st292
-			}
-		case data[p] > 57:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st296
-				}
-			case data[p] >= 59:
-				goto st296
-			}
-		default:
+		case 43:
+			goto st4
+		case 61:
+			goto st4
+		case 73:
 			goto st296
 		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st4
+			}
+		case data[p] > 72:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st4
+				}
+			case data[p] >= 74:
+				goto st4
+			}
+		default:
+			goto st4
+		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st296:
@@ -6185,37 +7118,32 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_296:
 		switch data[p] {
-		case 34:
-			goto st294
-		case 58:
+		case 43:
+			goto st5
+		case 61:
+			goto st5
+		case 76:
 			goto st297
-		case 92:
-			goto st326
 		}
 		switch {
-		case data[p] < 35:
-			switch {
-			case data[p] > 31:
-				if data[p] <= 33 {
-					goto st296
-				}
-			default:
-				goto st292
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st5
 			}
-		case data[p] > 57:
+		case data[p] > 75:
 			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st296
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st5
 				}
-			case data[p] >= 59:
-				goto st296
+			case data[p] >= 77:
+				goto st5
 			}
 		default:
-			goto st296
+			goto st5
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st297:
@@ -6225,209 +7153,83 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 	st_case_297:
 		switch data[p] {
 		case 32:
-			goto st262
-		case 33:
-			goto ctr333
-		case 34:
-			goto ctr334
-		case 92:
-			goto ctr335
+			goto st298
+		case 43:
+			goto st6
+		case 61:
+			goto st6
 		}
 		switch {
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto ctr333
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st6
 			}
-		case data[p] >= 35:
-			goto ctr333
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st6
+			}
+		default:
+			goto st6
 		}
 		{
 			goto st0
 
 		}
-	ctr333:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st298
 	st298:
 		if p++; p == pe {
 			goto _test_eof298
 		}
 	st_case_298:
-		// line 6168 "smtp.go"
 		switch data[p] {
-		case 32:
-			goto st262
-		case 33:
-			goto st298
-		case 34:
+		case 70:
 			goto st299
-		case 62:
-			goto ctr338
-		case 92:
-			goto st325
-		}
-		switch {
-		case data[p] < 63:
-			if 35 <= data[p] && data[p] <= 61 {
-				goto st298
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st298
-			}
-		default:
-			goto st298
+		case 102:
+			goto st299
 		}
 		{
 			goto st0
 
 		}
-	ctr334:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st299
 	st299:
 		if p++; p == pe {
 			goto _test_eof299
 		}
 	st_case_299:
-		// line 6210 "smtp.go"
 		switch data[p] {
-		case 32:
-			goto st262
-		case 33:
-			goto st298
-		case 34:
-			goto st261
-		case 62:
-			goto ctr338
-		case 92:
-			goto st325
-		}
-		switch {
-		case data[p] < 63:
-			if 35 <= data[p] && data[p] <= 61 {
-				goto st298
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st298
-			}
-		default:
-			goto st298
+		case 82:
+			goto st300
+		case 114:
+			goto st300
 		}
 		{
 			goto st0
 
 		}
-	ctr338:
-		// line 26 "smtp.ragel"
-		{
-
-			parser.buffer.Write(data[pb:p])
-			parser.current.Data = parser.buffer.Bytes()
-			parser.buffer = nil
-		}
-		goto st300
 	st300:
 		if p++; p == pe {
 			goto _test_eof300
 		}
 	st_case_300:
-		// line 6253 "smtp.go"
 		switch data[p] {
-		case 10:
-			goto ctr290
-		case 13:
-			goto ctr291
-		case 32:
+		case 79:
 			goto st301
-		case 33:
-			goto st298
-		case 34:
-			goto st299
-		case 62:
-			goto ctr338
-		case 92:
-			goto st325
-		}
-		switch {
-		case data[p] < 63:
-			if 35 <= data[p] && data[p] <= 61 {
-				goto st298
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st298
-			}
-		default:
-			goto st298
+		case 111:
+			goto st301
 		}
 		{
 			goto st0
 
 		}
-	ctr352:
-		// line 66 "smtp.ragel"
-		{
-			parser.current.BodyType = BodyType7BIT
-		}
-		goto st301
-	ctr360:
-		// line 64 "smtp.ragel"
-		{
-			parser.current.BodyType = BodyType8BITMIME
-		}
-		goto st301
 	st301:
 		if p++; p == pe {
 			goto _test_eof301
 		}
 	st_case_301:
-		// line 6301 "smtp.go"
 		switch data[p] {
-		case 10:
-			goto ctr290
-		case 13:
-			goto ctr291
-		case 32:
-			goto st301
-		case 33:
-			goto st262
-		case 34:
-			goto st260
-		case 66:
+		case 77:
 			goto st302
-		case 83:
-			goto st319
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 67:
-			if 35 <= data[p] && data[p] <= 65 {
-				goto st262
-			}
-		case data[p] > 82:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 84:
-				goto st262
-			}
-		default:
-			goto st262
+		case 109:
+			goto st302
 		}
 		{
 			goto st0
@@ -6438,30 +7240,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof302
 		}
 	st_case_302:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 79:
+		if data[p] == 58 {
 			goto st303
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 78:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 80:
-				goto st262
-			}
-		default:
-			goto st262
 		}
 		{
 			goto st0
@@ -6472,30 +7252,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof303
 		}
 	st_case_303:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 68:
+		if data[p] == 60 {
 			goto st304
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 67:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 69:
-				goto st262
-			}
-		default:
-			goto st262
 		}
 		{
 			goto st0
@@ -6507,99 +7265,99 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_304:
 		switch data[p] {
+		case 33:
+			goto ctr327
 		case 34:
-			goto st260
-		case 89:
-			goto st305
+			goto ctr328
+		case 64:
+			goto ctr329
 		case 92:
-			goto st263
+			goto ctr330
 		}
 		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
+		case data[p] < 65:
+			if 35 <= data[p] && data[p] <= 63 {
+				goto ctr327
 			}
-		case data[p] > 88:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 90:
-				goto st262
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto ctr327
 			}
 		default:
-			goto st262
+			goto ctr327
 		}
 		{
 			goto st0
 
 		}
+	ctr327:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st305
 	st305:
 		if p++; p == pe {
 			goto _test_eof305
 		}
 	st_case_305:
+		// line 7209 "smtp.go"
 		switch data[p] {
+		case 33:
+			goto st305
 		case 34:
-			goto st260
-		case 61:
 			goto st306
+		case 62:
+			goto ctr333
 		case 92:
-			goto st263
+			goto st334
 		}
 		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
+		case data[p] < 63:
+			if 35 <= data[p] && data[p] <= 61 {
+				goto st305
 			}
-		case data[p] > 60:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 62:
-				goto st262
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st305
 			}
 		default:
-			goto st262
+			goto st305
 		}
 		{
 			goto st0
 
 		}
+	ctr328:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st306
 	st306:
 		if p++; p == pe {
 			goto _test_eof306
 		}
 	st_case_306:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 55:
-			goto st307
-		case 56:
-			goto st311
-		case 92:
-			goto st263
+		// line 7249 "smtp.go"
+		if data[p] == 92 {
+			goto st308
 		}
 		switch {
 		case data[p] < 35:
 			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
+				goto st307
 			}
-		case data[p] > 54:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 57:
-				goto st262
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st307
 			}
 		default:
-			goto st262
+			goto st307
 		}
 		{
 			goto st0
@@ -6612,28 +7370,21 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 	st_case_307:
 		switch data[p] {
 		case 34:
-			goto st260
-		case 66:
-			goto st308
+			goto st305
 		case 92:
-			goto st263
+			goto st308
 		}
 		switch {
 		case data[p] < 35:
 			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
+				goto st307
 			}
-		case data[p] > 65:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 67:
-				goto st262
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st307
 			}
 		default:
-			goto st262
+			goto st307
 		}
 		{
 			goto st0
@@ -6644,95 +7395,104 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof308
 		}
 	st_case_308:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 73:
-			goto st309
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 72:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 74:
-				goto st262
-			}
-		default:
-			goto st262
+		if data[p] == 34 {
+			goto st307
 		}
 		{
 			goto st0
 
 		}
+	ctr333:
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		goto st309
+	ctr413:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		goto st309
 	st309:
 		if p++; p == pe {
 			goto _test_eof309
 		}
 	st_case_309:
+		// line 7337 "smtp.go"
 		switch data[p] {
-		case 34:
-			goto st260
-		case 84:
+		case 10:
+			goto ctr337
+		case 13:
+			goto ctr338
+		case 32:
 			goto st310
+		case 33:
+			goto st305
+		case 34:
+			goto st306
+		case 62:
+			goto ctr333
 		case 92:
-			goto st263
+			goto st334
 		}
 		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
+		case data[p] < 63:
+			if 35 <= data[p] && data[p] <= 61 {
+				goto st305
 			}
-		case data[p] > 83:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 85:
-				goto st262
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st305
 			}
 		default:
-			goto st262
+			goto st305
 		}
 		{
 			goto st0
 
 		}
+	ctr353:
+		// line 71 "smtp.ragel"
+		{
+			parser.current.BodyType = BodyType7BIT
+		}
+		goto st310
+	ctr363:
+		// line 69 "smtp.ragel"
+		{
+			parser.current.BodyType = BodyType8BITMIME
+		}
+		goto st310
 	st310:
 		if p++; p == pe {
 			goto _test_eof310
 		}
 	st_case_310:
+		// line 7385 "smtp.go"
 		switch data[p] {
 		case 10:
-			goto ctr304
+			goto ctr337
 		case 13:
-			goto ctr305
+			goto ctr338
 		case 32:
-			goto ctr352
-		case 33:
-			goto st262
-		case 34:
-			goto st260
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st262
-			}
-		case data[p] >= 35:
-			goto st262
+			goto st310
+		case 66:
+			goto st311
+		case 83:
+			goto st328
 		}
 		{
 			goto st0
@@ -6743,30 +7503,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof311
 		}
 	st_case_311:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 66:
+		if data[p] == 79 {
 			goto st312
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 65:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 67:
-				goto st262
-			}
-		default:
-			goto st262
 		}
 		{
 			goto st0
@@ -6777,30 +7515,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof312
 		}
 	st_case_312:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 73:
+		if data[p] == 68 {
 			goto st313
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 72:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 74:
-				goto st262
-			}
-		default:
-			goto st262
 		}
 		{
 			goto st0
@@ -6811,30 +7527,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof313
 		}
 	st_case_313:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 84:
+		if data[p] == 89 {
 			goto st314
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 83:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 85:
-				goto st262
-			}
-		default:
-			goto st262
 		}
 		{
 			goto st0
@@ -6845,30 +7539,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof314
 		}
 	st_case_314:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 77:
+		if data[p] == 61 {
 			goto st315
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 76:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 78:
-				goto st262
-			}
-		default:
-			goto st262
 		}
 		{
 			goto st0
@@ -6880,29 +7552,10 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_315:
 		switch data[p] {
-		case 34:
-			goto st260
-		case 73:
+		case 55:
 			goto st316
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 72:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 74:
-				goto st262
-			}
-		default:
-			goto st262
+		case 56:
+			goto st320
 		}
 		{
 			goto st0
@@ -6913,30 +7566,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof316
 		}
 	st_case_316:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 77:
+		if data[p] == 66 {
 			goto st317
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 76:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 78:
-				goto st262
-			}
-		default:
-			goto st262
 		}
 		{
 			goto st0
@@ -6947,30 +7578,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof317
 		}
 	st_case_317:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 69:
+		if data[p] == 73 {
 			goto st318
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 68:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 70:
-				goto st262
-			}
-		default:
-			goto st262
 		}
 		{
 			goto st0
@@ -6981,27 +7590,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof318
 		}
 	st_case_318:
-		switch data[p] {
-		case 10:
-			goto ctr314
-		case 13:
-			goto ctr315
-		case 32:
-			goto ctr360
-		case 33:
-			goto st262
-		case 34:
-			goto st260
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st262
-			}
-		case data[p] >= 35:
-			goto st262
+		if data[p] == 84 {
+			goto st319
 		}
 		{
 			goto st0
@@ -7013,29 +7603,12 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_319:
 		switch data[p] {
-		case 34:
-			goto st260
-		case 73:
-			goto st320
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 72:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 74:
-				goto st262
-			}
-		default:
-			goto st262
+		case 10:
+			goto ctr351
+		case 13:
+			goto ctr352
+		case 32:
+			goto ctr353
 		}
 		{
 			goto st0
@@ -7046,27 +7619,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof320
 		}
 	st_case_320:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 90:
+		if data[p] == 66 {
 			goto st321
-		case 91:
-			goto st262
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 89:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st262
-			}
-		default:
-			goto st262
 		}
 		{
 			goto st0
@@ -7077,30 +7631,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof321
 		}
 	st_case_321:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 69:
+		if data[p] == 73 {
 			goto st322
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 68:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 70:
-				goto st262
-			}
-		default:
-			goto st262
 		}
 		{
 			goto st0
@@ -7111,30 +7643,8 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof322
 		}
 	st_case_322:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 61:
+		if data[p] == 84 {
 			goto st323
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st262
-			}
-		case data[p] > 60:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			case data[p] >= 62:
-				goto st262
-			}
-		default:
-			goto st262
 		}
 		{
 			goto st0
@@ -7145,32 +7655,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof323
 		}
 	st_case_323:
-		switch data[p] {
-		case 34:
-			goto st260
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 48:
-			switch {
-			case data[p] > 33:
-				if 35 <= data[p] {
-					goto st262
-				}
-			case data[p] >= 32:
-				goto st262
-			}
-		case data[p] > 57:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			default:
-				goto st262
-			}
-		default:
+		if data[p] == 77 {
 			goto st324
 		}
 		{
@@ -7182,72 +7667,20 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof324
 		}
 	st_case_324:
-		switch data[p] {
-		case 10:
-			goto ctr290
-		case 13:
-			goto ctr291
-		case 32:
-			goto st301
-		case 33:
-			goto st262
-		case 34:
-			goto st260
-		case 92:
-			goto st263
-		}
-		switch {
-		case data[p] < 48:
-			if 35 <= data[p] {
-				goto st262
-			}
-		case data[p] > 57:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st262
-				}
-			default:
-				goto st262
-			}
-		default:
-			goto st324
+		if data[p] == 73 {
+			goto st325
 		}
 		{
 			goto st0
 
 		}
-	ctr335:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st325
 	st325:
 		if p++; p == pe {
 			goto _test_eof325
 		}
 	st_case_325:
-		// line 7138 "smtp.go"
-		switch data[p] {
-		case 34:
-			goto st262
-		case 92:
-			goto st290
-		}
-		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st260
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st260
-			}
-		default:
-			goto st260
+		if data[p] == 77 {
+			goto st326
 		}
 		{
 			goto st0
@@ -7258,22 +7691,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof326
 		}
 	st_case_326:
-		switch data[p] {
-		case 34:
-			goto st296
-		case 58:
-			goto st293
-		}
-		switch {
-		case data[p] > 33:
-			if 35 <= data[p] && data[p] <= 57 {
-				goto st292
-			}
-		default:
-			goto st292
+		if data[p] == 69 {
+			goto st327
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st327:
@@ -7282,284 +7704,51 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_327:
 		switch data[p] {
-		case 33:
-			goto ctr280
-		case 34:
-			goto ctr281
-		case 62:
-			goto ctr366
-		case 92:
-			goto ctr283
-		}
-		switch {
-		case data[p] < 63:
-			if 35 <= data[p] && data[p] <= 61 {
-				goto ctr280
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto ctr280
-			}
-		default:
-			goto ctr280
+		case 10:
+			goto ctr361
+		case 13:
+			goto ctr362
+		case 32:
+			goto ctr363
 		}
 		{
 			goto st0
 
 		}
-	ctr326:
-		// line 26 "smtp.ragel"
-		{
-
-			parser.buffer.Write(data[pb:p])
-			parser.current.Data = parser.buffer.Bytes()
-			parser.buffer = nil
-		}
-		goto st328
 	st328:
 		if p++; p == pe {
 			goto _test_eof328
 		}
 	st_case_328:
-		// line 7229 "smtp.go"
-		switch data[p] {
-		case 10:
-			goto ctr367
-		case 13:
-			goto ctr368
-		case 32:
-			goto st330
-		case 33:
-			goto st294
-		case 34:
-			goto st295
-		case 58:
-			goto st327
-		case 62:
-			goto ctr326
-		case 92:
-			goto st354
-		}
-		switch {
-		case data[p] < 35:
-			switch {
-			case data[p] < 11:
-				if data[p] <= 9 {
-					goto st292
-				}
-			case data[p] > 12:
-				if 14 <= data[p] && data[p] <= 31 {
-					goto st292
-				}
-			default:
-				goto st292
-			}
-		case data[p] > 57:
-			switch {
-			case data[p] < 63:
-				if 59 <= data[p] && data[p] <= 61 {
-					goto st294
-				}
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st294
-				}
-			default:
-				goto st294
-			}
-		default:
-			goto st294
+		if data[p] == 73 {
+			goto st329
 		}
 		{
-			goto st292
+			goto st0
 
 		}
-	ctr370:
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 411
-				goto _out
-			}
-		}
-		goto st411
-	ctr367:
-		// line 77 "smtp.ragel"
-		{
-			parser.current.Verb = VerbMAIL
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 411
-				goto _out
-			}
-		}
-		goto st411
-	ctr382:
-		// line 66 "smtp.ragel"
-		{
-			parser.current.BodyType = BodyType7BIT
-		}
-		// line 77 "smtp.ragel"
-		{
-			parser.current.Verb = VerbMAIL
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 411
-				goto _out
-			}
-		}
-		goto st411
-	ctr392:
-		// line 64 "smtp.ragel"
-		{
-			parser.current.BodyType = BodyType8BITMIME
-		}
-		// line 77 "smtp.ragel"
-		{
-			parser.current.Verb = VerbMAIL
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 411
-				goto _out
-			}
-		}
-		goto st411
-	st411:
-		if p++; p == pe {
-			goto _test_eof411
-		}
-	st_case_411:
-		// line 7326 "smtp.go"
-		if data[p] == 58 {
-			goto st293
-		}
-		if data[p] <= 57 {
-			goto st292
-		}
-		{
-			goto st292
-
-		}
-	ctr368:
-		// line 77 "smtp.ragel"
-		{
-			parser.current.Verb = VerbMAIL
-		}
-		goto st329
-	ctr383:
-		// line 66 "smtp.ragel"
-		{
-			parser.current.BodyType = BodyType7BIT
-		}
-		// line 77 "smtp.ragel"
-		{
-			parser.current.Verb = VerbMAIL
-		}
-		goto st329
-	ctr393:
-		// line 64 "smtp.ragel"
-		{
-			parser.current.BodyType = BodyType8BITMIME
-		}
-		// line 77 "smtp.ragel"
-		{
-			parser.current.Verb = VerbMAIL
-		}
-		goto st329
 	st329:
 		if p++; p == pe {
 			goto _test_eof329
 		}
 	st_case_329:
-		// line 7363 "smtp.go"
-		switch data[p] {
-		case 10:
-			goto ctr370
-		case 58:
-			goto st293
-		}
-		switch {
-		case data[p] > 9:
-			if 11 <= data[p] && data[p] <= 57 {
-				goto st292
-			}
-		default:
-			goto st292
+		if data[p] == 90 {
+			goto st330
 		}
 		{
-			goto st292
+			goto st0
 
 		}
-	ctr384:
-		// line 66 "smtp.ragel"
-		{
-			parser.current.BodyType = BodyType7BIT
-		}
-		goto st330
-	ctr394:
-		// line 64 "smtp.ragel"
-		{
-			parser.current.BodyType = BodyType8BITMIME
-		}
-		goto st330
 	st330:
 		if p++; p == pe {
 			goto _test_eof330
 		}
 	st_case_330:
-		// line 7397 "smtp.go"
-		switch data[p] {
-		case 10:
-			goto ctr367
-		case 13:
-			goto ctr368
-		case 32:
-			goto st330
-		case 58:
-			goto st293
-		case 66:
+		if data[p] == 69 {
 			goto st331
-		case 83:
-			goto st348
-		}
-		switch {
-		case data[p] < 14:
-			switch {
-			case data[p] > 9:
-				if 11 <= data[p] && data[p] <= 12 {
-					goto st292
-				}
-			default:
-				goto st292
-			}
-		case data[p] > 31:
-			switch {
-			case data[p] < 59:
-				if 33 <= data[p] && data[p] <= 57 {
-					goto st292
-				}
-			case data[p] > 65:
-				if 67 <= data[p] && data[p] <= 82 {
-					goto st292
-				}
-			default:
-				goto st292
-			}
-		default:
-			goto st292
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st331:
@@ -7567,22 +7756,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof331
 		}
 	st_case_331:
-		switch data[p] {
-		case 58:
-			goto st293
-		case 79:
+		if data[p] == 61 {
 			goto st332
 		}
-		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 78 {
-				goto st292
-			}
-		default:
-			goto st292
-		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st332:
@@ -7590,22 +7768,11 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof332
 		}
 	st_case_332:
-		switch data[p] {
-		case 58:
-			goto st293
-		case 68:
+		if 48 <= data[p] && data[p] <= 57 {
 			goto st333
 		}
-		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 67 {
-				goto st292
-			}
-		default:
-			goto st292
-		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st333:
@@ -7614,44 +7781,51 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_333:
 		switch data[p] {
-		case 58:
-			goto st293
-		case 89:
-			goto st334
+		case 10:
+			goto ctr337
+		case 13:
+			goto ctr338
+		case 32:
+			goto st310
 		}
-		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 88 {
-				goto st292
-			}
-		default:
-			goto st292
+		if 48 <= data[p] && data[p] <= 57 {
+			goto st333
 		}
 		{
-			goto st292
+			goto st0
 
 		}
+	ctr330:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st334
 	st334:
 		if p++; p == pe {
 			goto _test_eof334
 		}
 	st_case_334:
-		switch data[p] {
-		case 58:
-			goto st293
-		case 61:
+		// line 7712 "smtp.go"
+		if data[p] == 92 {
 			goto st335
 		}
 		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 60 {
-				goto st292
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st305
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st305
 			}
 		default:
-			goto st292
+			goto st305
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st335:
@@ -7659,44 +7833,63 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof335
 		}
 	st_case_335:
-		switch data[p] {
-		case 55:
-			goto st336
-		case 56:
-			goto st340
-		case 57:
-			goto st292
-		case 58:
-			goto st293
-		}
-		if data[p] <= 54 {
-			goto st292
+		if data[p] == 34 {
+			goto st305
 		}
 		{
-			goto st292
+			goto st0
 
 		}
+	ctr329:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st336
 	st336:
 		if p++; p == pe {
 			goto _test_eof336
 		}
 	st_case_336:
+		// line 7757 "smtp.go"
 		switch data[p] {
+		case 33:
+			goto st339
+		case 34:
+			goto st340
 		case 58:
-			goto st293
-		case 66:
-			goto st337
+			goto st305
+		case 62:
+			goto ctr373
+		case 92:
+			goto st399
 		}
 		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 65 {
-				goto st292
+		case data[p] < 59:
+			switch {
+			case data[p] > 32:
+				if 35 <= data[p] && data[p] <= 57 {
+					goto st339
+				}
+			default:
+				goto st337
+			}
+		case data[p] > 61:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st339
+				}
+			case data[p] >= 63:
+				goto st339
 			}
 		default:
-			goto st292
+			goto st339
 		}
 		{
-			goto st292
+			goto st337
 
 		}
 	st337:
@@ -7704,22 +7897,14 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof337
 		}
 	st_case_337:
-		switch data[p] {
-		case 58:
-			goto st293
-		case 73:
+		if data[p] == 58 {
 			goto st338
 		}
-		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 72 {
-				goto st292
-			}
-		default:
-			goto st292
+		if data[p] <= 57 {
+			goto st337
 		}
 		{
-			goto st292
+			goto st337
 
 		}
 	st338:
@@ -7728,21 +7913,23 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_338:
 		switch data[p] {
-		case 58:
-			goto st293
-		case 84:
-			goto st339
+		case 33:
+			goto ctr327
+		case 34:
+			goto ctr328
+		case 92:
+			goto ctr330
 		}
 		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 83 {
-				goto st292
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto ctr327
 			}
-		default:
-			goto st292
+		case data[p] >= 35:
+			goto ctr327
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st339:
@@ -7751,34 +7938,41 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_339:
 		switch data[p] {
-		case 10:
-			goto ctr382
-		case 13:
-			goto ctr383
-		case 32:
-			goto ctr384
+		case 33:
+			goto st339
+		case 34:
+			goto st340
 		case 58:
-			goto st293
+			goto st372
+		case 62:
+			goto ctr373
+		case 92:
+			goto st399
 		}
 		switch {
-		case data[p] < 11:
-			if data[p] <= 9 {
-				goto st292
-			}
-		case data[p] > 12:
+		case data[p] < 59:
 			switch {
-			case data[p] > 31:
-				if 33 <= data[p] && data[p] <= 57 {
-					goto st292
+			case data[p] > 32:
+				if 35 <= data[p] && data[p] <= 57 {
+					goto st339
 				}
-			case data[p] >= 14:
-				goto st292
+			default:
+				goto st337
+			}
+		case data[p] > 61:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st339
+				}
+			case data[p] >= 63:
+				goto st339
 			}
 		default:
-			goto st292
+			goto st339
 		}
 		{
-			goto st292
+			goto st337
 
 		}
 	st340:
@@ -7787,21 +7981,37 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_340:
 		switch data[p] {
+		case 34:
+			goto st337
 		case 58:
-			goto st293
-		case 66:
-			goto st341
+			goto st342
+		case 92:
+			goto st371
 		}
 		switch {
+		case data[p] < 35:
+			switch {
+			case data[p] > 31:
+				if data[p] <= 33 {
+					goto st341
+				}
+			default:
+				goto st337
+			}
 		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 65 {
-				goto st292
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st341
+				}
+			case data[p] >= 59:
+				goto st341
 			}
 		default:
-			goto st292
+			goto st341
 		}
 		{
-			goto st292
+			goto st337
 
 		}
 	st341:
@@ -7810,21 +8020,37 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_341:
 		switch data[p] {
+		case 34:
+			goto st339
 		case 58:
-			goto st293
-		case 73:
 			goto st342
+		case 92:
+			goto st371
 		}
 		switch {
+		case data[p] < 35:
+			switch {
+			case data[p] > 31:
+				if data[p] <= 33 {
+					goto st341
+				}
+			default:
+				goto st337
+			}
 		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 72 {
-				goto st292
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st341
+				}
+			case data[p] >= 59:
+				goto st341
 			}
 		default:
-			goto st292
+			goto st341
 		}
 		{
-			goto st292
+			goto st337
 
 		}
 	st342:
@@ -7833,113 +8059,213 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_342:
 		switch data[p] {
-		case 58:
-			goto st293
-		case 84:
-			goto st343
+		case 32:
+			goto st307
+		case 33:
+			goto ctr380
+		case 34:
+			goto ctr381
+		case 92:
+			goto ctr382
 		}
 		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 83 {
-				goto st292
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto ctr380
 			}
-		default:
-			goto st292
+		case data[p] >= 35:
+			goto ctr380
 		}
 		{
-			goto st292
+			goto st0
 
 		}
+	ctr380:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st343
 	st343:
 		if p++; p == pe {
 			goto _test_eof343
 		}
 	st_case_343:
+		// line 7997 "smtp.go"
 		switch data[p] {
-		case 58:
-			goto st293
-		case 77:
+		case 32:
+			goto st307
+		case 33:
+			goto st343
+		case 34:
 			goto st344
+		case 62:
+			goto ctr385
+		case 92:
+			goto st370
 		}
 		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 76 {
-				goto st292
+		case data[p] < 63:
+			if 35 <= data[p] && data[p] <= 61 {
+				goto st343
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st343
 			}
 		default:
-			goto st292
+			goto st343
 		}
 		{
-			goto st292
+			goto st0
 
 		}
+	ctr381:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st344
 	st344:
 		if p++; p == pe {
 			goto _test_eof344
 		}
 	st_case_344:
+		// line 8039 "smtp.go"
 		switch data[p] {
-		case 58:
-			goto st293
-		case 73:
-			goto st345
+		case 32:
+			goto st307
+		case 33:
+			goto st343
+		case 34:
+			goto st306
+		case 62:
+			goto ctr385
+		case 92:
+			goto st370
 		}
 		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 72 {
-				goto st292
+		case data[p] < 63:
+			if 35 <= data[p] && data[p] <= 61 {
+				goto st343
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st343
 			}
 		default:
-			goto st292
+			goto st343
 		}
 		{
-			goto st292
+			goto st0
 
 		}
+	ctr385:
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		goto st345
 	st345:
 		if p++; p == pe {
 			goto _test_eof345
 		}
 	st_case_345:
+		// line 8082 "smtp.go"
 		switch data[p] {
-		case 58:
-			goto st293
-		case 77:
+		case 10:
+			goto ctr337
+		case 13:
+			goto ctr338
+		case 32:
 			goto st346
+		case 33:
+			goto st343
+		case 34:
+			goto st344
+		case 62:
+			goto ctr385
+		case 92:
+			goto st370
 		}
 		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 76 {
-				goto st292
+		case data[p] < 63:
+			if 35 <= data[p] && data[p] <= 61 {
+				goto st343
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st343
 			}
 		default:
-			goto st292
+			goto st343
 		}
 		{
-			goto st292
+			goto st0
 
 		}
+	ctr399:
+		// line 71 "smtp.ragel"
+		{
+			parser.current.BodyType = BodyType7BIT
+		}
+		goto st346
+	ctr407:
+		// line 69 "smtp.ragel"
+		{
+			parser.current.BodyType = BodyType8BITMIME
+		}
+		goto st346
 	st346:
 		if p++; p == pe {
 			goto _test_eof346
 		}
 	st_case_346:
+		// line 8130 "smtp.go"
 		switch data[p] {
-		case 58:
-			goto st293
-		case 69:
+		case 10:
+			goto ctr337
+		case 13:
+			goto ctr338
+		case 32:
+			goto st346
+		case 33:
+			goto st307
+		case 34:
+			goto st305
+		case 66:
 			goto st347
+		case 83:
+			goto st364
+		case 92:
+			goto st308
 		}
 		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 68 {
-				goto st292
+		case data[p] < 67:
+			if 35 <= data[p] && data[p] <= 65 {
+				goto st307
+			}
+		case data[p] > 82:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 84:
+				goto st307
 			}
 		default:
-			goto st292
+			goto st307
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st347:
@@ -7948,34 +8274,32 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_347:
 		switch data[p] {
-		case 10:
-			goto ctr392
-		case 13:
-			goto ctr393
-		case 32:
-			goto ctr394
-		case 58:
-			goto st293
+		case 34:
+			goto st305
+		case 79:
+			goto st348
+		case 92:
+			goto st308
 		}
 		switch {
-		case data[p] < 11:
-			if data[p] <= 9 {
-				goto st292
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
 			}
-		case data[p] > 12:
+		case data[p] > 78:
 			switch {
-			case data[p] > 31:
-				if 33 <= data[p] && data[p] <= 57 {
-					goto st292
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
 				}
-			case data[p] >= 14:
-				goto st292
+			case data[p] >= 80:
+				goto st307
 			}
 		default:
-			goto st292
+			goto st307
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st348:
@@ -7984,21 +8308,32 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_348:
 		switch data[p] {
-		case 58:
-			goto st293
-		case 73:
+		case 34:
+			goto st305
+		case 68:
 			goto st349
+		case 92:
+			goto st308
 		}
 		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 72 {
-				goto st292
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 67:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 69:
+				goto st307
 			}
 		default:
-			goto st292
+			goto st307
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st349:
@@ -8007,21 +8342,32 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_349:
 		switch data[p] {
-		case 58:
-			goto st293
-		case 90:
+		case 34:
+			goto st305
+		case 89:
 			goto st350
+		case 92:
+			goto st308
 		}
 		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 89 {
-				goto st292
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 88:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 90:
+				goto st307
 			}
 		default:
-			goto st292
+			goto st307
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st350:
@@ -8030,21 +8376,32 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_350:
 		switch data[p] {
-		case 58:
-			goto st293
-		case 69:
+		case 34:
+			goto st305
+		case 61:
 			goto st351
+		case 92:
+			goto st308
 		}
 		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 68 {
-				goto st292
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 60:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 62:
+				goto st307
 			}
 		default:
-			goto st292
+			goto st307
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st351:
@@ -8053,21 +8410,34 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_351:
 		switch data[p] {
-		case 58:
-			goto st293
-		case 61:
+		case 34:
+			goto st305
+		case 55:
 			goto st352
+		case 56:
+			goto st356
+		case 92:
+			goto st308
 		}
 		switch {
-		case data[p] > 57:
-			if 59 <= data[p] && data[p] <= 60 {
-				goto st292
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 54:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 57:
+				goto st307
 			}
 		default:
-			goto st292
+			goto st307
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st352:
@@ -8075,19 +8445,33 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof352
 		}
 	st_case_352:
-		if data[p] == 58 {
-			goto st293
+		switch data[p] {
+		case 34:
+			goto st305
+		case 66:
+			goto st353
+		case 92:
+			goto st308
 		}
 		switch {
-		case data[p] > 47:
-			if data[p] <= 57 {
-				goto st353
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 65:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 67:
+				goto st307
 			}
 		default:
-			goto st292
+			goto st307
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st353:
@@ -8096,39 +8480,32 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_353:
 		switch data[p] {
-		case 10:
-			goto ctr367
-		case 13:
-			goto ctr368
-		case 32:
-			goto st330
-		case 58:
-			goto st293
+		case 34:
+			goto st305
+		case 73:
+			goto st354
+		case 92:
+			goto st308
 		}
 		switch {
-		case data[p] < 14:
-			switch {
-			case data[p] > 9:
-				if 11 <= data[p] && data[p] <= 12 {
-					goto st292
-				}
-			default:
-				goto st292
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
 			}
-		case data[p] > 31:
+		case data[p] > 72:
 			switch {
-			case data[p] > 47:
-				if data[p] <= 57 {
-					goto st353
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
 				}
-			case data[p] >= 33:
-				goto st292
+			case data[p] >= 74:
+				goto st307
 			}
 		default:
-			goto st292
+			goto st307
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st354:
@@ -8138,36 +8515,31 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 	st_case_354:
 		switch data[p] {
 		case 34:
-			goto st292
-		case 58:
-			goto st327
-		case 92:
+			goto st305
+		case 84:
 			goto st355
+		case 92:
+			goto st308
 		}
 		switch {
 		case data[p] < 35:
-			switch {
-			case data[p] > 31:
-				if data[p] <= 33 {
-					goto st294
-				}
-			default:
-				goto st292
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
 			}
-		case data[p] > 57:
+		case data[p] > 83:
 			switch {
 			case data[p] > 91:
 				if 93 <= data[p] && data[p] <= 126 {
-					goto st294
+					goto st307
 				}
-			case data[p] >= 59:
-				goto st294
+			case data[p] >= 85:
+				goto st307
 			}
 		default:
-			goto st294
+			goto st307
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st355:
@@ -8176,21 +8548,29 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_355:
 		switch data[p] {
+		case 10:
+			goto ctr351
+		case 13:
+			goto ctr352
+		case 32:
+			goto ctr399
+		case 33:
+			goto st307
 		case 34:
-			goto st294
-		case 58:
-			goto st293
+			goto st305
+		case 92:
+			goto st308
 		}
 		switch {
-		case data[p] > 33:
-			if 35 <= data[p] && data[p] <= 57 {
-				goto st292
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st307
 			}
-		default:
-			goto st292
+		case data[p] >= 35:
+			goto st307
 		}
 		{
-			goto st292
+			goto st0
 
 		}
 	st356:
@@ -8198,8 +8578,30 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof356
 		}
 	st_case_356:
-		if data[p] == 85 {
+		switch data[p] {
+		case 34:
+			goto st305
+		case 66:
 			goto st357
+		case 92:
+			goto st308
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 65:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 67:
+				goto st307
+			}
+		default:
+			goto st307
 		}
 		{
 			goto st0
@@ -8210,8 +8612,30 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof357
 		}
 	st_case_357:
-		if data[p] == 73 {
+		switch data[p] {
+		case 34:
+			goto st305
+		case 73:
 			goto st358
+		case 92:
+			goto st308
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 72:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 74:
+				goto st307
+			}
+		default:
+			goto st307
 		}
 		{
 			goto st0
@@ -8222,8 +8646,30 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof358
 		}
 	st_case_358:
-		if data[p] == 84 {
+		switch data[p] {
+		case 34:
+			goto st305
+		case 84:
 			goto st359
+		case 92:
+			goto st308
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 83:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 85:
+				goto st307
+			}
+		default:
+			goto st307
 		}
 		{
 			goto st0
@@ -8235,10 +8681,29 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_359:
 		switch data[p] {
-		case 10:
-			goto ctr404
-		case 13:
-			goto ctr405
+		case 34:
+			goto st305
+		case 77:
+			goto st360
+		case 92:
+			goto st308
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 76:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 78:
+				goto st307
+			}
+		default:
+			goto st307
 		}
 		{
 			goto st0
@@ -8250,10 +8715,29 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_360:
 		switch data[p] {
-		case 67:
+		case 34:
+			goto st305
+		case 73:
 			goto st361
-		case 83:
-			goto st393
+		case 92:
+			goto st308
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 72:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 74:
+				goto st307
+			}
+		default:
+			goto st307
 		}
 		{
 			goto st0
@@ -8264,8 +8748,30 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof361
 		}
 	st_case_361:
-		if data[p] == 80 {
+		switch data[p] {
+		case 34:
+			goto st305
+		case 77:
 			goto st362
+		case 92:
+			goto st308
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 76:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 78:
+				goto st307
+			}
+		default:
+			goto st307
 		}
 		{
 			goto st0
@@ -8276,8 +8782,30 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof362
 		}
 	st_case_362:
-		if data[p] == 84 {
+		switch data[p] {
+		case 34:
+			goto st305
+		case 69:
 			goto st363
+		case 92:
+			goto st308
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 68:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 70:
+				goto st307
+			}
+		default:
+			goto st307
 		}
 		{
 			goto st0
@@ -8288,8 +8816,27 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof363
 		}
 	st_case_363:
-		if data[p] == 32 {
-			goto st364
+		switch data[p] {
+		case 10:
+			goto ctr361
+		case 13:
+			goto ctr362
+		case 32:
+			goto ctr407
+		case 33:
+			goto st307
+		case 34:
+			goto st305
+		case 92:
+			goto st308
+		}
+		switch {
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st307
+			}
+		case data[p] >= 35:
+			goto st307
 		}
 		{
 			goto st0
@@ -8301,10 +8848,29 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_364:
 		switch data[p] {
-		case 84:
+		case 34:
+			goto st305
+		case 73:
 			goto st365
-		case 116:
-			goto st365
+		case 92:
+			goto st308
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 72:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 74:
+				goto st307
+			}
+		default:
+			goto st307
 		}
 		{
 			goto st0
@@ -8316,10 +8882,26 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_365:
 		switch data[p] {
-		case 79:
+		case 34:
+			goto st305
+		case 90:
 			goto st366
-		case 111:
-			goto st366
+		case 91:
+			goto st307
+		case 92:
+			goto st308
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 89:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st307
+			}
+		default:
+			goto st307
 		}
 		{
 			goto st0
@@ -8330,8 +8912,30 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof366
 		}
 	st_case_366:
-		if data[p] == 58 {
+		switch data[p] {
+		case 34:
+			goto st305
+		case 69:
 			goto st367
+		case 92:
+			goto st308
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 68:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 70:
+				goto st307
+			}
+		default:
+			goto st307
 		}
 		{
 			goto st0
@@ -8342,8 +8946,30 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof367
 		}
 	st_case_367:
-		if data[p] == 60 {
+		switch data[p] {
+		case 34:
+			goto st305
+		case 61:
 			goto st368
+		case 92:
+			goto st308
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st307
+			}
+		case data[p] > 60:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			case data[p] >= 62:
+				goto st307
+			}
+		default:
+			goto st307
 		}
 		{
 			goto st0
@@ -8355,63 +8981,69 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_368:
 		switch data[p] {
-		case 33:
-			goto ctr415
 		case 34:
-			goto ctr416
-		case 64:
-			goto ctr417
+			goto st305
 		case 92:
-			goto ctr418
+			goto st308
 		}
 		switch {
-		case data[p] < 65:
-			if 35 <= data[p] && data[p] <= 63 {
-				goto ctr415
+		case data[p] < 48:
+			switch {
+			case data[p] > 33:
+				if 35 <= data[p] {
+					goto st307
+				}
+			case data[p] >= 32:
+				goto st307
 			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto ctr415
+		case data[p] > 57:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			default:
+				goto st307
 			}
 		default:
-			goto ctr415
+			goto st369
 		}
 		{
 			goto st0
 
 		}
-	ctr415:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st369
 	st369:
 		if p++; p == pe {
 			goto _test_eof369
 		}
 	st_case_369:
-		// line 8273 "smtp.go"
 		switch data[p] {
+		case 10:
+			goto ctr337
+		case 13:
+			goto ctr338
+		case 32:
+			goto st346
 		case 33:
-			goto st369
+			goto st307
 		case 34:
-			goto st370
-		case 62:
-			goto ctr421
+			goto st305
 		case 92:
-			goto st374
+			goto st308
 		}
 		switch {
-		case data[p] < 63:
-			if 35 <= data[p] && data[p] <= 61 {
-				goto st369
+		case data[p] < 48:
+			if 35 <= data[p] {
+				goto st307
 			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st369
+		case data[p] > 57:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st307
+				}
+			default:
+				goto st307
 			}
 		default:
 			goto st369
@@ -8420,7 +9052,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto st0
 
 		}
-	ctr416:
+	ctr382:
 		// line 32 "smtp.ragel"
 		{
 
@@ -8433,21 +9065,24 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof370
 		}
 	st_case_370:
-		// line 8313 "smtp.go"
-		if data[p] == 92 {
-			goto st372
+		// line 8967 "smtp.go"
+		switch data[p] {
+		case 34:
+			goto st307
+		case 92:
+			goto st335
 		}
 		switch {
 		case data[p] < 35:
 			if 32 <= data[p] && data[p] <= 33 {
-				goto st371
+				goto st305
 			}
 		case data[p] > 91:
 			if 93 <= data[p] && data[p] <= 126 {
-				goto st371
+				goto st305
 			}
 		default:
-			goto st371
+			goto st305
 		}
 		{
 			goto st0
@@ -8460,24 +9095,20 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 	st_case_371:
 		switch data[p] {
 		case 34:
-			goto st369
-		case 92:
-			goto st372
+			goto st341
+		case 58:
+			goto st338
 		}
 		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st371
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st371
+		case data[p] > 33:
+			if 35 <= data[p] && data[p] <= 57 {
+				goto st337
 			}
 		default:
-			goto st371
+			goto st337
 		}
 		{
-			goto st0
+			goto st337
 
 		}
 	st372:
@@ -8485,29 +9116,33 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof372
 		}
 	st_case_372:
-		if data[p] == 34 {
-			goto st371
+		switch data[p] {
+		case 33:
+			goto ctr327
+		case 34:
+			goto ctr328
+		case 62:
+			goto ctr413
+		case 92:
+			goto ctr330
+		}
+		switch {
+		case data[p] < 63:
+			if 35 <= data[p] && data[p] <= 61 {
+				goto ctr327
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto ctr327
+			}
+		default:
+			goto ctr327
 		}
 		{
 			goto st0
 
 		}
-	ctr421:
-		// line 26 "smtp.ragel"
-		{
-
-			parser.buffer.Write(data[pb:p])
-			parser.current.Data = parser.buffer.Bytes()
-			parser.buffer = nil
-		}
-		goto st373
-	ctr445:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
+	ctr373:
 		// line 26 "smtp.ragel"
 		{
 
@@ -8521,43 +9156,159 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof373
 		}
 	st_case_373:
-		// line 8401 "smtp.go"
+		// line 9058 "smtp.go"
 		switch data[p] {
 		case 10:
-			goto ctr425
+			goto ctr414
 		case 13:
-			goto ctr426
+			goto ctr415
+		case 32:
+			goto st375
 		case 33:
-			goto st369
+			goto st339
 		case 34:
-			goto st370
+			goto st340
+		case 58:
+			goto st372
 		case 62:
-			goto ctr421
+			goto ctr373
 		case 92:
-			goto st374
+			goto st399
 		}
 		switch {
-		case data[p] < 63:
-			if 35 <= data[p] && data[p] <= 61 {
-				goto st369
+		case data[p] < 35:
+			switch {
+			case data[p] < 11:
+				if data[p] <= 9 {
+					goto st337
+				}
+			case data[p] > 12:
+				if 14 <= data[p] && data[p] <= 31 {
+					goto st337
+				}
+			default:
+				goto st337
 			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st369
+		case data[p] > 57:
+			switch {
+			case data[p] < 63:
+				if 59 <= data[p] && data[p] <= 61 {
+					goto st339
+				}
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st339
+				}
+			default:
+				goto st339
 			}
 		default:
-			goto st369
+			goto st339
 		}
 		{
-			goto st0
+			goto st337
 
 		}
-	ctr418:
-		// line 32 "smtp.ragel"
+	ctr417:
+		// line 97 "smtp.ragel"
 		{
+			{
+				p++
+				cs = 456
+				goto _out
+			}
+		}
+		goto st456
+	ctr414:
+		// line 82 "smtp.ragel"
+		{
+			parser.current.Verb = VerbMAIL
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 456
+				goto _out
+			}
+		}
+		goto st456
+	ctr429:
+		// line 71 "smtp.ragel"
+		{
+			parser.current.BodyType = BodyType7BIT
+		}
+		// line 82 "smtp.ragel"
+		{
+			parser.current.Verb = VerbMAIL
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 456
+				goto _out
+			}
+		}
+		goto st456
+	ctr439:
+		// line 69 "smtp.ragel"
+		{
+			parser.current.BodyType = BodyType8BITMIME
+		}
+		// line 82 "smtp.ragel"
+		{
+			parser.current.Verb = VerbMAIL
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 456
+				goto _out
+			}
+		}
+		goto st456
+	st456:
+		if p++; p == pe {
+			goto _test_eof456
+		}
+	st_case_456:
+		// line 9155 "smtp.go"
+		if data[p] == 58 {
+			goto st338
+		}
+		if data[p] <= 57 {
+			goto st337
+		}
+		{
+			goto st337
 
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
+		}
+	ctr415:
+		// line 82 "smtp.ragel"
+		{
+			parser.current.Verb = VerbMAIL
+		}
+		goto st374
+	ctr430:
+		// line 71 "smtp.ragel"
+		{
+			parser.current.BodyType = BodyType7BIT
+		}
+		// line 82 "smtp.ragel"
+		{
+			parser.current.Verb = VerbMAIL
+		}
+		goto st374
+	ctr440:
+		// line 69 "smtp.ragel"
+		{
+			parser.current.BodyType = BodyType8BITMIME
+		}
+		// line 82 "smtp.ragel"
+		{
+			parser.current.Verb = VerbMAIL
 		}
 		goto st374
 	st374:
@@ -8565,88 +9316,108 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof374
 		}
 	st_case_374:
-		// line 8445 "smtp.go"
-		if data[p] == 92 {
-			goto st375
+		// line 9192 "smtp.go"
+		switch data[p] {
+		case 10:
+			goto ctr417
+		case 58:
+			goto st338
 		}
 		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st369
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st369
+		case data[p] > 9:
+			if 11 <= data[p] && data[p] <= 57 {
+				goto st337
 			}
 		default:
-			goto st369
+			goto st337
 		}
 		{
-			goto st0
+			goto st337
 
 		}
+	ctr431:
+		// line 71 "smtp.ragel"
+		{
+			parser.current.BodyType = BodyType7BIT
+		}
+		goto st375
+	ctr441:
+		// line 69 "smtp.ragel"
+		{
+			parser.current.BodyType = BodyType8BITMIME
+		}
+		goto st375
 	st375:
 		if p++; p == pe {
 			goto _test_eof375
 		}
 	st_case_375:
-		if data[p] == 34 {
-			goto st369
+		// line 9226 "smtp.go"
+		switch data[p] {
+		case 10:
+			goto ctr414
+		case 13:
+			goto ctr415
+		case 32:
+			goto st375
+		case 58:
+			goto st338
+		case 66:
+			goto st376
+		case 83:
+			goto st393
+		}
+		switch {
+		case data[p] < 14:
+			switch {
+			case data[p] > 9:
+				if 11 <= data[p] && data[p] <= 12 {
+					goto st337
+				}
+			default:
+				goto st337
+			}
+		case data[p] > 31:
+			switch {
+			case data[p] < 59:
+				if 33 <= data[p] && data[p] <= 57 {
+					goto st337
+				}
+			case data[p] > 65:
+				if 67 <= data[p] && data[p] <= 82 {
+					goto st337
+				}
+			default:
+				goto st337
+			}
+		default:
+			goto st337
 		}
 		{
-			goto st0
+			goto st337
 
 		}
-	ctr417:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st376
 	st376:
 		if p++; p == pe {
 			goto _test_eof376
 		}
 	st_case_376:
-		// line 8490 "smtp.go"
 		switch data[p] {
-		case 33:
-			goto st379
-		case 34:
-			goto st380
 		case 58:
-			goto st369
-		case 62:
-			goto ctr431
-		case 92:
-			goto st391
+			goto st338
+		case 79:
+			goto st377
 		}
 		switch {
-		case data[p] < 59:
-			switch {
-			case data[p] > 32:
-				if 35 <= data[p] && data[p] <= 57 {
-					goto st379
-				}
-			default:
-				goto st377
-			}
-		case data[p] > 61:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st379
-				}
-			case data[p] >= 63:
-				goto st379
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 78 {
+				goto st337
 			}
 		default:
-			goto st379
+			goto st337
 		}
 		{
-			goto st377
+			goto st337
 
 		}
 	st377:
@@ -8654,14 +9425,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof377
 		}
 	st_case_377:
-		if data[p] == 58 {
+		switch data[p] {
+		case 58:
+			goto st338
+		case 68:
 			goto st378
 		}
-		if data[p] <= 57 {
-			goto st377
+		switch {
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 67 {
+				goto st337
+			}
+		default:
+			goto st337
 		}
 		{
-			goto st377
+			goto st337
 
 		}
 	st378:
@@ -8670,23 +9449,21 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_378:
 		switch data[p] {
-		case 33:
-			goto ctr415
-		case 34:
-			goto ctr416
-		case 92:
-			goto ctr418
+		case 58:
+			goto st338
+		case 89:
+			goto st379
 		}
 		switch {
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto ctr415
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 88 {
+				goto st337
 			}
-		case data[p] >= 35:
-			goto ctr415
+		default:
+			goto st337
 		}
 		{
-			goto st0
+			goto st337
 
 		}
 	st379:
@@ -8695,41 +9472,21 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_379:
 		switch data[p] {
-		case 33:
-			goto st379
-		case 34:
-			goto st380
 		case 58:
-			goto st388
-		case 62:
-			goto ctr431
-		case 92:
-			goto st391
+			goto st338
+		case 61:
+			goto st380
 		}
 		switch {
-		case data[p] < 59:
-			switch {
-			case data[p] > 32:
-				if 35 <= data[p] && data[p] <= 57 {
-					goto st379
-				}
-			default:
-				goto st377
-			}
-		case data[p] > 61:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st379
-				}
-			case data[p] >= 63:
-				goto st379
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 60 {
+				goto st337
 			}
 		default:
-			goto st379
+			goto st337
 		}
 		{
-			goto st377
+			goto st337
 
 		}
 	st380:
@@ -8738,37 +9495,20 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_380:
 		switch data[p] {
-		case 34:
-			goto st377
-		case 58:
-			goto st382
-		case 92:
-			goto st387
-		}
-		switch {
-		case data[p] < 35:
-			switch {
-			case data[p] > 31:
-				if data[p] <= 33 {
-					goto st381
-				}
-			default:
-				goto st377
-			}
-		case data[p] > 57:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st381
-				}
-			case data[p] >= 59:
-				goto st381
-			}
-		default:
+		case 55:
 			goto st381
+		case 56:
+			goto st385
+		case 57:
+			goto st337
+		case 58:
+			goto st338
+		}
+		if data[p] <= 54 {
+			goto st337
 		}
 		{
-			goto st377
+			goto st337
 
 		}
 	st381:
@@ -8777,37 +9517,21 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_381:
 		switch data[p] {
-		case 34:
-			goto st379
 		case 58:
+			goto st338
+		case 66:
 			goto st382
-		case 92:
-			goto st387
 		}
 		switch {
-		case data[p] < 35:
-			switch {
-			case data[p] > 31:
-				if data[p] <= 33 {
-					goto st381
-				}
-			default:
-				goto st377
-			}
 		case data[p] > 57:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st381
-				}
-			case data[p] >= 59:
-				goto st381
+			if 59 <= data[p] && data[p] <= 65 {
+				goto st337
 			}
 		default:
-			goto st381
+			goto st337
 		}
 		{
-			goto st377
+			goto st337
 
 		}
 	st382:
@@ -8816,192 +9540,126 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_382:
 		switch data[p] {
-		case 32:
-			goto st371
-		case 33:
-			goto ctr438
-		case 34:
-			goto ctr439
-		case 92:
-			goto ctr440
+		case 58:
+			goto st338
+		case 73:
+			goto st383
 		}
 		switch {
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto ctr438
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 72 {
+				goto st337
 			}
-		case data[p] >= 35:
-			goto ctr438
+		default:
+			goto st337
 		}
 		{
-			goto st0
+			goto st337
 
 		}
-	ctr438:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st383
 	st383:
 		if p++; p == pe {
 			goto _test_eof383
 		}
 	st_case_383:
-		// line 8730 "smtp.go"
 		switch data[p] {
-		case 32:
-			goto st371
-		case 33:
-			goto st383
-		case 34:
+		case 58:
+			goto st338
+		case 84:
 			goto st384
-		case 62:
-			goto ctr443
-		case 92:
-			goto st386
 		}
 		switch {
-		case data[p] < 63:
-			if 35 <= data[p] && data[p] <= 61 {
-				goto st383
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st383
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 83 {
+				goto st337
 			}
 		default:
-			goto st383
+			goto st337
 		}
 		{
-			goto st0
+			goto st337
 
 		}
-	ctr439:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st384
 	st384:
 		if p++; p == pe {
 			goto _test_eof384
 		}
 	st_case_384:
-		// line 8772 "smtp.go"
 		switch data[p] {
+		case 10:
+			goto ctr429
+		case 13:
+			goto ctr430
 		case 32:
-			goto st371
-		case 33:
-			goto st383
-		case 34:
-			goto st370
-		case 62:
-			goto ctr443
-		case 92:
-			goto st386
+			goto ctr431
+		case 58:
+			goto st338
 		}
 		switch {
-		case data[p] < 63:
-			if 35 <= data[p] && data[p] <= 61 {
-				goto st383
+		case data[p] < 11:
+			if data[p] <= 9 {
+				goto st337
 			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st383
+		case data[p] > 12:
+			switch {
+			case data[p] > 31:
+				if 33 <= data[p] && data[p] <= 57 {
+					goto st337
+				}
+			case data[p] >= 14:
+				goto st337
 			}
 		default:
-			goto st383
+			goto st337
 		}
 		{
-			goto st0
+			goto st337
 
 		}
-	ctr443:
-		// line 26 "smtp.ragel"
-		{
-
-			parser.buffer.Write(data[pb:p])
-			parser.current.Data = parser.buffer.Bytes()
-			parser.buffer = nil
-		}
-		goto st385
 	st385:
 		if p++; p == pe {
 			goto _test_eof385
 		}
 	st_case_385:
-		// line 8815 "smtp.go"
 		switch data[p] {
-		case 10:
-			goto ctr425
-		case 13:
-			goto ctr426
-		case 32:
-			goto st371
-		case 33:
-			goto st383
-		case 34:
-			goto st384
-		case 62:
-			goto ctr443
-		case 92:
+		case 58:
+			goto st338
+		case 66:
 			goto st386
 		}
 		switch {
-		case data[p] < 63:
-			if 35 <= data[p] && data[p] <= 61 {
-				goto st383
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st383
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 65 {
+				goto st337
 			}
 		default:
-			goto st383
+			goto st337
 		}
 		{
-			goto st0
+			goto st337
 
 		}
-	ctr440:
-		// line 32 "smtp.ragel"
-		{
-
-			pb = p
-			parser.buffer = bytes.NewBuffer(nil)
-		}
-		goto st386
 	st386:
 		if p++; p == pe {
 			goto _test_eof386
 		}
 	st_case_386:
-		// line 8861 "smtp.go"
 		switch data[p] {
-		case 34:
-			goto st371
-		case 92:
-			goto st375
+		case 58:
+			goto st338
+		case 73:
+			goto st387
 		}
 		switch {
-		case data[p] < 35:
-			if 32 <= data[p] && data[p] <= 33 {
-				goto st369
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto st369
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 72 {
+				goto st337
 			}
 		default:
-			goto st369
+			goto st337
 		}
 		{
-			goto st0
+			goto st337
 
 		}
 	st387:
@@ -9010,21 +9668,21 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_387:
 		switch data[p] {
-		case 34:
-			goto st381
 		case 58:
-			goto st378
+			goto st338
+		case 84:
+			goto st388
 		}
 		switch {
-		case data[p] > 33:
-			if 35 <= data[p] && data[p] <= 57 {
-				goto st377
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 83 {
+				goto st337
 			}
 		default:
-			goto st377
+			goto st337
 		}
 		{
-			goto st377
+			goto st337
 
 		}
 	st388:
@@ -9033,164 +9691,67 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_388:
 		switch data[p] {
-		case 33:
-			goto ctr415
-		case 34:
-			goto ctr416
-		case 62:
-			goto ctr445
-		case 92:
-			goto ctr418
+		case 58:
+			goto st338
+		case 77:
+			goto st389
 		}
 		switch {
-		case data[p] < 63:
-			if 35 <= data[p] && data[p] <= 61 {
-				goto ctr415
-			}
-		case data[p] > 91:
-			if 93 <= data[p] && data[p] <= 126 {
-				goto ctr415
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 76 {
+				goto st337
 			}
 		default:
-			goto ctr415
+			goto st337
 		}
 		{
-			goto st0
+			goto st337
 
 		}
-	ctr431:
-		// line 26 "smtp.ragel"
-		{
-
-			parser.buffer.Write(data[pb:p])
-			parser.current.Data = parser.buffer.Bytes()
-			parser.buffer = nil
-		}
-		goto st389
 	st389:
 		if p++; p == pe {
 			goto _test_eof389
 		}
 	st_case_389:
-		// line 8952 "smtp.go"
 		switch data[p] {
-		case 10:
-			goto ctr446
-		case 13:
-			goto ctr447
-		case 33:
-			goto st379
-		case 34:
-			goto st380
 		case 58:
-			goto st388
-		case 62:
-			goto ctr431
-		case 92:
-			goto st391
+			goto st338
+		case 73:
+			goto st390
 		}
 		switch {
-		case data[p] < 35:
-			switch {
-			case data[p] < 11:
-				if data[p] <= 9 {
-					goto st377
-				}
-			case data[p] > 12:
-				if 14 <= data[p] && data[p] <= 32 {
-					goto st377
-				}
-			default:
-				goto st377
-			}
 		case data[p] > 57:
-			switch {
-			case data[p] < 63:
-				if 59 <= data[p] && data[p] <= 61 {
-					goto st379
-				}
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st379
-				}
-			default:
-				goto st379
+			if 59 <= data[p] && data[p] <= 72 {
+				goto st337
 			}
 		default:
-			goto st379
+			goto st337
 		}
 		{
-			goto st377
+			goto st337
 
 		}
-	ctr448:
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 412
-				goto _out
-			}
-		}
-		goto st412
-	ctr446:
-		// line 78 "smtp.ragel"
-		{
-			parser.current.Verb = VerbRCPT
-		}
-		// line 91 "smtp.ragel"
-		{
-			{
-				p++
-				cs = 412
-				goto _out
-			}
-		}
-		goto st412
-	st412:
-		if p++; p == pe {
-			goto _test_eof412
-		}
-	st_case_412:
-		// line 9023 "smtp.go"
-		if data[p] == 58 {
-			goto st378
-		}
-		if data[p] <= 57 {
-			goto st377
-		}
-		{
-			goto st377
-
-		}
-	ctr447:
-		// line 78 "smtp.ragel"
-		{
-			parser.current.Verb = VerbRCPT
-		}
-		goto st390
 	st390:
 		if p++; p == pe {
 			goto _test_eof390
 		}
 	st_case_390:
-		// line 9044 "smtp.go"
 		switch data[p] {
-		case 10:
-			goto ctr448
 		case 58:
-			goto st378
+			goto st338
+		case 77:
+			goto st391
 		}
 		switch {
-		case data[p] > 9:
-			if 11 <= data[p] && data[p] <= 57 {
-				goto st377
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 76 {
+				goto st337
 			}
 		default:
-			goto st377
+			goto st337
 		}
 		{
-			goto st377
+			goto st337
 
 		}
 	st391:
@@ -9199,37 +9760,21 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_391:
 		switch data[p] {
-		case 34:
-			goto st377
 		case 58:
-			goto st388
-		case 92:
+			goto st338
+		case 69:
 			goto st392
 		}
 		switch {
-		case data[p] < 35:
-			switch {
-			case data[p] > 31:
-				if data[p] <= 33 {
-					goto st379
-				}
-			default:
-				goto st377
-			}
 		case data[p] > 57:
-			switch {
-			case data[p] > 91:
-				if 93 <= data[p] && data[p] <= 126 {
-					goto st379
-				}
-			case data[p] >= 59:
-				goto st379
+			if 59 <= data[p] && data[p] <= 68 {
+				goto st337
 			}
 		default:
-			goto st379
+			goto st337
 		}
 		{
-			goto st377
+			goto st337
 
 		}
 	st392:
@@ -9238,21 +9783,34 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_392:
 		switch data[p] {
-		case 34:
-			goto st379
+		case 10:
+			goto ctr439
+		case 13:
+			goto ctr440
+		case 32:
+			goto ctr441
 		case 58:
-			goto st378
+			goto st338
 		}
 		switch {
-		case data[p] > 33:
-			if 35 <= data[p] && data[p] <= 57 {
-				goto st377
+		case data[p] < 11:
+			if data[p] <= 9 {
+				goto st337
+			}
+		case data[p] > 12:
+			switch {
+			case data[p] > 31:
+				if 33 <= data[p] && data[p] <= 57 {
+					goto st337
+				}
+			case data[p] >= 14:
+				goto st337
 			}
 		default:
-			goto st377
+			goto st337
 		}
 		{
-			goto st377
+			goto st337
 
 		}
 	st393:
@@ -9260,11 +9818,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof393
 		}
 	st_case_393:
-		if data[p] == 69 {
+		switch data[p] {
+		case 58:
+			goto st338
+		case 73:
 			goto st394
 		}
+		switch {
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 72 {
+				goto st337
+			}
+		default:
+			goto st337
+		}
 		{
-			goto st0
+			goto st337
 
 		}
 	st394:
@@ -9272,11 +9841,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof394
 		}
 	st_case_394:
-		if data[p] == 84 {
+		switch data[p] {
+		case 58:
+			goto st338
+		case 90:
 			goto st395
 		}
+		switch {
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 89 {
+				goto st337
+			}
+		default:
+			goto st337
+		}
 		{
-			goto st0
+			goto st337
 
 		}
 	st395:
@@ -9285,13 +9865,21 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_395:
 		switch data[p] {
-		case 10:
-			goto ctr452
-		case 13:
-			goto ctr453
+		case 58:
+			goto st338
+		case 69:
+			goto st396
+		}
+		switch {
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 68 {
+				goto st337
+			}
+		default:
+			goto st337
 		}
 		{
-			goto st0
+			goto st337
 
 		}
 	st396:
@@ -9299,11 +9887,22 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof396
 		}
 	st_case_396:
-		if data[p] == 84 {
+		switch data[p] {
+		case 58:
+			goto st338
+		case 61:
 			goto st397
 		}
+		switch {
+		case data[p] > 57:
+			if 59 <= data[p] && data[p] <= 60 {
+				goto st337
+			}
+		default:
+			goto st337
+		}
 		{
-			goto st0
+			goto st337
 
 		}
 	st397:
@@ -9311,11 +9910,19 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof397
 		}
 	st_case_397:
-		if data[p] == 65 {
-			goto st398
+		if data[p] == 58 {
+			goto st338
+		}
+		switch {
+		case data[p] > 47:
+			if data[p] <= 57 {
+				goto st398
+			}
+		default:
+			goto st337
 		}
 		{
-			goto st0
+			goto st337
 
 		}
 	st398:
@@ -9323,11 +9930,40 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof398
 		}
 	st_case_398:
-		if data[p] == 82 {
-			goto st399
+		switch data[p] {
+		case 10:
+			goto ctr414
+		case 13:
+			goto ctr415
+		case 32:
+			goto st375
+		case 58:
+			goto st338
+		}
+		switch {
+		case data[p] < 14:
+			switch {
+			case data[p] > 9:
+				if 11 <= data[p] && data[p] <= 12 {
+					goto st337
+				}
+			default:
+				goto st337
+			}
+		case data[p] > 31:
+			switch {
+			case data[p] > 47:
+				if data[p] <= 57 {
+					goto st398
+				}
+			case data[p] >= 33:
+				goto st337
+			}
+		default:
+			goto st337
 		}
 		{
-			goto st0
+			goto st337
 
 		}
 	st399:
@@ -9335,11 +9971,38 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof399
 		}
 	st_case_399:
-		if data[p] == 84 {
+		switch data[p] {
+		case 34:
+			goto st337
+		case 58:
+			goto st372
+		case 92:
 			goto st400
 		}
+		switch {
+		case data[p] < 35:
+			switch {
+			case data[p] > 31:
+				if data[p] <= 33 {
+					goto st339
+				}
+			default:
+				goto st337
+			}
+		case data[p] > 57:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st339
+				}
+			case data[p] >= 59:
+				goto st339
+			}
+		default:
+			goto st339
+		}
 		{
-			goto st0
+			goto st337
 
 		}
 	st400:
@@ -9347,20 +10010,62 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof400
 		}
 	st_case_400:
-		if data[p] == 84 {
-			goto st401
+		switch data[p] {
+		case 34:
+			goto st339
+		case 58:
+			goto st338
+		}
+		switch {
+		case data[p] > 33:
+			if 35 <= data[p] && data[p] <= 57 {
+				goto st337
+			}
+		default:
+			goto st337
 		}
 		{
-			goto st0
+			goto st337
 
 		}
+	ctr7:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st401
 	st401:
 		if p++; p == pe {
 			goto _test_eof401
 		}
 	st_case_401:
-		if data[p] == 76 {
+		// line 9915 "smtp.go"
+		switch data[p] {
+		case 43:
+			goto st3
+		case 61:
+			goto st3
+		case 85:
 			goto st402
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st3
+			}
+		case data[p] > 84:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st3
+				}
+			case data[p] >= 86:
+				goto st3
+			}
+		default:
+			goto st3
 		}
 		{
 			goto st0
@@ -9371,8 +10076,30 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof402
 		}
 	st_case_402:
-		if data[p] == 83 {
+		switch data[p] {
+		case 43:
+			goto st4
+		case 61:
+			goto st4
+		case 73:
 			goto st403
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st4
+			}
+		case data[p] > 72:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st4
+				}
+			case data[p] >= 74:
+				goto st4
+			}
+		default:
+			goto st4
 		}
 		{
 			goto st0
@@ -9384,10 +10111,29 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_403:
 		switch data[p] {
-		case 10:
-			goto ctr461
-		case 13:
-			goto ctr462
+		case 43:
+			goto st5
+		case 61:
+			goto st5
+		case 84:
+			goto st404
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st5
+			}
+		case data[p] > 83:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st5
+				}
+			case data[p] >= 85:
+				goto st5
+			}
+		default:
+			goto st5
 		}
 		{
 			goto st0
@@ -9398,20 +10144,77 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof404
 		}
 	st_case_404:
-		if data[p] == 82 {
-			goto st405
+		switch data[p] {
+		case 10:
+			goto ctr451
+		case 13:
+			goto ctr452
+		case 43:
+			goto st6
+		case 61:
+			goto st6
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st6
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st6
+			}
+		default:
+			goto st6
 		}
 		{
 			goto st0
 
 		}
+	ctr8:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st405
 	st405:
 		if p++; p == pe {
 			goto _test_eof405
 		}
 	st_case_405:
-		if data[p] == 70 {
+		// line 10057 "smtp.go"
+		switch data[p] {
+		case 43:
+			goto st3
+		case 61:
+			goto st3
+		case 67:
 			goto st406
+		case 83:
+			goto st438
+		}
+		switch {
+		case data[p] < 68:
+			switch {
+			case data[p] > 57:
+				if 65 <= data[p] && data[p] <= 66 {
+					goto st3
+				}
+			case data[p] >= 47:
+				goto st3
+			}
+		case data[p] > 82:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st3
+				}
+			case data[p] >= 84:
+				goto st3
+			}
+		default:
+			goto st3
 		}
 		{
 			goto st0
@@ -9422,8 +10225,30 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof406
 		}
 	st_case_406:
-		if data[p] == 89 {
+		switch data[p] {
+		case 43:
+			goto st4
+		case 61:
+			goto st4
+		case 80:
 			goto st407
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st4
+			}
+		case data[p] > 79:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st4
+				}
+			case data[p] >= 81:
+				goto st4
+			}
+		default:
+			goto st4
 		}
 		{
 			goto st0
@@ -9434,8 +10259,30 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 			goto _test_eof407
 		}
 	st_case_407:
-		if data[p] == 32 {
+		switch data[p] {
+		case 43:
+			goto st5
+		case 61:
+			goto st5
+		case 84:
 			goto st408
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st5
+			}
+		case data[p] > 83:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st5
+				}
+			case data[p] >= 85:
+				goto st5
+			}
+		default:
+			goto st5
 		}
 		{
 			goto st0
@@ -9447,21 +10294,27 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_408:
 		switch data[p] {
-		case 10:
-			goto st0
-		case 13:
-			goto st0
+		case 32:
+			goto st409
+		case 43:
+			goto st6
+		case 61:
+			goto st6
 		}
 		switch {
-		case data[p] > 9:
-			if 11 <= data[p] && data[p] <= 12 {
-				goto st409
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st6
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st6
 			}
 		default:
-			goto st409
+			goto st6
 		}
 		{
-			goto st409
+			goto st0
 
 		}
 	st409:
@@ -9470,21 +10323,1513 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	st_case_409:
 		switch data[p] {
-		case 10:
+		case 84:
+			goto st410
+		case 116:
+			goto st410
+		}
+		{
+			goto st0
+
+		}
+	st410:
+		if p++; p == pe {
+			goto _test_eof410
+		}
+	st_case_410:
+		switch data[p] {
+		case 79:
+			goto st411
+		case 111:
+			goto st411
+		}
+		{
+			goto st0
+
+		}
+	st411:
+		if p++; p == pe {
+			goto _test_eof411
+		}
+	st_case_411:
+		if data[p] == 58 {
+			goto st412
+		}
+		{
+			goto st0
+
+		}
+	st412:
+		if p++; p == pe {
+			goto _test_eof412
+		}
+	st_case_412:
+		if data[p] == 60 {
+			goto st413
+		}
+		{
+			goto st0
+
+		}
+	st413:
+		if p++; p == pe {
+			goto _test_eof413
+		}
+	st_case_413:
+		switch data[p] {
+		case 33:
+			goto ctr462
+		case 34:
+			goto ctr463
+		case 64:
+			goto ctr464
+		case 92:
+			goto ctr465
+		}
+		switch {
+		case data[p] < 65:
+			if 35 <= data[p] && data[p] <= 63 {
+				goto ctr462
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto ctr462
+			}
+		default:
+			goto ctr462
+		}
+		{
+			goto st0
+
+		}
+	ctr462:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st414
+	st414:
+		if p++; p == pe {
+			goto _test_eof414
+		}
+	st_case_414:
+		// line 10289 "smtp.go"
+		switch data[p] {
+		case 33:
+			goto st414
+		case 34:
+			goto st415
+		case 62:
 			goto ctr468
+		case 92:
+			goto st419
+		}
+		switch {
+		case data[p] < 63:
+			if 35 <= data[p] && data[p] <= 61 {
+				goto st414
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st414
+			}
+		default:
+			goto st414
+		}
+		{
+			goto st0
+
+		}
+	ctr463:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st415
+	st415:
+		if p++; p == pe {
+			goto _test_eof415
+		}
+	st_case_415:
+		// line 10329 "smtp.go"
+		if data[p] == 92 {
+			goto st417
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st416
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st416
+			}
+		default:
+			goto st416
+		}
+		{
+			goto st0
+
+		}
+	st416:
+		if p++; p == pe {
+			goto _test_eof416
+		}
+	st_case_416:
+		switch data[p] {
+		case 34:
+			goto st414
+		case 92:
+			goto st417
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st416
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st416
+			}
+		default:
+			goto st416
+		}
+		{
+			goto st0
+
+		}
+	st417:
+		if p++; p == pe {
+			goto _test_eof417
+		}
+	st_case_417:
+		if data[p] == 34 {
+			goto st416
+		}
+		{
+			goto st0
+
+		}
+	ctr468:
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		goto st418
+	ctr492:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		goto st418
+	st418:
+		if p++; p == pe {
+			goto _test_eof418
+		}
+	st_case_418:
+		// line 10417 "smtp.go"
+		switch data[p] {
+		case 10:
+			goto ctr472
 		case 13:
-			goto ctr469
+			goto ctr473
+		case 33:
+			goto st414
+		case 34:
+			goto st415
+		case 62:
+			goto ctr468
+		case 92:
+			goto st419
+		}
+		switch {
+		case data[p] < 63:
+			if 35 <= data[p] && data[p] <= 61 {
+				goto st414
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st414
+			}
+		default:
+			goto st414
+		}
+		{
+			goto st0
+
+		}
+	ctr465:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st419
+	st419:
+		if p++; p == pe {
+			goto _test_eof419
+		}
+	st_case_419:
+		// line 10461 "smtp.go"
+		if data[p] == 92 {
+			goto st420
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st414
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st414
+			}
+		default:
+			goto st414
+		}
+		{
+			goto st0
+
+		}
+	st420:
+		if p++; p == pe {
+			goto _test_eof420
+		}
+	st_case_420:
+		if data[p] == 34 {
+			goto st414
+		}
+		{
+			goto st0
+
+		}
+	ctr464:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st421
+	st421:
+		if p++; p == pe {
+			goto _test_eof421
+		}
+	st_case_421:
+		// line 10506 "smtp.go"
+		switch data[p] {
+		case 33:
+			goto st424
+		case 34:
+			goto st425
+		case 58:
+			goto st414
+		case 62:
+			goto ctr478
+		case 92:
+			goto st436
+		}
+		switch {
+		case data[p] < 59:
+			switch {
+			case data[p] > 32:
+				if 35 <= data[p] && data[p] <= 57 {
+					goto st424
+				}
+			default:
+				goto st422
+			}
+		case data[p] > 61:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st424
+				}
+			case data[p] >= 63:
+				goto st424
+			}
+		default:
+			goto st424
+		}
+		{
+			goto st422
+
+		}
+	st422:
+		if p++; p == pe {
+			goto _test_eof422
+		}
+	st_case_422:
+		if data[p] == 58 {
+			goto st423
+		}
+		if data[p] <= 57 {
+			goto st422
+		}
+		{
+			goto st422
+
+		}
+	st423:
+		if p++; p == pe {
+			goto _test_eof423
+		}
+	st_case_423:
+		switch data[p] {
+		case 33:
+			goto ctr462
+		case 34:
+			goto ctr463
+		case 92:
+			goto ctr465
+		}
+		switch {
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto ctr462
+			}
+		case data[p] >= 35:
+			goto ctr462
+		}
+		{
+			goto st0
+
+		}
+	st424:
+		if p++; p == pe {
+			goto _test_eof424
+		}
+	st_case_424:
+		switch data[p] {
+		case 33:
+			goto st424
+		case 34:
+			goto st425
+		case 58:
+			goto st433
+		case 62:
+			goto ctr478
+		case 92:
+			goto st436
+		}
+		switch {
+		case data[p] < 59:
+			switch {
+			case data[p] > 32:
+				if 35 <= data[p] && data[p] <= 57 {
+					goto st424
+				}
+			default:
+				goto st422
+			}
+		case data[p] > 61:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st424
+				}
+			case data[p] >= 63:
+				goto st424
+			}
+		default:
+			goto st424
+		}
+		{
+			goto st422
+
+		}
+	st425:
+		if p++; p == pe {
+			goto _test_eof425
+		}
+	st_case_425:
+		switch data[p] {
+		case 34:
+			goto st422
+		case 58:
+			goto st427
+		case 92:
+			goto st432
+		}
+		switch {
+		case data[p] < 35:
+			switch {
+			case data[p] > 31:
+				if data[p] <= 33 {
+					goto st426
+				}
+			default:
+				goto st422
+			}
+		case data[p] > 57:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st426
+				}
+			case data[p] >= 59:
+				goto st426
+			}
+		default:
+			goto st426
+		}
+		{
+			goto st422
+
+		}
+	st426:
+		if p++; p == pe {
+			goto _test_eof426
+		}
+	st_case_426:
+		switch data[p] {
+		case 34:
+			goto st424
+		case 58:
+			goto st427
+		case 92:
+			goto st432
+		}
+		switch {
+		case data[p] < 35:
+			switch {
+			case data[p] > 31:
+				if data[p] <= 33 {
+					goto st426
+				}
+			default:
+				goto st422
+			}
+		case data[p] > 57:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st426
+				}
+			case data[p] >= 59:
+				goto st426
+			}
+		default:
+			goto st426
+		}
+		{
+			goto st422
+
+		}
+	st427:
+		if p++; p == pe {
+			goto _test_eof427
+		}
+	st_case_427:
+		switch data[p] {
+		case 32:
+			goto st416
+		case 33:
+			goto ctr485
+		case 34:
+			goto ctr486
+		case 92:
+			goto ctr487
+		}
+		switch {
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto ctr485
+			}
+		case data[p] >= 35:
+			goto ctr485
+		}
+		{
+			goto st0
+
+		}
+	ctr485:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st428
+	st428:
+		if p++; p == pe {
+			goto _test_eof428
+		}
+	st_case_428:
+		// line 10746 "smtp.go"
+		switch data[p] {
+		case 32:
+			goto st416
+		case 33:
+			goto st428
+		case 34:
+			goto st429
+		case 62:
+			goto ctr490
+		case 92:
+			goto st431
+		}
+		switch {
+		case data[p] < 63:
+			if 35 <= data[p] && data[p] <= 61 {
+				goto st428
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st428
+			}
+		default:
+			goto st428
+		}
+		{
+			goto st0
+
+		}
+	ctr486:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st429
+	st429:
+		if p++; p == pe {
+			goto _test_eof429
+		}
+	st_case_429:
+		// line 10788 "smtp.go"
+		switch data[p] {
+		case 32:
+			goto st416
+		case 33:
+			goto st428
+		case 34:
+			goto st415
+		case 62:
+			goto ctr490
+		case 92:
+			goto st431
+		}
+		switch {
+		case data[p] < 63:
+			if 35 <= data[p] && data[p] <= 61 {
+				goto st428
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st428
+			}
+		default:
+			goto st428
+		}
+		{
+			goto st0
+
+		}
+	ctr490:
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		goto st430
+	st430:
+		if p++; p == pe {
+			goto _test_eof430
+		}
+	st_case_430:
+		// line 10831 "smtp.go"
+		switch data[p] {
+		case 10:
+			goto ctr472
+		case 13:
+			goto ctr473
+		case 32:
+			goto st416
+		case 33:
+			goto st428
+		case 34:
+			goto st429
+		case 62:
+			goto ctr490
+		case 92:
+			goto st431
+		}
+		switch {
+		case data[p] < 63:
+			if 35 <= data[p] && data[p] <= 61 {
+				goto st428
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st428
+			}
+		default:
+			goto st428
+		}
+		{
+			goto st0
+
+		}
+	ctr487:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st431
+	st431:
+		if p++; p == pe {
+			goto _test_eof431
+		}
+	st_case_431:
+		// line 10877 "smtp.go"
+		switch data[p] {
+		case 34:
+			goto st416
+		case 92:
+			goto st420
+		}
+		switch {
+		case data[p] < 35:
+			if 32 <= data[p] && data[p] <= 33 {
+				goto st414
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto st414
+			}
+		default:
+			goto st414
+		}
+		{
+			goto st0
+
+		}
+	st432:
+		if p++; p == pe {
+			goto _test_eof432
+		}
+	st_case_432:
+		switch data[p] {
+		case 34:
+			goto st426
+		case 58:
+			goto st423
+		}
+		switch {
+		case data[p] > 33:
+			if 35 <= data[p] && data[p] <= 57 {
+				goto st422
+			}
+		default:
+			goto st422
+		}
+		{
+			goto st422
+
+		}
+	st433:
+		if p++; p == pe {
+			goto _test_eof433
+		}
+	st_case_433:
+		switch data[p] {
+		case 33:
+			goto ctr462
+		case 34:
+			goto ctr463
+		case 62:
+			goto ctr492
+		case 92:
+			goto ctr465
+		}
+		switch {
+		case data[p] < 63:
+			if 35 <= data[p] && data[p] <= 61 {
+				goto ctr462
+			}
+		case data[p] > 91:
+			if 93 <= data[p] && data[p] <= 126 {
+				goto ctr462
+			}
+		default:
+			goto ctr462
+		}
+		{
+			goto st0
+
+		}
+	ctr478:
+		// line 26 "smtp.ragel"
+		{
+
+			parser.buffer.Write(data[pb:p])
+			parser.current.Data = parser.buffer.Bytes()
+			parser.buffer = nil
+		}
+		goto st434
+	st434:
+		if p++; p == pe {
+			goto _test_eof434
+		}
+	st_case_434:
+		// line 10968 "smtp.go"
+		switch data[p] {
+		case 10:
+			goto ctr493
+		case 13:
+			goto ctr494
+		case 33:
+			goto st424
+		case 34:
+			goto st425
+		case 58:
+			goto st433
+		case 62:
+			goto ctr478
+		case 92:
+			goto st436
+		}
+		switch {
+		case data[p] < 35:
+			switch {
+			case data[p] < 11:
+				if data[p] <= 9 {
+					goto st422
+				}
+			case data[p] > 12:
+				if 14 <= data[p] && data[p] <= 32 {
+					goto st422
+				}
+			default:
+				goto st422
+			}
+		case data[p] > 57:
+			switch {
+			case data[p] < 63:
+				if 59 <= data[p] && data[p] <= 61 {
+					goto st424
+				}
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st424
+				}
+			default:
+				goto st424
+			}
+		default:
+			goto st424
+		}
+		{
+			goto st422
+
+		}
+	ctr495:
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 457
+				goto _out
+			}
+		}
+		goto st457
+	ctr493:
+		// line 83 "smtp.ragel"
+		{
+			parser.current.Verb = VerbRCPT
+		}
+		// line 97 "smtp.ragel"
+		{
+			{
+				p++
+				cs = 457
+				goto _out
+			}
+		}
+		goto st457
+	st457:
+		if p++; p == pe {
+			goto _test_eof457
+		}
+	st_case_457:
+		// line 11039 "smtp.go"
+		if data[p] == 58 {
+			goto st423
+		}
+		if data[p] <= 57 {
+			goto st422
+		}
+		{
+			goto st422
+
+		}
+	ctr494:
+		// line 83 "smtp.ragel"
+		{
+			parser.current.Verb = VerbRCPT
+		}
+		goto st435
+	st435:
+		if p++; p == pe {
+			goto _test_eof435
+		}
+	st_case_435:
+		// line 11060 "smtp.go"
+		switch data[p] {
+		case 10:
+			goto ctr495
+		case 58:
+			goto st423
+		}
+		switch {
+		case data[p] > 9:
+			if 11 <= data[p] && data[p] <= 57 {
+				goto st422
+			}
+		default:
+			goto st422
+		}
+		{
+			goto st422
+
+		}
+	st436:
+		if p++; p == pe {
+			goto _test_eof436
+		}
+	st_case_436:
+		switch data[p] {
+		case 34:
+			goto st422
+		case 58:
+			goto st433
+		case 92:
+			goto st437
+		}
+		switch {
+		case data[p] < 35:
+			switch {
+			case data[p] > 31:
+				if data[p] <= 33 {
+					goto st424
+				}
+			default:
+				goto st422
+			}
+		case data[p] > 57:
+			switch {
+			case data[p] > 91:
+				if 93 <= data[p] && data[p] <= 126 {
+					goto st424
+				}
+			case data[p] >= 59:
+				goto st424
+			}
+		default:
+			goto st424
+		}
+		{
+			goto st422
+
+		}
+	st437:
+		if p++; p == pe {
+			goto _test_eof437
+		}
+	st_case_437:
+		switch data[p] {
+		case 34:
+			goto st424
+		case 58:
+			goto st423
+		}
+		switch {
+		case data[p] > 33:
+			if 35 <= data[p] && data[p] <= 57 {
+				goto st422
+			}
+		default:
+			goto st422
+		}
+		{
+			goto st422
+
+		}
+	st438:
+		if p++; p == pe {
+			goto _test_eof438
+		}
+	st_case_438:
+		switch data[p] {
+		case 43:
+			goto st4
+		case 61:
+			goto st4
+		case 69:
+			goto st439
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st4
+			}
+		case data[p] > 68:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st4
+				}
+			case data[p] >= 70:
+				goto st4
+			}
+		default:
+			goto st4
+		}
+		{
+			goto st0
+
+		}
+	st439:
+		if p++; p == pe {
+			goto _test_eof439
+		}
+	st_case_439:
+		switch data[p] {
+		case 43:
+			goto st5
+		case 61:
+			goto st5
+		case 84:
+			goto st440
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st5
+			}
+		case data[p] > 83:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st5
+				}
+			case data[p] >= 85:
+				goto st5
+			}
+		default:
+			goto st5
+		}
+		{
+			goto st0
+
+		}
+	st440:
+		if p++; p == pe {
+			goto _test_eof440
+		}
+	st_case_440:
+		switch data[p] {
+		case 10:
+			goto ctr499
+		case 13:
+			goto ctr500
+		case 43:
+			goto st6
+		case 61:
+			goto st6
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st6
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st6
+			}
+		default:
+			goto st6
+		}
+		{
+			goto st0
+
+		}
+	ctr9:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st441
+	st441:
+		if p++; p == pe {
+			goto _test_eof441
+		}
+	st_case_441:
+		// line 11253 "smtp.go"
+		switch data[p] {
+		case 43:
+			goto st3
+		case 61:
+			goto st3
+		case 84:
+			goto st442
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st3
+			}
+		case data[p] > 83:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st3
+				}
+			case data[p] >= 85:
+				goto st3
+			}
+		default:
+			goto st3
+		}
+		{
+			goto st0
+
+		}
+	st442:
+		if p++; p == pe {
+			goto _test_eof442
+		}
+	st_case_442:
+		switch data[p] {
+		case 43:
+			goto st4
+		case 61:
+			goto st4
+		case 65:
+			goto st443
+		}
+		switch {
+		case data[p] < 66:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st4
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st4
+			}
+		default:
+			goto st4
+		}
+		{
+			goto st0
+
+		}
+	st443:
+		if p++; p == pe {
+			goto _test_eof443
+		}
+	st_case_443:
+		switch data[p] {
+		case 43:
+			goto st5
+		case 61:
+			goto st5
+		case 82:
+			goto st444
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st5
+			}
+		case data[p] > 81:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st5
+				}
+			case data[p] >= 83:
+				goto st5
+			}
+		default:
+			goto st5
+		}
+		{
+			goto st0
+
+		}
+	st444:
+		if p++; p == pe {
+			goto _test_eof444
+		}
+	st_case_444:
+		switch data[p] {
+		case 43:
+			goto st6
+		case 61:
+			goto st6
+		case 84:
+			goto st445
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st6
+			}
+		case data[p] > 83:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st6
+				}
+			case data[p] >= 85:
+				goto st6
+			}
+		default:
+			goto st6
+		}
+		{
+			goto st0
+
+		}
+	st445:
+		if p++; p == pe {
+			goto _test_eof445
+		}
+	st_case_445:
+		switch data[p] {
+		case 43:
+			goto st7
+		case 61:
+			goto st7
+		case 84:
+			goto st446
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st7
+			}
+		case data[p] > 83:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st7
+				}
+			case data[p] >= 85:
+				goto st7
+			}
+		default:
+			goto st7
+		}
+		{
+			goto st0
+
+		}
+	st446:
+		if p++; p == pe {
+			goto _test_eof446
+		}
+	st_case_446:
+		switch data[p] {
+		case 43:
+			goto st8
+		case 61:
+			goto st8
+		case 76:
+			goto st447
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st8
+			}
+		case data[p] > 75:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st8
+				}
+			case data[p] >= 77:
+				goto st8
+			}
+		default:
+			goto st8
+		}
+		{
+			goto st0
+
+		}
+	st447:
+		if p++; p == pe {
+			goto _test_eof447
+		}
+	st_case_447:
+		switch data[p] {
+		case 43:
+			goto st9
+		case 61:
+			goto st9
+		case 83:
+			goto st448
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st9
+			}
+		case data[p] > 82:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st9
+				}
+			case data[p] >= 84:
+				goto st9
+			}
+		default:
+			goto st9
+		}
+		{
+			goto st0
+
+		}
+	st448:
+		if p++; p == pe {
+			goto _test_eof448
+		}
+	st_case_448:
+		switch data[p] {
+		case 10:
+			goto ctr508
+		case 13:
+			goto ctr509
+		case 43:
+			goto st10
+		case 61:
+			goto st10
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st10
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st10
+			}
+		default:
+			goto st10
+		}
+		{
+			goto st0
+
+		}
+	ctr10:
+		// line 32 "smtp.ragel"
+		{
+
+			pb = p
+			parser.buffer = bytes.NewBuffer(nil)
+		}
+		goto st449
+	st449:
+		if p++; p == pe {
+			goto _test_eof449
+		}
+	st_case_449:
+		// line 11526 "smtp.go"
+		switch data[p] {
+		case 43:
+			goto st3
+		case 61:
+			goto st3
+		case 82:
+			goto st450
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st3
+			}
+		case data[p] > 81:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st3
+				}
+			case data[p] >= 83:
+				goto st3
+			}
+		default:
+			goto st3
+		}
+		{
+			goto st0
+
+		}
+	st450:
+		if p++; p == pe {
+			goto _test_eof450
+		}
+	st_case_450:
+		switch data[p] {
+		case 43:
+			goto st4
+		case 61:
+			goto st4
+		case 70:
+			goto st451
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st4
+			}
+		case data[p] > 69:
+			switch {
+			case data[p] > 90:
+				if 97 <= data[p] && data[p] <= 122 {
+					goto st4
+				}
+			case data[p] >= 71:
+				goto st4
+			}
+		default:
+			goto st4
+		}
+		{
+			goto st0
+
+		}
+	st451:
+		if p++; p == pe {
+			goto _test_eof451
+		}
+	st_case_451:
+		switch data[p] {
+		case 43:
+			goto st5
+		case 61:
+			goto st5
+		case 89:
+			goto st452
+		case 90:
+			goto st5
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st5
+			}
+		case data[p] > 88:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st5
+			}
+		default:
+			goto st5
+		}
+		{
+			goto st0
+
+		}
+	st452:
+		if p++; p == pe {
+			goto _test_eof452
+		}
+	st_case_452:
+		switch data[p] {
+		case 32:
+			goto st453
+		case 43:
+			goto st6
+		case 61:
+			goto st6
+		}
+		switch {
+		case data[p] < 65:
+			if 47 <= data[p] && data[p] <= 57 {
+				goto st6
+			}
+		case data[p] > 90:
+			if 97 <= data[p] && data[p] <= 122 {
+				goto st6
+			}
+		default:
+			goto st6
+		}
+		{
+			goto st0
+
+		}
+	st453:
+		if p++; p == pe {
+			goto _test_eof453
+		}
+	st_case_453:
+		switch data[p] {
+		case 10:
+			goto st0
+		case 13:
+			goto st0
 		}
 		switch {
 		case data[p] > 9:
 			if 11 <= data[p] && data[p] <= 12 {
-				goto st409
+				goto st454
 			}
 		default:
-			goto st409
+			goto st454
 		}
 		{
-			goto st409
+			goto st454
+
+		}
+	st454:
+		if p++; p == pe {
+			goto _test_eof454
+		}
+	st_case_454:
+		switch data[p] {
+		case 10:
+			goto ctr515
+		case 13:
+			goto ctr516
+		}
+		switch {
+		case data[p] > 9:
+			if 11 <= data[p] && data[p] <= 12 {
+				goto st454
+			}
+		default:
+			goto st454
+		}
+		{
+			goto st454
 
 		}
 	st_end:
@@ -9526,9 +11871,6 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		goto _test_eof
 	_test_eof14:
 		cs = 14
-		goto _test_eof
-	_test_eof410:
-		cs = 410
 		goto _test_eof
 	_test_eof15:
 		cs = 15
@@ -9625,6 +11967,9 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		goto _test_eof
 	_test_eof46:
 		cs = 46
+		goto _test_eof
+	_test_eof455:
+		cs = 455
 		goto _test_eof
 	_test_eof47:
 		cs = 47
@@ -10472,9 +12817,6 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 	_test_eof328:
 		cs = 328
 		goto _test_eof
-	_test_eof411:
-		cs = 411
-		goto _test_eof
 	_test_eof329:
 		cs = 329
 		goto _test_eof
@@ -10610,6 +12952,9 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 	_test_eof373:
 		cs = 373
 		goto _test_eof
+	_test_eof456:
+		cs = 456
+		goto _test_eof
 	_test_eof374:
 		cs = 374
 		goto _test_eof
@@ -10657,9 +13002,6 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		goto _test_eof
 	_test_eof389:
 		cs = 389
-		goto _test_eof
-	_test_eof412:
-		cs = 412
 		goto _test_eof
 	_test_eof390:
 		cs = 390
@@ -10721,6 +13063,144 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 	_test_eof409:
 		cs = 409
 		goto _test_eof
+	_test_eof410:
+		cs = 410
+		goto _test_eof
+	_test_eof411:
+		cs = 411
+		goto _test_eof
+	_test_eof412:
+		cs = 412
+		goto _test_eof
+	_test_eof413:
+		cs = 413
+		goto _test_eof
+	_test_eof414:
+		cs = 414
+		goto _test_eof
+	_test_eof415:
+		cs = 415
+		goto _test_eof
+	_test_eof416:
+		cs = 416
+		goto _test_eof
+	_test_eof417:
+		cs = 417
+		goto _test_eof
+	_test_eof418:
+		cs = 418
+		goto _test_eof
+	_test_eof419:
+		cs = 419
+		goto _test_eof
+	_test_eof420:
+		cs = 420
+		goto _test_eof
+	_test_eof421:
+		cs = 421
+		goto _test_eof
+	_test_eof422:
+		cs = 422
+		goto _test_eof
+	_test_eof423:
+		cs = 423
+		goto _test_eof
+	_test_eof424:
+		cs = 424
+		goto _test_eof
+	_test_eof425:
+		cs = 425
+		goto _test_eof
+	_test_eof426:
+		cs = 426
+		goto _test_eof
+	_test_eof427:
+		cs = 427
+		goto _test_eof
+	_test_eof428:
+		cs = 428
+		goto _test_eof
+	_test_eof429:
+		cs = 429
+		goto _test_eof
+	_test_eof430:
+		cs = 430
+		goto _test_eof
+	_test_eof431:
+		cs = 431
+		goto _test_eof
+	_test_eof432:
+		cs = 432
+		goto _test_eof
+	_test_eof433:
+		cs = 433
+		goto _test_eof
+	_test_eof434:
+		cs = 434
+		goto _test_eof
+	_test_eof457:
+		cs = 457
+		goto _test_eof
+	_test_eof435:
+		cs = 435
+		goto _test_eof
+	_test_eof436:
+		cs = 436
+		goto _test_eof
+	_test_eof437:
+		cs = 437
+		goto _test_eof
+	_test_eof438:
+		cs = 438
+		goto _test_eof
+	_test_eof439:
+		cs = 439
+		goto _test_eof
+	_test_eof440:
+		cs = 440
+		goto _test_eof
+	_test_eof441:
+		cs = 441
+		goto _test_eof
+	_test_eof442:
+		cs = 442
+		goto _test_eof
+	_test_eof443:
+		cs = 443
+		goto _test_eof
+	_test_eof444:
+		cs = 444
+		goto _test_eof
+	_test_eof445:
+		cs = 445
+		goto _test_eof
+	_test_eof446:
+		cs = 446
+		goto _test_eof
+	_test_eof447:
+		cs = 447
+		goto _test_eof
+	_test_eof448:
+		cs = 448
+		goto _test_eof
+	_test_eof449:
+		cs = 449
+		goto _test_eof
+	_test_eof450:
+		cs = 450
+		goto _test_eof
+	_test_eof451:
+		cs = 451
+		goto _test_eof
+	_test_eof452:
+		cs = 452
+		goto _test_eof
+	_test_eof453:
+		cs = 453
+		goto _test_eof
+	_test_eof454:
+		cs = 454
+		goto _test_eof
 
 	_test_eof:
 		{
@@ -10730,7 +13210,7 @@ func (parser *Parser) Feed(data []byte) (remaining []byte, err error) {
 		}
 	}
 
-	// line 118 "smtp.ragel"
+	// line 124 "smtp.ragel"
 
 	if cs == smtp_error {
 		return data[p:], fmt.Errorf("Invalid character in pos %d: `%c`.", p, data[p])
