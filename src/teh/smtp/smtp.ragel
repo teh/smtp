@@ -44,11 +44,6 @@ host = domain
     %storeData
     >startRecording;
 
-# only PLAIN auth can have initial data
-auth = [A-Z\-a-z=]+
-	%storeData
-    >startRecording;
-
 ignore_routes = ('@' [^:]+ ':')?;
 
 need_quote = [a-zA-Z0-9\(\)\[\]<>:,;!#@_\-.\$%&'*/=?^`{}~|+ ] | '\\"';
@@ -60,7 +55,7 @@ real_address = (('"' need_quote+  '"' | quoted_chars+)+ ('@' domain)?)
 address = '<' ignore_routes real_address '>';
 
 # have to fit at least a space and an md5 sum, hence 45
-base64 = [A-Za-z+=/0-9]{45,}
+base64 = (([A-Za-z+=/0-9]+) - ("STARTTLS" | "DATA" | "MAIL" | "QUIT" | "RCPT" | "VRFY"))
     %storeData
     >startRecording;
 
@@ -83,10 +78,8 @@ do = ("HELO " host) %{parser.current.Verb = VerbHELO}
 	| ("RCPT " RCPT) %{parser.current.Verb = VerbRCPT}
 	| "DATA" %{parser.current.Verb = VerbDATA}
 	| "QUIT" %{parser.current.Verb = VerbQUIT}
-	| ("AUTH PLAIN " auth) %{parser.current.Verb = VerbAUTH_PLAIN}
 	| "AUTH PLAIN" %{parser.current.Verb = VerbAUTH_PLAIN}
-	| "AUTH DIGEST-MD5" %{parser.current.Verb = VerbAUTH_DIGEST_MD5}
-	| "AUTH CRAM-MD5" %{parser.current.Verb = VerbAUTH_CRAM_MD5}
+	| ("AUTH PLAIN " base64) %{parser.current.Verb = VerbAUTH_PLAIN_DIRECT}
 	| "STARTTLS" %{parser.current.Verb = VerbSTARTTLS}
 	| ("VRFY " [^\n\r]+) %{parser.current.Verb = VerbVRFY}
     | base64 %{parser.current.Verb = VerbBASE64}

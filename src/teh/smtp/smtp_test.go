@@ -97,8 +97,6 @@ func TestValidVerbs(t *testing.T) {
 		"DATA\r\n",
 		"AUTH PLAIN text\r\n",
 		"AUTH PLAIN\r\n",
-		"AUTH CRAM-MD5\r\n",
-		"AUTH DIGEST-MD5\r\n",
 		"STARTTLS\r\n",
 	}
 	for _, entry := range entries {
