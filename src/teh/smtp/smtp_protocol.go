@@ -250,6 +250,9 @@ func auth_plain(c *Connection) stateFunc {
 	return auth_ok_envelope_empty
 }
 
+
+// In the no-auth case recipients can only be local where `local` is
+// determined by the SAN DNSNames in the certificate.
 func no_auth_envelope_set(c *Connection) stateFunc {
 	err := nextVerb(c)
 	if err != nil {

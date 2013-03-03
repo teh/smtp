@@ -66,8 +66,8 @@ func TestEHLO(t *testing.T) {
 		t.Fatal(err)
 	}
 	err = client.Mail("someone@example.com")
-	if err != nil {
-		t.Error(err)
+	if err == nil {
+		t.Errorf("Expected server to ask to STARTTLS first")
 	}
 
 	tls_client_config := tls.Config{
